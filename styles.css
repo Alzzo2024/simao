@@ -1,0 +1,659 @@
+/* Reset e configuração básica */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+/* Corpo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0a0b1a; /* Azul escuro */
+    color: #f8f8f8; /* Cor do texto padrão */
+}
+
+/* Header */
+header {
+    background-color: #06061a; /* Azul mais escuro */
+    padding: 20px; /* Aumenta o padding para mais espaço no topo */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.7); /* Sombra na barra de navegação */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+    position: relative;
+}
+
+nav ul li a {
+    color: #f8f8f8; /* Cor do texto para melhor contraste */
+    text-decoration: none;
+    font-size: 18px;
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    border-bottom: 2px solid #FFD700; /* Sublinhado em dourado */
+}
+
+/* Gradiente animado na aba "assinaturas" */
+nav ul li a.animated-signature {
+    background: linear-gradient(90deg, #1e87ff, #ffffff);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientAnimation 3s ease infinite;
+}
+
+/*botao iniciar sessao*/
+
+
+.translate-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    filter: invert(1); /* Imagem branca */
+}
+
+.flag-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%; /* Bandeiras em círculos */
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #06061a;
+    right: 0;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #f8f8f8; /* Cor do texto mais clara */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #FFD700; /* Fundo dourado ao passar o mouse */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Container principal */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    height: auto; /* Ajuste a altura conforme necessário */
+}
+
+.left {
+    flex: 1;
+}
+
+.left h1 {
+    font-size: 60px;
+    background: -webkit-linear-gradient(45deg, #DAA520, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+}
+
+.left p {
+    font-size: 24px;
+    margin-top: 20px;
+    line-height: 1.5;
+    color: #ffffff; /* Cor do texto padrão */
+}
+
+.right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.profile-pic {
+    width: 200px; /* Aumentar o tamanho da imagem */
+    height: 200px; /* Aumentar o tamanho da imagem */
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid transparent;
+    background: linear-gradient(45deg, #DAA520, #FFD700); /* Borda com gradiente dourado */
+    display: flex; /* Usar flexbox para centrar o conteúdo */
+    align-items: center; /* Alinhar verticalmente */
+    justify-content: center; /* Alinhar horizontalmente */
+    margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+/* Certifique-se de que a imagem não estique e fique centralizada */
+.profile-pic img {
+    max-width: 100%; /* Garante que a imagem não ultrapasse os limites do container */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+
+/* Seção de Projetos */
+#projects {
+    background-color: #0a0b1a; /* Cor de fundo para a seção Projetos */
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.projects-container {
+    max-width: 900px; /* Limita a largura máxima do contêiner */
+    margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+.project-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    background-color: #06061a; /* Cor de fundo para os itens do projeto */
+    border-radius: 8px; /* Bordas arredondadas */
+    overflow: hidden;
+}
+
+.project-item img {
+    width: 900px; /* Ajuste a largura conforme necessário */
+    height: auto; /* Mantém a proporção da altura */
+    object-fit: cover; /* Mantém a proporção da imagem */
+}
+
+.project-description {
+    padding: 20px;
+}
+
+.project-description h3 {
+    font-size: 1.5rem;
+    color: #FFD700; /* Cor do título do projeto */
+    margin-bottom: 10px;
+}
+
+.project-description p {
+    font-size: 1rem;
+    color: #f8f8f8; /* Cor do texto da descrição */
+    line-height: 1.6; /* Espaçamento entre linhas */
+}
+
+/* Estilo do Botão "Ver Mais" */
+.btn-view-more {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px; /* Espaçamento superior */
+    font-size: 1rem;
+    color: #000000;
+    background-color: #FFD700; /* Cor do botão */
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-view-more:hover {
+    background-color: #f7c600; /* Cor do botão ao passar o mouse */
+    color: #ffffff; /* Cor do texto ao passar o mouse */
+}
+
+
+
+#partnerships {
+    padding: 50px 0;
+    background-color: #0a0b1a;
+    overflow: hidden; /* Esconde qualquer coisa fora da área visível */
+}
+
+.partnerships-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logos-slider {
+    width: 100%;
+    overflow: hidden; /* Esconde qualquer coisa fora da área visível */
+}
+
+.logos-track {
+    display: flex;
+    align-items: center;
+    animation: scroll 20s linear infinite; /* Controla a velocidade do loop */
+}
+
+.logo-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px; /* Espaço entre os logos */
+}
+
+.logo-item img {
+    max-width: 100px; /* Define o tamanho máximo dos logos */
+    height: auto; /* Mantém a proporção dos logos */
+    transition: transform 0.3s; /* Animação para quando o logo for clicado */
+}
+
+.logo-item:hover img {
+    transform: scale(1.1); /* Aumenta o logo ao passar o mouse */
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+
+
+
+/* Seção de preços */
+.pricing-section {
+    background-color: #0a0b1a;
+    padding: 50px 0; /* Adiciona mais espaço em cima e embaixo */
+}
+
+.pricing-section .container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 0 20px; /* Ajusta o padding lateral */
+}
+
+.card {
+    width: 350px; /* Aumenta a largura da caixa */
+    height: 500px; /* Diminui a altura da caixa */
+    margin: 20px; /* Espaço entre os cartões */
+    background: #000112; /* Azul escuro (Safira) */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombreamento dos cartões */
+    position: relative;
+    transition: transform 175ms ease-in, box-shadow 175ms ease-in;
+    overflow: hidden; /* Controle de overflow */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribui o espaço entre os itens */
+}
+
+/* Atualizar a cor da linha ao passar o mouse para cada tipo de plano */
+.card.quartz-plan::before {
+    background: linear-gradient(90deg, #5c5c5c, #D3D3D3); /* Gradiente cinza */
+}
+
+.card.sapphire-plan::before {
+    background: linear-gradient(90deg, #003366, #00004a); /* Gradiente azul escuro */
+}
+
+.card.diamond-plan::before {
+    background: linear-gradient(90deg, #40E0D0, #287e7b); /* Gradiente turquesa */
+}
+
+.card::before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 5px;
+    transition: width 175ms ease-in;
+}
+
+.card:hover {
+    transform: scale(1.05); /* Menor escala para ajuste mais sutil */
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.card:hover::before {
+    width: 100%;
+}
+
+.heading {
+    padding: 32px 0;
+    text-align: center;
+    font-size: 2rem; /* Ajuste o tamanho conforme necessário */
+    color: #ffffff; /* Cor dos títulos principais */
+}
+
+.currency {
+    font-size: 1.5rem;
+    position: relative;
+    top: -10px;
+    color: #ffffff; /* Cor do texto padrão */
+}
+
+.month {
+    font-size: 1rem;
+    color: #ffffff; /* Cor para texto secundário */
+    font-weight: 300;
+}
+
+.card-details {
+    text-align: center;
+    flex-grow: 1; /* Faz com que a área de detalhes cresça */
+    overflow: hidden; /* Evita barras de rolagem externas */
+}
+
+.plan-title {
+    font-size: 1.2rem;
+    padding: 15px 0;
+}
+
+/* Títulos dos planos */
+.plan-title.quartz {
+    color: #a9a9a9; /* Quartzo (Cinza) */
+}
+
+.plan-title.sapphire {
+    color: #00078c; /* Safira (Azul Escuro) */
+}
+
+.plan-title.diamond {
+    color: #57e2b2; /* Diamante (Turquesa) */
+}
+
+.lists {
+    list-style: none;
+    color: #808080; /* Cor para itens da lista */
+    max-height: 250px; /* Ajusta a altura máxima */
+    overflow-y: auto; /* Adiciona rolagem vertical */
+    padding-right: 20px; /* Garante que o conteúdo não seja oculto pela barra de rolagem */
+}
+
+/* Scrollbar para o plano Quartzo */
+.card.quartz-plan .lists::-webkit-scrollbar {
+    width: 12px;
+}
+
+.card.quartz-plan .lists::-webkit-scrollbar-track {
+    background: #000112; /* Cor do fundo da barra de rolagem */
+}
+
+.card.quartz-plan .lists::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #5c5c5c, #D3D3D3); /* Gradiente cinza */
+    border-radius: 10px;
+}
+
+.card.quartz-plan .lists::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0; /* Cor de destaque ao passar o mouse */
+}
+
+/* Scrollbar para o plano Safira */
+.card.sapphire-plan .lists::-webkit-scrollbar {
+    width: 12px;
+}
+
+.card.sapphire-plan .lists::-webkit-scrollbar-track {
+    background: #000112; /* Cor do fundo da barra de rolagem */
+}
+
+.card.sapphire-plan .lists::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #003366, #00004a); /* Gradiente azul escuro */
+    border-radius: 10px;
+}
+
+.card.sapphire-plan .lists::-webkit-scrollbar-thumb:hover {
+    background: #002a4e; /* Cor de destaque ao passar o mouse */
+}
+
+/* Scrollbar para o plano Diamante */
+.card.diamond-plan .lists::-webkit-scrollbar {
+    width: 12px;
+}
+
+.card.diamond-plan .lists::-webkit-scrollbar-track {
+    background: #000112; /* Cor do fundo da barra de rolagem */
+}
+
+.card.diamond-plan .lists::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #40E0D0, #287e7b); /* Gradiente turquesa */
+    border-radius: 10px;
+}
+
+.card.diamond-plan .lists::-webkit-scrollbar-thumb:hover {
+    background: #2b9e9b; /* Cor de destaque ao passar o mouse */
+}
+
+.btn-container {
+    text-align: center;
+    padding: 0 0 40px; /* Ajusta o padding para mover os botões ainda mais para cima */
+}
+
+.btn {
+    border: none;
+    padding: 10px 20px; /* Ajusta o padding do botão */
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    transition: all 150ms ease-in;
+    cursor: pointer;
+    background-color: #f2f2f2;
+    color: #333; /* Cor do texto do botão */
+}
+
+.btn:hover {
+    background: #1b1e45; /* Cor do botão ao passar o mouse */
+    color: #ffffff; /* Cor do texto do botão ao passar o mouse */
+}
+
+/* Responsividade para a seção de preços */
+@media screen and (max-width: 1249px) {
+    .card {
+        width: 320px; /* Aumenta a largura da caixa */
+        height: 500px; /* Diminui a altura da caixa */
+        margin: 10px;
+    }
+}
+
+@media screen and (max-width: 1036px) {
+    .card {
+        width: 290px; /* Aumenta a largura da caixa */
+        height: 500px; /* Diminui a altura da caixa */
+        margin: 10px;
+    }
+}
+
+@media screen and (max-width: 936px) {
+    .card {
+        width: 260px; /* Aumenta a largura da caixa */
+        height: 500px; /* Diminui a altura da caixa */
+        margin: 10px;
+    }
+}
+
+@media screen and (max-width: 883px) {
+    .card {
+        width: 340px; /* Aumenta a largura da caixa */
+        height: 500px; /* Diminui a altura da caixa */
+    }
+}
+
+
+/* Seção de comparação de assinaturas */
+#assinaturas {
+    background-color: #06061a; /* Azul mais escuro */
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 1000px; /* Máxima largura para o contêiner */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    overflow: hidden; /* Garante que nenhum conteúdo ultrapasse os limites do contêiner */
+}
+
+/* Adiciona um contêiner interno para a tabela */
+#assinaturas .table-container {
+    overflow-x: auto; /* Permite rolagem horizontal se necessário */
+}
+
+#assinaturas h1.heading {
+    text-align: center;
+    color: #FFD700; /* Dourado para o título */
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Tabela */
+table {
+    width: 70%;
+    border-collapse: collapse;
+    margin: 1rem auto; /* Centraliza a tabela horizontalmente */
+    max-width: 100%; /* Garante que a tabela não se estenda além do contêiner */
+    background-color: #06061a; /* Cor de fundo para combinar com o contêiner */
+}
+
+table th, table td {
+    border: 1px solid #333;
+    padding: 0.75rem; /* Reduzido para melhorar a legibilidade */
+    text-align: center;
+    font-size: 0.875rem; /* Reduzido para ajustar o tamanho da tabela */
+}
+
+table th {
+    color: #f8f8f8; /* Cor do texto dos cabeçalhos */
+    font-weight: 600;
+}
+
+table td {
+    background-color: #1e1e1e; /* Fundo escuro das células */
+}
+
+table th.quartz {
+    background-color: #f5f5f5; /* Tons de branco */
+    color: #333; /* Cor do texto das células Quartzo */
+}
+
+table th.sapphire {
+    background-color: #00004a; /* Tons de azul */
+    color: #fff; /* Cor do texto das células Safira */
+}
+
+table th.diamond {
+    background-color: #00ced1; /* Tons de turquesa */
+    color: #fff; /* Cor do texto das células Diamante */
+}
+
+table tr:nth-child(even) td {
+    background-color: #2b2b2b; /* Cor alternada das linhas */
+}
+
+table tr:hover td {
+    background-color: #333; /* Cor ao passar o mouse */
+    cursor: pointer; /* Cursor para indicar que a célula é interativa */
+}
+
+table td {
+    transition: background-color 0.3s ease;
+}
+
+/* Responsividade para telas menores */
+@media screen and (max-width: 768px) {
+    table th, table td {
+        font-size: 0.75rem; /* Reduz o tamanho da fonte em telas menores */
+        padding: 0.5rem; /* Reduz o padding em telas menores */
+    }
+
+    #assinaturas {
+        padding: 1rem; /* Reduz o padding para ajustar em telas menores */
+        margin: 1rem auto; /* Ajusta a margem para telas menores */
+    }
+}
+
+
+/* Seção Sobre */
+#about {
+    background-color: #1a1a2e; /* Cor de fundo para a seção Sobre */
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.about-container {
+    max-width: 800px; /* Limita a largura máxima do contêiner */
+    margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+.about-container h2 {
+    font-size: 2rem;
+    color: #FFD700; /* Cor do título */
+    margin-bottom: 20px;
+}
+
+.about-container p {
+    font-size: 1rem;
+    color: #f8f8f8; /* Cor do texto */
+    line-height: 1.6; /* Espaçamento entre linhas */
+    margin-bottom: 20px;
+}
+
+/* Seção de Contato */
+#contact {
+    background-color: #06061a; /* Azul mais escuro */
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.contact-container {
+    max-width: 600px; /* Limita a largura máxima do contêiner */
+    margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+.contact-email {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #f8f8f8; /* Cor do texto do e-mail */
+}
+
+.contact-email a {
+    color: #FFD700; /* Cor dourada para o link do e-mail */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-email a:hover {
+    color: #FFB700; /* Cor de destaque ao passar o mouse */
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espaçamento entre ícones */
+}
+
+.social-icon img {
+    width: 30px; /* Tamanho reduzido dos ícones */
+    height: 30px; /* Tamanho reduzido dos ícones */
+    filter: invert(100%) brightness(100%); /* Converte a imagem para branco */
+    transition: transform 0.3s ease;
+}
+
+.social-icon img:hover {
+    transform: scale(1.1); /* Aumenta o ícone ao passar o mouse */
+}
