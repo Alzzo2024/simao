@@ -58,9 +58,7 @@ nav ul li a.animated-signature {
     animation: gradientAnimation 3s ease infinite;
 }
 
-/*botao iniciar sessao*/
-
-
+/* Dropdown de idiomas */
 .translate-icon {
     width: 24px;
     height: 24px;
@@ -150,12 +148,10 @@ nav ul li a.animated-signature {
     margin: 0 auto; /* Centraliza horizontalmente */
 }
 
-/* Certifique-se de que a imagem não estique e fique centralizada */
 .profile-pic img {
     max-width: 100%; /* Garante que a imagem não ultrapasse os limites do container */
     height: auto; /* Mantém a proporção da imagem */
 }
-
 
 /* Seção de Projetos */
 #projects {
@@ -220,8 +216,7 @@ nav ul li a.animated-signature {
     color: #ffffff; /* Cor do texto ao passar o mouse */
 }
 
-
-
+/* Seção de Parcerias */
 #partnerships {
     padding: 50px 0;
     background-color: #0a0b1a;
@@ -274,9 +269,6 @@ nav ul li a.animated-signature {
         transform: translateX(-50%);
     }
 }
-
-
-
 
 /* Seção de preços */
 .pricing-section {
@@ -466,35 +458,34 @@ nav ul li a.animated-signature {
 /* Responsividade para a seção de preços */
 @media screen and (max-width: 1249px) {
     .card {
-        width: 320px; /* Aumenta a largura da caixa */
-        height: 500px; /* Diminui a altura da caixa */
+        width: 320px;
+        height: 500px;
         margin: 10px;
     }
 }
 
 @media screen and (max-width: 1036px) {
     .card {
-        width: 290px; /* Aumenta a largura da caixa */
-        height: 500px; /* Diminui a altura da caixa */
+        width: 290px;
+        height: 500px;
         margin: 10px;
     }
 }
 
 @media screen and (max-width: 936px) {
     .card {
-        width: 260px; /* Aumenta a largura da caixa */
-        height: 500px; /* Diminui a altura da caixa */
+        width: 260px;
+        height: 500px;
         margin: 10px;
     }
 }
 
 @media screen and (max-width: 883px) {
     .card {
-        width: 340px; /* Aumenta a largura da caixa */
-        height: 500px; /* Diminui a altura da caixa */
+        width: 340px;
+        height: 500px;
     }
 }
-
 
 /* Seção de comparação de assinaturas */
 #assinaturas {
@@ -507,7 +498,6 @@ nav ul li a.animated-signature {
     overflow: hidden; /* Garante que nenhum conteúdo ultrapasse os limites do contêiner */
 }
 
-/* Adiciona um contêiner interno para a tabela */
 #assinaturas .table-container {
     overflow-x: auto; /* Permite rolagem horizontal se necessário */
 }
@@ -587,32 +577,6 @@ table td {
     }
 }
 
-
-/* Seção Sobre */
-#about {
-    background-color: #1a1a2e; /* Cor de fundo para a seção Sobre */
-    padding: 50px 20px;
-    text-align: center;
-}
-
-.about-container {
-    max-width: 800px; /* Limita a largura máxima do contêiner */
-    margin: 0 auto; /* Centraliza horizontalmente */
-}
-
-.about-container h2 {
-    font-size: 2rem;
-    color: #FFD700; /* Cor do título */
-    margin-bottom: 20px;
-}
-
-.about-container p {
-    font-size: 1rem;
-    color: #f8f8f8; /* Cor do texto */
-    line-height: 1.6; /* Espaçamento entre linhas */
-    margin-bottom: 20px;
-}
-
 /* Seção de Contato */
 #contact {
     background-color: #06061a; /* Azul mais escuro */
@@ -656,4 +620,145 @@ table td {
 
 .social-icon img:hover {
     transform: scale(1.1); /* Aumenta o ícone ao passar o mouse */
+}
+
+/* Seção Sobre */
+#about {
+    background-color: #1a1a2e; /* Cor de fundo para a seção Sobre */
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.about-container {
+    max-width: 800px; /* Limita a largura máxima do contêiner */
+    margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+.about-container h2 {
+    font-size: 2rem;
+    color: #FFD700; /* Cor do título */
+    margin-bottom: 20px;
+}
+
+.about-container p {
+    font-size: 1rem;
+    color: #f8f8f8; /* Cor do texto */
+    line-height: 1.6; /* Espaçamento entre linhas */
+    margin-bottom: 20px;
+}
+
+/* Animações e efeitos adicionais */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Estilos para dispositivos móveis */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    .left, .right {
+        width: 100%;
+    }
+
+    .left h1 {
+        font-size: 40px;
+    }
+
+    .left p {
+        font-size: 18px;
+    }
+
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+        margin-top: 30px;
+    }
+
+    nav ul {
+        text-align: center;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .project-item img {
+        width: 100%;
+    }
+
+    .card {
+        width: 100%;
+        margin: 20px 0;
+    }
+}
+
+/* Estilos para telas maiores */
+@media screen and (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .left h1 {
+        font-size: 70px;
+    }
+
+    .left p {
+        font-size: 28px;
+    }
+
+    .profile-pic {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+/* Efeitos de hover adicionais */
+.btn:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+}
+
+/* Efeito de fade-in para elementos ao carregar a página */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in;
+}
+
+/* Estilo para scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
