@@ -1,11 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // FAQ functionality
     const faqItems = document.querySelectorAll('.faq-item');
-
     faqItems.forEach(item => {
         const question = item.querySelector('h4');
         question.addEventListener('click', () => {
             item.classList.toggle('active');
         });
+    });
+
+    // Language selector functionality
+    document.getElementById('language-selector').addEventListener('change', (event) => {
+        const selectedLanguage = event.target.value;
+        changeLanguage(selectedLanguage);
     });
 });
 
@@ -44,114 +50,122 @@ const translations = {
         patrimonioDesc: "Uma editora tradicional portugueza, livros, artigos e muito mais.",
         adamastorTitle: "Adamastor do Xadrez",
         adamastorDesc: "Meu canal de Xadrez, onde publico videos, analyses e muito mais.",
+        auroraTitle:"Aurora",
+        auroraDesc:"A Technologia Portugueza",
         verMais: "Ver Mais"
     },
     en: {
         inicio: "Home",
         projetos: "Projects",
         parcerias: "Partnerships",
-        assignaturas: "Subjects",
+        assignaturas: "Subscriptions",
         contactos: "Contacts",
         portuguese: "Portuguese",
         english: "English",
         spanish: "Spanish",
         french: "French",
         name: "Simão Araújo",
-        intro1: "Hello, I am Simão Araújo, a game developer, programmer, writer, and chess player from Portugal. From an early age, I have been deeply passionate about these arts and always strive to create something new.",
-        intro2: "This website features simple and informative content for all users and my followers.",
+        intro1: "Hello, I'm Simão Araújo, a game developer, programmer, writer, and chess player from Portugal. From an early age, I was captivated by a great love for these arts and I always seek to create something new.",
+        intro2: "This website presents simple and informative content for all users and my followers.",
         quartz: "Quartz",
         sapphire: "Sapphire",
         diamond: "Diamond",
-        assign: "Assign",
+        assign: "Subscribe",
         compareSubscriptions: "Compare Subscriptions",
         features: "Features",
         price: "Price",
         disclosure: "📢 Disclosure",
-        exclusiveProducts: "📦 Exclusive Products",
-        updatesAndNews: "📝 Updates and News",
+        exclusiveProducts: "📦 Exclusive products",
+        updatesAndNews: "📝 Updates and news",
         imagesAndGalleries: "📸 Images and Galleries",
-        earlyAccess: "⏳ Early Access",
+        earlyAccess: "⏳ Early access",
         offersAndDiscounts: "🏷️ Offers and Discounts",
-        exclusiveDrawings: "🎉 Exclusive Drawings",
-        surpriseGifts: "🎁 Surprise Gifts",
-        exclusiveCourses: "🎓 Exclusive Courses",
+        exclusiveDrawings: "🎉 Exclusive drawings",
+        surpriseGifts: "🎁 Surprise gifts",
+        exclusiveCourses: "🎓 Exclusive courses",
         drawingsAndIllustrations: "🎨 Drawings and Illustrations",
         patrimonioTitle: "Património Editorial",
         patrimonioDesc: "A traditional Portuguese publisher, books, articles, and much more.",
         adamastorTitle: "Adamastor do Xadrez",
-        adamastorDesc: "My chess channel, where I publish videos, analyses, and much more.",
-        verMais: "View More"
+        adamastorDesc: "My Chess channel, where I publish videos, analyses, and much more.",
+        auroraTitle:"Aurora",
+        auroraDesc:"The Portuguese technology",
+        verMais: "See More"
     },
     es: {
         inicio: "Inicio",
         projetos: "Proyectos",
-        parcerias: "Colaboraciones",
-        assignaturas: "Asignaturas",
+        parcerias: "Asociaciones",
+        assignaturas: "Suscripciones",
         contactos: "Contactos",
         portuguese: "Portugués",
         english: "Inglés",
         spanish: "Español",
         french: "Francés",
         name: "Simão Araújo",
-        intro1: "Hola, soy Simão Araújo, un desarrollador de juegos, programador, escritor y jugador de ajedrez de Portugal. Desde una edad temprana, he estado profundamente apasionado por estas artes y siempre me esfuerzo por crear algo nuevo.",
+        intro1: "Hola, soy Simão Araújo, un desarrollador de juegos, programador, escritor y jugador de ajedrez de Portugal. Desde temprana edad, fui cautivado por un gran amor por estas artes y siempre busco crear algo nuevo.",
         intro2: "Este sitio web presenta contenido simple e informativo para todos los usuarios y mis seguidores.",
         quartz: "Cuarzo",
         sapphire: "Zafiro",
         diamond: "Diamante",
-        assign: "Asignar",
+        assign: "Suscribirse",
         compareSubscriptions: "Comparar Suscripciones",
         features: "Características",
         price: "Precio",
         disclosure: "📢 Divulgación",
-        exclusiveProducts: "📦 Productos Exclusivos",
-        updatesAndNews: "📝 Actualizaciones y Noticias",
+        exclusiveProducts: "📦 Productos exclusivos",
+        updatesAndNews: "📝 Actualizaciones y noticias",
         imagesAndGalleries: "📸 Imágenes y Galerías",
-        earlyAccess: "⏳ Acceso Anticipado",
+        earlyAccess: "⏳ Acceso anticipado",
         offersAndDiscounts: "🏷️ Ofertas y Descuentos",
-        exclusiveDrawings: "🎉 Dibujos Exclusivos",
-        surpriseGifts: "🎁 Regalos Sorpresa",
-        exclusiveCourses: "🎓 Cursos Exclusivos",
+        exclusiveDrawings: "🎉 Sorteos exclusivos",
+        surpriseGifts: "🎁 Regalos sorpresa",
+        exclusiveCourses: "🎓 Cursos exclusivos",
         drawingsAndIllustrations: "🎨 Dibujos e Ilustraciones",
         patrimonioTitle: "Património Editorial",
         patrimonioDesc: "Una editorial tradicional portuguesa, libros, artículos y mucho más.",
-        adamastorTitle: "Adamastor de Xadrez",
-        adamastorDesc: "Mi canal de ajedrez, donde publico videos, análisis y mucho más.",
+        adamastorTitle: "Adamastor do Xadrez",
+        adamastorDesc: "Mi canal de Ajedrez, donde publico videos, análisis y mucho más.",
+        auroraTitle:"Aurora",
+        auroraDesc:"Tecnología Portuguesa",
         verMais: "Ver Más"
     },
     fr: {
         inicio: "Accueil",
         projetos: "Projets",
         parcerias: "Partenariats",
-        assignaturas: "Matières",
+        assignaturas: "Abonnements",
         contactos: "Contacts",
         portuguese: "Portugais",
         english: "Anglais",
         spanish: "Espagnol",
         french: "Français",
         name: "Simão Araújo",
-        intro1: "Bonjour, je suis Simão Araújo, développeur de jeux, programmeur, écrivain et joueur d'échecs du Portugal. Depuis mon jeune âge, je suis profondément passionné par ces arts et je m'efforce toujours de créer quelque chose de nouveau.",
-        intro2: "Ce site web propose un contenu simple et informatif pour tous les utilisateurs et mes abonnés.",
+        intro1: "Bonjour, je suis Simão Araújo, un développeur de jeux, programmeur, écrivain et joueur d'échecs du Portugal. Dès mon plus jeune âge, j'ai été captivé par un grand amour pour ces arts et je cherche toujours à créer quelque chose de nouveau.",
+        intro2: "Ce site web présente un contenu simple et informatif pour tous les utilisateurs et mes followers.",
         quartz: "Quartz",
         sapphire: "Saphir",
         diamond: "Diamant",
-        assign: "Attribuer",
+        assign: "S'abonner",
         compareSubscriptions: "Comparer les Abonnements",
         features: "Fonctionnalités",
         price: "Prix",
         disclosure: "📢 Divulgation",
-        exclusiveProducts: "📦 Produits Exclusifs",
-        updatesAndNews: "📝 Mises à Jour et Nouvelles",
+        exclusiveProducts: "📦 Produits exclusifs",
+        updatesAndNews: "📝 Mises à jour et nouvelles",
         imagesAndGalleries: "📸 Images et Galeries",
-        earlyAccess: "⏳ Accès Anticipé",
+        earlyAccess: "⏳ Accès anticipé",
         offersAndDiscounts: "🏷️ Offres et Réductions",
-        exclusiveDrawings: "🎉 Dessins Exclusifs",
-        surpriseGifts: "🎁 Cadeaux Surprises",
-        exclusiveCourses: "🎓 Cours Exclusifs",
+        exclusiveDrawings: "🎉 Tirages exclusifs",
+        surpriseGifts: "🎁 Cadeaux surprises",
+        exclusiveCourses: "🎓 Cours exclusifs",
         drawingsAndIllustrations: "🎨 Dessins et Illustrations",
         patrimonioTitle: "Património Editorial",
         patrimonioDesc: "Une maison d'édition traditionnelle portugaise, livres, articles et bien plus encore.",
         adamastorTitle: "Adamastor do Xadrez",
-        adamastorDesc: "Ma chaîne d'échecs, où je publie des vidéos, des analyses et bien plus encore.",
+        adamastorDesc: "Ma chaîne d'Échecs, où je publie des vidéos, des analyses et bien plus encore.",
+        auroraTitle:"Aurora",
+        auroraDesc:"Technologie Portugaise",
         verMais: "Voir Plus"
     }    
 };
@@ -162,20 +176,14 @@ function updatePrices(language) {
         let priceText = element.textContent;
 
         if (language === 'en') {
-            // Ajusta para libras se o idioma for inglês
             if (priceText.includes('€')) {
-                // Remove o símbolo € e a parte "/MÊS"
                 let price = priceText.replace('€', '').replace('/MÊS', '').trim();
-                // Converte o valor para libras (£) com base no valor fixo
                 let newPrice = convertEuroToPound(price);
                 element.innerHTML = `<span class="currency">£</span>${newPrice}<span class="month">/MONTH</span>`;
             }
         } else {
-            // Mantém em euros para outros idiomas
             if (priceText.includes('£')) {
-                // Remove o símbolo £ e a parte "/MONTH"
                 let price = priceText.replace('£', '').replace('/MONTH', '').trim();
-                // Converte o valor para euros (€) com base no valor fixo
                 let newPrice = convertPoundToEuro(price);
                 element.innerHTML = `<span class="currency">€</span>${newPrice}<span class="month">/MÊS</span>`;
             }
@@ -184,7 +192,6 @@ function updatePrices(language) {
 }
 
 function convertEuroToPound(euroValue) {
-    // Preços fixos em libras para valores em euros
     const euroToPoundRate = {
         '2,00': '2,00',
         '4,00': '4,00',
@@ -194,7 +201,6 @@ function convertEuroToPound(euroValue) {
 }
 
 function convertPoundToEuro(poundValue) {
-    // Preços fixos em euros para valores em libras
     const poundToEuroRate = {
         '2,00': '2,00',
         '4,00': '4,00',
@@ -211,12 +217,5 @@ function changeLanguage(language) {
             element.textContent = translations[language][key];
         }
     });
-    // Atualiza os preços após a mudança de idioma
     updatePrices(language);
 }
-
-// Exemplo de uso com um seletor de idioma
-document.getElementById('language-selector').addEventListener('change', (event) => {
-    const selectedLanguage = event.target.value;
-    changeLanguage(selectedLanguage);
-});
