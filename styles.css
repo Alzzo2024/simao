@@ -394,6 +394,11 @@ body {
 }
 
 /* Mobile Menu Styles */
+:root {
+    --light: #ffffff;
+    --dark: #333333;
+}
+
 .hamburger {
     display: none;
     flex-direction: column;
@@ -401,7 +406,8 @@ body {
     width: 30px;
     height: 20px;
     cursor: pointer;
-    z-index: 100;
+    z-index: 101;
+    position: relative;
 }
 
 .hamburger span {
@@ -420,6 +426,7 @@ body {
     right: 20px;
     cursor: pointer;
     padding: 8px;
+    z-index: 102;
 }
 
 .nav-close svg {
@@ -455,8 +462,9 @@ body.menu-open {
         flex-direction: column;
         align-items: flex-start;
         transition: right 0.3s ease;
-        z-index: 99;
+        z-index: 100;
         box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+        overflow-y: auto;
     }
 
     .nav-links.active {
@@ -468,12 +476,12 @@ body.menu-open {
         font-size: 1.2rem;
         opacity: 0;
         transform: translateX(20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
     .nav-links.active a {
         opacity: 1;
         transform: translateX(0);
-        transition: all 0.3s ease;
     }
 
     .hamburger.active span:nth-child(1) {
