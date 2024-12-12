@@ -522,15 +522,4 @@ body.menu-open {
     .nav-links.active > a {
         display: block;
     }
-
-    .nav-links .button { /* Styles for the "Assinaturas" button */
-        width: 100%;
-        box-sizing: border-box;
-        /* Add other mobile-specific button styles as needed */
-        padding: 10px; /* Example */
-        margin-top: 10px; /* Example */
-        background-color: #4CAF50; /* Example */
-        color: white; /* Example */
-        border: none; /* Example */
-    }
 }
