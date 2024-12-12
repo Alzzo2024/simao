@@ -435,6 +435,33 @@ body.menu-open {
     overflow: hidden;
 }
 
+/* Other styles... */
+
+.hamburger {
+    display: none;
+    cursor: pointer; 
+    z-index: 100;
+}
+
+.nav-close {
+    display: none;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 101;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
@@ -468,13 +495,15 @@ body.menu-open {
         font-size: 1.2rem;
         opacity: 0;
         transform: translateX(20px);
+        transition: all 0.3s ease;
+
     }
 
     .nav-links.active a {
         opacity: 1;
         transform: translateX(0);
-        transition: all 0.3s ease;
     }
+
 
     .hamburger.active span:nth-child(1) {
         transform: translateY(9px) rotate(45deg);
@@ -487,4 +516,15 @@ body.menu-open {
     .hamburger.active span:nth-child(3) {
         transform: translateY(-9px) rotate(-45deg);
     }
+
+    .nav-links > a {
+      display: none;
+    }
+
+    .nav-links.active > a {
+      display: block;
+    }
+
+
+
 }
