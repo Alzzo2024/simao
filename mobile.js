@@ -2,26 +2,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const body = document.body;
-    const menuItems = navLinks.querySelectorAll('a, button, .container');
 
+    // Toggle menu function
     const toggleMenu = () => {
-        navLinks.classList.toggle('active');
         hamburger.classList.toggle('active');
-        body.classList.toggle('menu-open');
+        navLinks.classList.toggle('active');
+        body.classList.toggle('no-scroll');
     };
 
-    hamburger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleMenu();
+    // Hamburger click event
+    hamburger.addEventListener('click', toggleMenu);
+
+    // Handle all navigation items
+    const navItems = document.querySelectorAll('.nav-links a, .nav-links .container');
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                toggleMenu();
+            }
+        });
     });
 
-    // Close menu when clicking outside
+    // Close menu on outside click
     document.addEventListener('click', (e) => {
-        const isMenuOpen = navLinks.classList.contains('active');
-        const clickedInsideMenu = navLinks.contains(e.target);
-        const clickedHamburger = hamburger.contains(e.target);
-
-        if (isMenuOpen && !clickedInsideMenu && !clickedHamburger) {
+        if (navLinks.classList.contains('active') && 
+            !navLinks.contains(e.target) && 
+            !hamburger.contains(e.target)) {
             toggleMenu();
         }
     });
@@ -31,19 +37,5 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape' && navLinks.classList.contains('active')) {
             toggleMenu();
         }
-    });
-
-    // Handle all menu item clicks
-    menuItems.forEach(item => {
-        item.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-                toggleMenu();
-            }
-        });
-    });
-
-    // Prevent menu from closing when clicking inside
-    navLinks.addEventListener('click', (e) => {
-        e.stopPropagation();
     });
 });
