@@ -1,0 +1,269 @@
+/* Core Variables */
+:root {
+    --card-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --hover-scale: 1.05;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    --filter-blur: blur(10px);
+}
+
+/* Main Layout */
+.main-content {
+    padding-top: 80px;
+    min-height: 100vh;
+    background-color: var(--dark);
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+    margin-bottom: 5rem; /* Added spacing */
+    flex-wrap: wrap;
+    position: sticky;
+    top: 80px;
+    z-index: 10;
+    background: rgba(18, 18, 18, 0.8);
+    backdrop-filter: var(--filter-blur);
+}
+
+.filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--light);
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: var(--card-transition);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.filter-btn:hover::before {
+    width: 300%;
+    height: 300%;
+}
+
+.filter-btn.active {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-color: transparent;
+    box-shadow: 0 5px 15px rgba(19, 193, 239, 0.4);
+}
+
+.portfolio-grid {
+    margin-top: 5rem; /* Added spacing */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Portfolio Cards */
+.portfolio-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: var(--card-transition);
+    position: relative;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow);
+}
+
+.card-image {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--card-transition);
+}
+
+.portfolio-card:hover .card-image img {
+    transform: scale(var(--hover-scale));
+}
+
+/* Card Overlay */
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: var(--card-transition);
+    backdrop-filter: var(--filter-blur);
+}
+
+.portfolio-card:hover .card-overlay {
+    opacity: 1;
+}
+
+/* Card Actions */
+.card-actions {
+    display: flex;
+    gap: 1rem;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.portfolio-card:hover .card-actions {
+    transform: translateY(0);
+}
+
+.card-actions a {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    color: var(--light);
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    transition: var(--card-transition);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.card-actions a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(19, 193, 239, 0.4);
+}
+
+/* Card Info */
+.card-info {
+    padding: 1.5rem;
+}
+
+.card-info h3 {
+    color: var(--light);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.card-info p {
+    color: var(--light-gray);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+/* Tags */
+.card-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.card-tags span {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--light);
+    padding: 0.3rem 0.8rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    transition: var(--card-transition);
+}
+
+.card-tags span:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Animations */
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-in {
+    animation: cardAppear 0.6s ease-out forwards;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        padding: 1rem;
+    }
+
+    .portfolio-filters {
+        padding: 1rem;
+        top: 60px;
+    }
+
+    .filter-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-filters {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem;
+    }
+
+    .filter-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .card-actions {
+        flex-direction: column;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) {
+    .card-overlay {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .card-actions {
+        transform: translateY(0);
+    }
+}
