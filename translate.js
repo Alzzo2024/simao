@@ -211,6 +211,218 @@ const translations = {
         "presentes": "🎁 Presentes Surpresa",
         "desenhos": "🎨 Desenhos e Illustrações"
     },
+    it: {
+        // Navigation
+        "inicio": "Inizio",
+        "portfolio": "Portfolio",
+        "loja": "Negozio",
+        "assinaturas": "Abbonamenti",
+        "contactos": "Contatti",
+    
+        // Hero Section
+        "job-title": "Designer Digitale & Programmatore",
+        "designer": "Designer",
+        "programmer": "Programmatore",
+        "chess-player": "Scacchista",
+        "bio": "Ciao, sono Simão Araújo, programmatore, scrittore e scacchista dal Portogallo. Sin da giovane, sono stato preso da un grande amore per queste arti e cerco sempre di creare qualcosa di nuovo.",
+        "ver-portfolio": "Vedi Portfolio",
+        "download-cv": "Scarica CV",
+    
+        // Skills Section
+        "skills-title": "Competenze e Conoscenze",
+        "design-title": "Design",
+        "uiux-design": "UI/UX Design",
+        "digital-marketing": "Marketing Digitale",
+        "web-dev-title": "Sviluppo Web",
+        "general-dev-title": "Sviluppo Generale",
+    
+        // Portfolio Section
+        "collaborations-title": "Aziende con cui ho collaborato:",
+    
+        // Shop Page Specific
+        "loja-digital": "Negozio Digitale",
+        "loja-descricao": "Scopri la collezione di prodotti digitali esclusivi",
+        "search-placeholder": "Cerca prodotti...",
+        "todos-produtos": "Tutti i Prodotti",
+        "acessorios": "Accessori",
+        "religiao": "Religione",
+        "historia": "Storia",
+        "livros": "Libri",
+    
+        // Product Cards
+        "produto1-titulo": "San Camillo de Lellis: L'Opera di un Santo",
+        "produto1-descricao": "Libro completo su San Camillo de Lellis, un santo degli infermi.",
+        "produto2-titulo": "Rivista Digitale Iconografia - Pacchetto completo",
+        "produto2-descricao": "Tutte le edizioni della rivista digitale iconografia, una rivista cattolica in stile dark.",
+        "produto3-titulo": "Il Libro Nero della Repubblica Portoghese",
+        "produto3-descricao": "Un'analisi seria sulla storia della monarchia liberale e i crimini delle repubbliche portoghesi.",
+    
+        // Product Elements
+        "gratis": "Gratuito",
+        "download": "Scarica",
+        "comprar": "Acquista",
+        "em-stock": "Disponibile",
+    
+        // Portfolio Filters
+        "todos": "Tutti",
+        "programmacao": "Programmazione",
+        "entretenimento": "Intrattenimento",
+    
+        // Project Cards
+        "ver": "Vedi",
+        "projeto1-titulo": "Adamastor degli Scacchi",
+        "projeto1-descricao": "Il mio canale di scacchi professionale",
+        "xadrez": "Scacchi",
+        "projeto2-titulo": "Aurora Studio",
+        "projeto2-descricao": "Marchio di Tecnologie Portoghesi",
+        "desenvolvimento": "Sviluppo",
+        "aplicativos": "Applicazioni",
+        "projeto3-titulo": "Patrimonio Editoriale",
+        "projeto3-descricao": "Casa editrice tradizionale portoghese",
+        "leitura": "Lettura",
+    
+        // Contact Form Elements
+        "contact-title": "Contattaci",
+        "name": "Nome",
+        "email": "Email",
+        "subject": "Oggetto",
+        "message": "Messaggio",
+        "send-message": "Invia Messaggio",
+    
+        // Status
+        "status": "Disponibile",
+    
+        // Toggle Buttons
+        "view-cards": "VEDI CARTE",
+        "compare-subscriptions": "CONFRONTA ABBONAMENTI",
+    
+        // Subscription Cards
+        "month": "mese",
+        "subscribe": "Abbonati",
+    
+        // Subscription Tiers
+        "quartzo": "Quarzo",
+        "saphira": "Zaffiro",
+        "diamante": "Diamante",
+    
+        // Benefits
+        "benefits": "Benefici",
+        "divulgacao": "📢 Promozione",
+        "produtos-exclusivos": "📦 Prodotti Esclusivi",
+        "atualizacoes": "📝 Aggiornamenti e Novità",
+        "imagens": "📸 Immagini e Gallerie",
+        "ofertas": "🏷️ Offerte e Sconti",
+        "sorteios": "🎉 Estrazioni Esclusive",
+        "acessos": "⏳ Accessi Anticipati",
+        "presentes": "🎁 Regali Sorpresa",
+        "desenhos": "🎨 Disegni e Illustrazioni"
+    },
+    fr: {
+        // Navigation
+        "inicio": "Accueil",
+        "portfolio": "Portfolio",
+        "loja": "Boutique",
+        "assinaturas": "Abonnements",
+        "contactos": "Contacts",
+    
+        // Hero Section
+        "job-title": "Designer Numérique & Programmeur",
+        "designer": "Designer",
+        "programmer": "Programmeur",
+        "chess-player": "Joueur d'échecs",
+        "bio": "Bonjour, je suis Simão Araújo, programmeur, écrivain et joueur d'échecs du Portugal. Depuis mon plus jeune âge, j'ai été pris d'un grand amour pour ces arts et je cherche toujours à créer quelque chose de nouveau.",
+        "ver-portfolio": "Voir Portfolio",
+        "download-cv": "Télécharger CV",
+    
+        // Skills Section
+        "skills-title": "Compétences et Savoir",
+        "design-title": "Design",
+        "uiux-design": "Design UI/UX",
+        "digital-marketing": "Marketing Digital",
+        "web-dev-title": "Développement Web",
+        "general-dev-title": "Développement Général",
+    
+        // Portfolio Section
+        "collaborations-title": "Entreprises avec lesquelles j'ai collaboré:",
+    
+        // Shop Page Specific
+        "loja-digital": "Boutique Numérique",
+        "loja-descricao": "Découvrez la collection de produits numériques exclusifs",
+        "search-placeholder": "Rechercher des produits...",
+        "todos-produtos": "Tous les Produits",
+        "acessorios": "Accessoires",
+        "religiao": "Religion",
+        "historia": "Histoire",
+        "livros": "Livres",
+    
+        // Product Cards
+        "produto1-titulo": "Saint Camille de Lellis: L'Œuvre d'un Saint",
+        "produto1-descricao": "Livre complet sur Saint Camille de Lellis, un saint des malades.",
+        "produto2-titulo": "Magazine Numérique Iconographie - Pack complet",
+        "produto2-descricao": "Toutes les éditions du magazine numérique iconographie, un magazine catholique de style sombre.",
+        "produto3-titulo": "Le Livre Noir de la République Portugaise",
+        "produto3-descricao": "Une analyse sérieuse de l'histoire de la monarchie libérale et des crimes des républiques portugaises.",
+    
+        // Product Elements
+        "gratis": "Gratuit",
+        "download": "Télécharger",
+        "comprar": "Acheter",
+        "em-stock": "En Stock",
+    
+        // Portfolio Filters
+        "todos": "Tous",
+        "programmacao": "Programmation",
+        "entretenimento": "Divertissement",
+    
+        // Project Cards
+        "ver": "Voir",
+        "projeto1-titulo": "Adamastor des Échecs",
+        "projeto1-descricao": "Ma chaîne d'échecs professionnelle",
+        "xadrez": "Échecs",
+        "projeto2-titulo": "Aurora Studio",
+        "projeto2-descricao": "Marque de Technologies Portugaises",
+        "desenvolvimento": "Développement",
+        "aplicativos": "Applications",
+        "projeto3-titulo": "Patrimoine Éditorial",
+        "projeto3-descricao": "Maison d'édition traditionnelle portugaise",
+        "leitura": "Lecture",
+    
+        // Contact Form Elements
+        "contact-title": "Contactez-nous",
+        "name": "Nom",
+        "email": "Email",
+        "subject": "Sujet",
+        "message": "Message",
+        "send-message": "Envoyer Message",
+    
+        // Status
+        "status": "Disponible",
+    
+        // Toggle Buttons
+        "view-cards": "VOIR LES CARTES",
+        "compare-subscriptions": "COMPARER LES ABONNEMENTS",
+    
+        // Subscription Cards
+        "month": "mois",
+        "subscribe": "S'abonner",
+    
+        // Subscription Tiers
+        "quartzo": "Quartz",
+        "saphira": "Saphir",
+        "diamante": "Diamant",
+    
+        // Benefits
+        "benefits": "Avantages",
+        "divulgacao": "📢 Promotion",
+        "produtos-exclusivos": "📦 Produits Exclusifs",
+        "atualizacoes": "📝 Mises à jour et Nouveautés",
+        "imagens": "📸 Images et Galeries",
+        "ofertas": "🏷️ Offres et Réductions",
+        "sorteios": "🎉 Tirages au Sort Exclusifs",
+        "acessos": "⏳ Accès Anticipés",
+        "presentes": "🎁 Cadeaux Surprise",
+        "desenhos": "🎨 Dessins et Illustrations"
+    },        
     nl: {
         // Navigatie
         "inicio": "Start",
