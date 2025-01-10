@@ -83,6 +83,7 @@ const translations = {
         // Toggle Buttons
         "view-cards": "VIEW CARDS",
         "compare-subscriptions": "COMPARE SUBSCRIPTIONS",
+        "view-subscribers": "SEE SUBSCRIBERS",
 
         // Subscription Cards
         "month": "month",
@@ -102,7 +103,7 @@ const translations = {
         "ofertas": "🏷️ Offers and Discounts", 
         "sorteios": "🎉 Exclusive Giveaways",
         "acessos": "⏳ Early Access",
-        "presentes": "🎁 Surprise Gifts",
+        "painel": "🧩 Subscribers Wall",
         "desenhos": "🎨 Drawings and Illustrations"
     },
     pt: {
@@ -189,6 +190,7 @@ const translations = {
         // Toggle Buttons
         "view-cards": "VER CARTÕES",
         "compare-subscriptions": "COMPARAR ASSIGNATURAS",
+        "view-subscribers": "VER ASSIGNANTES",
     
         // Subscription Cards
         "month": "mez",
@@ -198,6 +200,7 @@ const translations = {
         "quartzo": "Quartzo",
         "saphira": "Saphira", 
         "diamante": "Diamante",
+        'no-subscribers': 'None at the moment',
     
         // Benefits
         "benefits": "Benefícios",
@@ -208,7 +211,7 @@ const translations = {
         "ofertas": "🏷️ Offertas e Descontos",
         "sorteios": "🎉 Sortheios Exclusivos",
         "acessos": "⏳ Accessos Antecipados",
-        "presentes": "🎁 Presentes Surpresa",
+        "painel": "🧩 Mural de Assignantes",
         "desenhos": "🎨 Desenhos e Illustrações"
     },
     it: {
@@ -295,6 +298,7 @@ const translations = {
         // Toggle Buttons
         "view-cards": "VEDI CARTE",
         "compare-subscriptions": "CONFRONTA ABBONAMENTI",
+        "view-subscribers": "VISUALIZZA GLI ISCRITTI",
     
         // Subscription Cards
         "month": "mese",
@@ -304,6 +308,7 @@ const translations = {
         "quartzo": "Quarzo",
         "saphira": "Zaffiro",
         "diamante": "Diamante",
+        'no-subscribers': 'Nessuno al momento',
     
         // Benefits
         "benefits": "Benefici",
@@ -314,7 +319,7 @@ const translations = {
         "ofertas": "🏷️ Offerte e Sconti",
         "sorteios": "🎉 Estrazioni Esclusive",
         "acessos": "⏳ Accessi Anticipati",
-        "presentes": "🎁 Regali Sorpresa",
+        "painel": "🧩 Bacheca degli abbonati",
         "desenhos": "🎨 Disegni e Illustrazioni"
     },
     fr: {
@@ -401,6 +406,7 @@ const translations = {
         // Toggle Buttons
         "view-cards": "VOIR LES CARTES",
         "compare-subscriptions": "COMPARER LES ABONNEMENTS",
+        "view-subscribers": "VOIR LES ABONNÉS",
     
         // Subscription Cards
         "month": "mois",
@@ -410,6 +416,7 @@ const translations = {
         "quartzo": "Quartz",
         "saphira": "Saphir",
         "diamante": "Diamant",
+        'no-subscribers': 'Aucun abonné pour le moment',
     
         // Benefits
         "benefits": "Avantages",
@@ -420,7 +427,7 @@ const translations = {
         "ofertas": "🏷️ Offres et Réductions",
         "sorteios": "🎉 Tirages au Sort Exclusifs",
         "acessos": "⏳ Accès Anticipés",
-        "presentes": "🎁 Cadeaux Surprise",
+        "painel": "🧩 Mur d'abonnés",
         "desenhos": "🎨 Dessins et Illustrations"
     },        
     nl: {
@@ -507,6 +514,7 @@ const translations = {
         // Schakel Knoppen
         "view-cards": "BEKIJK KAARTEN",
         "compare-subscriptions": "VERGELIJK ABONNEMENTEN",
+        "view-subscribers": "BEKIJK ABONNANTEN",
     
         // Abonnement Kaarten
         "month": "maand",
@@ -516,6 +524,7 @@ const translations = {
         "quartzo": "Kwarts",
         "saphira": "Saffier",
         "diamante": "Diamant",
+        'no-subscribers': 'Geen abonnees voor nu',
     
         // Voordelen
         "benefits": "Voordelen",
@@ -526,7 +535,7 @@ const translations = {
         "ofertas": "🏷️ Aanbiedingen en Kortingen",
         "sorteios": "🎉 Exclusieve Verlotingen",
         "acessos": "⏳ Vroege Toegang",
-        "presentes": "🎁 Verrassingsgeschenken",
+        "painel": "🧩 Abonnee Muur",
         "desenhos": "🎨 Tekeningen en Illustraties"
     },
     es: {
@@ -613,6 +622,7 @@ const translations = {
         // Botones de Alternancia
         "view-cards": "VER TARJETAS",
         "compare-subscriptions": "COMPARAR SUSCRIPCIONES",
+        "view-subscribers": "VER SUSCRIPTORES",
     
         // Tarjetas de Suscripción
         "month": "mes",
@@ -622,6 +632,7 @@ const translations = {
         "quartzo": "Cuarzo",
         "saphira": "Zafiro",
         "diamante": "Diamante",
+        'no-subscribers': 'No hay suscriptores por ahora',
     
         // Beneficios
         "benefits": "Beneficios",
@@ -632,7 +643,7 @@ const translations = {
         "ofertas": "🏷️ Ofertas y Descuentos",
         "sorteios": "🎉 Sorteos Exclusivos",
         "acessos": "⏳ Accesos Anticipados",
-        "presentes": "🎁 Regalos Sorpresa",
+        "painel": "🧩 Muro de suscriptores",
         "desenhos": "🎨 Dibujos e Ilustraciones"
     },
     ru: {
@@ -719,6 +730,7 @@ const translations = {
         // Кнопки переключения
         "view-cards": "СМОТРЕТЬ КАРТОЧКИ",
         "compare-subscriptions": "СРАВНИТЬ ПОДПИСКИ",
+        "view-subscribers": "ПОСМОТРЕТЬ ПОДПИСЧИКОВ",
     
         // Карточки подписки
         "month": "месяц",
@@ -728,6 +740,7 @@ const translations = {
         "quartzo": "Кварц",
         "saphira": "Сапфир",
         "diamante": "Бриллиант",
+        'no-subscribers': 'На данный момент нет',
     
         // Преимущества
         "benefits": "Преимущества",
@@ -738,7 +751,7 @@ const translations = {
         "ofertas": "🏷️ Предложения и скидки",
         "sorteios": "🎉 Эксклюзивные розыгрыши",
         "acessos": "⏳ Ранний доступ",
-        "presentes": "🎁 Сюрпризы",
+        "painel": "🧩 Стена подписчика",
         "desenhos": "🎨 Рисунки и иллюстрации"
     }    
 };
