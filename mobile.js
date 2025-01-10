@@ -3,68 +3,60 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelector('.nav-links');
     const body = document.body;
 
-    // Set initial visibility based on screen size
-    const setInitialVisibility = () => {
+    // Set initial state
+    const setInitialState = () => {
         if (navLinks) {
             if (window.innerWidth > 768) {
-                navLinks.style.visibility = 'visible';
-                navLinks.style.transform = 'translateX(0)';
+                navLinks.style.display = 'flex';
+                navLinks.style.transform = 'none';
             } else {
-                navLinks.style.visibility = 'hidden';
+                navLinks.style.display = 'none';
                 navLinks.style.transform = 'translateX(-100%)';
             }
         }
     };
 
-    // Run on load
-    setInitialVisibility();
+    setInitialState();
 
-    // Toggle menu function with improved visibility and transform handling
+    // Toggle menu function
     const toggleMenu = () => {
         if (hamburger && navLinks) {
             hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
             
-            if (navLinks.classList.contains('active')) {
-                navLinks.style.visibility = 'visible';
+            if (hamburger.classList.contains('active')) {
+                navLinks.style.display = 'flex';
+                // Force reflow
+                navLinks.offsetHeight;
                 navLinks.style.transform = 'translateX(0)';
             } else {
                 navLinks.style.transform = 'translateX(-100%)';
-                // Delay hiding the menu until after the transition
                 setTimeout(() => {
-                    if (!navLinks.classList.contains('active')) {
-                        navLinks.style.visibility = 'hidden';
+                    if (!hamburger.classList.contains('active')) {
+                        navLinks.style.display = 'none';
                     }
-                }, 300); // Match this with your CSS transition duration
+                }, 300);
             }
             
-            body.classList.toggle('no-scroll');
+            body.style.overflow = hamburger.classList.contains('active') ? 'hidden' : '';
         }
     };
 
-    // Window resize handler with transform
+    // Window resize handler
     window.addEventListener('resize', () => {
-        if (navLinks) {
-            if (window.innerWidth > 768) {
-                navLinks.style.visibility = 'visible';
-                navLinks.style.transform = 'translateX(0)';
-                body.classList.remove('no-scroll');
-            } else if (!navLinks.classList.contains('active')) {
-                navLinks.style.visibility = 'hidden';
-                navLinks.style.transform = 'translateX(-100%)';
-            }
+        if (window.innerWidth > 768) {
+            navLinks.style.display = 'flex';
+            navLinks.style.transform = 'none';
+            body.style.overflow = '';
+            hamburger.classList.remove('active');
+        } else if (!hamburger.classList.contains('active')) {
+            navLinks.style.display = 'none';
+            navLinks.style.transform = 'translateX(-100%)';
         }
     });
 
-    // Hamburger click event
-    if (hamburger) {
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleMenu();
-        });
-    }
+    // Event listeners
+    hamburger?.addEventListener('click', toggleMenu);
 
-    // Handle all navigation items
     const navItems = document.querySelectorAll('.nav-links a, .nav-links .container');
     navItems.forEach(item => {
         item.addEventListener('click', () => {
@@ -76,8 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close menu on outside click
     document.addEventListener('click', (e) => {
-        if (navLinks && navLinks.classList.contains('active') && 
-            !navLinks.contains(e.target) && 
+        if (hamburger?.classList.contains('active') && 
+            !navLinks?.contains(e.target) && 
             !hamburger?.contains(e.target)) {
             toggleMenu();
         }
@@ -85,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close menu on ESC key
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navLinks?.classList.contains('active')) {
+        if (e.key === 'Escape' && hamburger?.classList.contains('active')) {
             toggleMenu();
         }
     });
