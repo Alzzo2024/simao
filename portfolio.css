@@ -259,11 +259,46 @@
 /* Touch Device Optimizations */
 @media (hover: none) {
     .card-overlay {
-        opacity: 1;
+        opacity: 0;
         background: rgba(0, 0, 0, 0.5);
+        pointer-events: none;
+    }
+
+    .portfolio-card:active .card-overlay,
+    .portfolio-card:focus .card-overlay {
+        opacity: 1;
+        pointer-events: auto;
     }
 
     .card-actions {
         transform: translateY(0);
+    }
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+    .portfolio-card {
+        position: relative;
+    }
+
+    .card-overlay {
+        position: absolute;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .portfolio-card:active .card-overlay {
+        opacity: 1;
+    }
+
+    .card-actions {
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Ensure buttons are only visible on tap */
+    .card-actions a {
+        transform: translateY(0);
+        opacity: 1;
     }
 }
