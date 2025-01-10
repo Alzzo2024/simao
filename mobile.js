@@ -3,6 +3,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelector('.nav-links');
     const body = document.body;
 
+    // Set initial visibility based on screen size
+    const setInitialVisibility = () => {
+        if (window.innerWidth > 768) {
+            navLinks.style.visibility = 'visible';
+        } else {
+            navLinks.style.visibility = 'hidden';
+        }
+    };
+
+    // Run on load
+    setInitialVisibility();
+
     // Toggle menu function with improved visibility handling
     const toggleMenu = () => {
         if (hamburger && navLinks) {
@@ -10,16 +22,18 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.toggle('active');
             navLinks.style.visibility = navLinks.classList.contains('active') ? 'visible' : 'hidden';
             body.classList.toggle('no-scroll');
-            
-            // Force repaint to ensure visibility changes take effect
-            navLinks.offsetHeight;
         }
     };
 
-    // Set initial visibility state
-    if (navLinks) {
-        navLinks.style.visibility = 'hidden';
-    }
+    // Window resize handler
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            navLinks.style.visibility = 'visible';
+            body.classList.remove('no-scroll');
+        } else if (!navLinks.classList.contains('active')) {
+            navLinks.style.visibility = 'hidden';
+        }
+    });
 
     // Hamburger click event
     if (hamburger) {
