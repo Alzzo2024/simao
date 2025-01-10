@@ -3,48 +3,101 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelector('.nav-links');
     const body = document.body;
 
-    // Set initial state for all pages
-    if (navLinks) {
-        navLinks.style.transition = 'transform 0.3s ease-in-out';
+    // Initial setup for mobile menu
+    function initializeMobileMenu() {
+        if (!navLinks) return;
+        
         if (window.innerWidth <= 768) {
-            navLinks.style.transform = 'translateX(-100%)';
+            navLinks.style.cssText = `
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(18, 18, 18, 0.95);
+                backdrop-filter: blur(10px);
+                display: none;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+            `;
+        } else {
+            navLinks.style.cssText = `
+                position: relative;
+                transform: none;
+                display: flex;
+                background: none;
+                width: auto;
+                height: auto;
+            `;
         }
     }
 
+    // Initialize on page load
+    initializeMobileMenu();
+
     // Toggle menu function
-    const toggleMenu = () => {
-        if (hamburger && navLinks) {
-            hamburger.classList.toggle('active');
-            
-            if (hamburger.classList.contains('active')) {
-                navLinks.style.display = 'flex';
+    function toggleMenu() {
+        if (!hamburger || !navLinks) return;
+
+        const isOpening = !hamburger.classList.contains('active');
+
+        hamburger.classList.toggle('active');
+
+        if (isOpening) {
+            navLinks.style.display = 'flex';
+            requestAnimationFrame(() => {
                 navLinks.style.transform = 'translateX(0)';
-                body.style.overflow = 'hidden';
-            } else {
-                navLinks.style.transform = 'translateX(-100%)';
-                body.style.overflow = '';
-            }
+            });
+            body.style.overflow = 'hidden';
+        } else {
+            navLinks.style.transform = 'translateX(-100%)';
+            body.style.overflow = '';
+            setTimeout(() => {
+                if (!hamburger.classList.contains('active')) {
+                    navLinks.style.display = 'none';
+                }
+            }, 300);
         }
-    };
+    }
 
     // Window resize handler
-    window.addEventListener('resize', () => {
-        if (navLinks) {
-            if (window.innerWidth > 768) {
-                navLinks.style.display = 'flex';
-                navLinks.style.transform = 'translateX(0)';
-                body.style.overflow = '';
-                hamburger?.classList.remove('active');
-            } else if (!hamburger?.classList.contains('active')) {
-                navLinks.style.transform = 'translateX(-100%)';
+    function handleResize() {
+        if (!navLinks) return;
+
+        if (window.innerWidth > 768) {
+            navLinks.style.cssText = `
+                position: relative;
+                transform: none;
+                display: flex;
+                background: none;
+                width: auto;
+                height: auto;
+            `;
+            body.style.overflow = '';
+            hamburger?.classList.remove('active');
+        } else {
+            if (!hamburger?.classList.contains('active')) {
+                navLinks.style.cssText = `
+                    position: fixed;
+                    top: 80px;
+                    left: 0;
+                    width: 100%;
+                    height: calc(100vh - 80px);
+                    background: rgba(18, 18, 18, 0.95);
+                    backdrop-filter: blur(10px);
+                    display: none;
+                    transform: translateX(-100%);
+                    transition: transform 0.3s ease-in-out;
+                `;
             }
         }
-    });
+    }
 
-    // Event listeners
+    // Event Listeners
+    window.addEventListener('resize', handleResize);
     hamburger?.addEventListener('click', toggleMenu);
 
-    // Navigation items click handler
+    // Handle navigation item clicks
     const navItems = document.querySelectorAll('.nav-links a, .nav-links .container');
     navItems.forEach(item => {
         item.addEventListener('click', () => {
