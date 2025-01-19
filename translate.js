@@ -4,6 +4,7 @@ const translations = {
         "inicio": "Home",
         "portfolio": "Portfolio",
         "loja": "Shop",
+        "artigos": "Articles",
         "assinaturas": "Subscriptions",
         "contactos": "Contacts",
 
@@ -104,13 +105,14 @@ const translations = {
         "sorteios": "🎉 Exclusive Giveaways",
         "acessos": "⏳ Early Access",
         "painel": "🧩 Subscribers Wall",
-        "desenhos": "🎨 Drawings and Illustrations"
+        "desenhos": "🎨 Drawings and Illustrations",
     },
     pt: {
         // Navigation
         "inicio": "Inicio",
-        "portfolio": "Portfólio",
+        "portfolio": "Portefólio",
         "loja": "Loja",
+        "artigos": "Artigos",
         "assinaturas": "Assignaturas",
         "contactos": "Contactos",
     
@@ -120,8 +122,8 @@ const translations = {
         "programmer": "Programmador",
         "chess-player": "Xadrezista",
         "bio": "Olá, eu sou Simão Araújo, programmador, escriptor e xadrezista de Portugal. Desde cedo, fui tomado por um grande amor por estas artes e procuro sempre crear algo novo.",
-        "ver-portfolio": "Ver Portfólio",
-        "download-cv": "Download CV",
+        "ver-portfolio": "Ver Portefólio",
+        "download-cv": "Descarregar CV",
     
         // Skills Section
         "skills-title": "Habilidades e Saber",
@@ -154,7 +156,7 @@ const translations = {
     
         // Product Elements
         "gratis": "Grátis",
-        "download": "Download",
+        "download": "Descarregar",
         "comprar": "Comprar",
         "em-stock": "Em Stock",
     
@@ -219,6 +221,7 @@ const translations = {
         "inicio": "Inizio",
         "portfolio": "Portfolio",
         "loja": "Negozio",
+        "artigos": "Articoli",
         "assinaturas": "Abbonamenti",
         "contactos": "Contatti",
     
@@ -327,6 +330,7 @@ const translations = {
         "inicio": "Accueil",
         "portfolio": "Portfolio",
         "loja": "Boutique",
+        "artigos": "Articles",
         "assinaturas": "Abonnements",
         "contactos": "Contacts",
     
@@ -435,6 +439,7 @@ const translations = {
         "inicio": "Start",
         "portfolio": "Portfolio",
         "loja": "Winkel",
+        "artigos": "Artikelen",
         "assinaturas": "Abonnementen",
         "contactos": "Contact",
     
@@ -543,6 +548,7 @@ const translations = {
         "inicio": "Inicio",
         "portfolio": "Portafolio", 
         "loja": "Tienda",
+        "artigos": "Artículos",
         "assinaturas": "Suscripciones",
         "contactos": "Contactos",
     
@@ -651,6 +657,7 @@ const translations = {
         "inicio": "Главная",
         "portfolio": "Портфолио",
         "loja": "Магазин",
+        "artigos": "Статьи",
         "assinaturas": "Подписки",
         "contactos": "Контакты",
     
