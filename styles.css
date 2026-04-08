@@ -11,13 +11,13 @@
 }
 
 *::selection {
-    background: #262FFF;
-    color: #fff;
+    background: #84baea;
+    color: #f3f3f3;
 }
 
 *::-moz-selection {
-    background: #262FFF;
-    color: #fff;
+    background: #4381b7;
+    color: #f3f3f3;
 }
 
 html {
@@ -30,7 +30,7 @@ body {
     font-weight: 500;
     line-height: 1.6;
     color: #fff;
-    background: #000;
+    background: #202020;
     overflow-x: hidden;
 }
 
@@ -40,16 +40,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    background: #111;
+    background: #202020;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #262FFF;
+    background: #84baea;
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #1a23cc;
+    background: #84baea;
 }
 
 /* Container */
@@ -69,7 +69,7 @@ body {
     backdrop-filter: blur(10px);
     z-index: 1000;
     padding: 15px 0;
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #202020;
 }
 
 .header-container {
@@ -82,7 +82,7 @@ body {
 }
 
 .logo img {
-    height: 40px;
+    height: 50px;
     width: auto;
 }
 
@@ -93,8 +93,8 @@ body {
 }
 
 .donation-btn {
-    background: #262FFF;
-    color: #fff;
+    background: #84baea;
+    color: #202020;
     border: none;
     padding: 12px 20px;
     border-radius: 25px;
@@ -109,14 +109,14 @@ body {
 }
 
 .donation-btn:hover {
-    background: #1a23cc;
+    background: #4381b7;
     transform: translateY(-2px);
 }
 
 .language-btn {
     background: transparent;
-    border: 1px solid #333;
-    color: #fff;
+    border: 1px solid #202020;
+    color: #f3f3f3;
     padding: 8px 12px;
     border-radius: 6px;
     font-family: 'Oswald', sans-serif;
@@ -130,7 +130,7 @@ body {
 }
 
 .language-btn:hover {
-    border-color: #262FFF;
+    border-color: #84baea;
     background: rgba(38, 47, 255, 0.1);
 }
 
@@ -162,7 +162,7 @@ body {
 .hamburger-menu span {
     width: 25px;
     height: 3px;
-    background: #fff;
+    background: #f3f3f3;
     border-radius: 2px;
     transition: all 0.3s ease;
 }
@@ -186,7 +186,7 @@ body {
     right: 20px;
     background: rgba(17, 17, 17, 0.95);
     backdrop-filter: blur(10px);
-    border: 1px solid #333;
+    border: 1px solid #202020;
     border-radius: 8px;
     padding: 10px;
     z-index: 1100;
@@ -212,7 +212,7 @@ body {
 .language-option {
     background: transparent;
     border: none;
-    color: #fff;
+    color: #f3f3f3;
     padding: 10px 12px;
     border-radius: 6px;
     font-family: 'Oswald', sans-serif;
@@ -231,7 +231,7 @@ body {
 }
 
 .language-option.active {
-    background: #262FFF;
+    background: #84baea;
 }
 
 .language-option img {
@@ -288,7 +288,7 @@ body {
     position: absolute;
     width: 25px;
     height: 3px;
-    background: #fff;
+    background: #f3f3f3;
     border-radius: 2px;
     transition: all 0.3s ease;
 }
@@ -309,7 +309,7 @@ body {
 }
 
 .menu-nav a {
-    color: #fff;
+    color: #f3f3f3;
     text-decoration: none;
     font-family: 'Oswald', sans-serif;
     font-weight: 600;
@@ -320,12 +320,12 @@ body {
 }
 
 .menu-nav a:hover {
-    color: #262FFF;
+    color: #84baea;
 }
 
 /* Hero Section */
 .hero-section {
-    background: #262FFF;
+    background: #84baea;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -339,7 +339,7 @@ body {
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
     font-size: clamp(3rem, 8vw, 5rem);
-    color: #fff;
+    color: #202020;
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 3px;
@@ -349,7 +349,7 @@ body {
     font-family: 'Oswald', sans-serif;
     font-weight: 400;
     font-size: clamp(1.1rem, 3vw, 1.3rem);
-    color: rgba(255, 255, 255, 0.9);
+    color: #202020;
     max-width: 600px;
     margin: 0 auto;
     letter-spacing: 1px;
@@ -367,7 +367,7 @@ body {
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
     font-size: clamp(2.5rem, 6vw, 3.5rem);
-    color: #fff;
+    color: #f3f3f3;
     text-align: center;
     margin-bottom: 60px;
     text-transform: uppercase;
@@ -376,7 +376,7 @@ body {
 
 /* Portfolio Section */
 .portfolio-section {
-    background: #000;
+    background: #202020;
     padding: 100px 0;
 }
 
@@ -388,7 +388,7 @@ body {
 }
 
 .portfolio-item {
-    background: #111;
+    background: #202020;
     border: 1px solid #333;
     border-radius: 12px;
     overflow: hidden;
@@ -397,7 +397,7 @@ body {
 
 .portfolio-item:hover {
     transform: translateY(-5px);
-    border-color: #262FFF;
+    border-color: #84baea;
     box-shadow: 0 10px 30px rgba(38, 47, 255, 0.2);
 }
 
@@ -422,7 +422,7 @@ body {
     font-family: 'Oswald', sans-serif;
     font-weight: 600;
     font-size: 1.3rem;
-    color: #fff;
+    color: #f3f3f3;
     padding: 20px 25px 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -430,30 +430,30 @@ body {
 
 .btn-view {
     background: transparent;
-    border: 1px solid #262FFF;
-    color: #262FFF;
-    padding: 12px 25px;
+    border: 1px solid #84baea;
+    color: #84baea;
+    padding: 0.5px 20px;
     border-radius: 6px;
     font-family: 'Oswald', sans-serif;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
     cursor: pointer;
-    margin: 0 25px 25px;
+    margin: 0 20px 25px;
     transition: all 0.3s ease;
     text-decoration: none;
 }
 
 .btn-view:hover {
-    background: #262FFF;
-    color: #fff;
+    background: #84baea;
+    color: #f3f3f3;
     transform: translateY(-2px);
 }
 
 /* Articles Section */
 .articles-section {
-    background: #000;
+    background: #202020;
     padding: 100px 0;
 }
 
@@ -467,7 +467,7 @@ body {
 .category-btn {
     background: transparent;
     border: 1px solid #333;
-    color: #fff;
+    color: #f3f3f3;
     padding: 12px 20px;
     border-radius: 6px;
     font-family: 'Oswald', sans-serif;
@@ -483,7 +483,7 @@ body {
 }
 
 .category-btn:hover {
-    border-color: #262FFF;
+    border-color: #84baea;
     background: rgba(38, 47, 255, 0.1);
 }
 
@@ -505,7 +505,7 @@ body {
     transform: translate(-50%, -50%);
     background: rgba(17, 17, 17, 0.95);
     backdrop-filter: blur(10px);
-    border: 1px solid #333;
+    border: 1px solid #202020;
     border-radius: 12px;
     padding: 20px;
     z-index: 1100;
@@ -529,7 +529,7 @@ body {
 .category-option {
     background: transparent;
     border: 1px solid #333;
-    color: #fff;
+    color: #f3f3f3;
     padding: 12px 16px;
     border-radius: 6px;
     font-family: 'Oswald', sans-serif;
@@ -543,13 +543,13 @@ body {
 }
 
 .category-option:hover {
-    border-color: #262FFF;
+    border-color: #84baea;
     background: rgba(38, 47, 255, 0.2);
 }
 
 .category-option.active {
-    border-color: #262FFF;
-    background: #262FFF;
+    border-color: #84baea;
+    background: #84baea;
 }
 
 .articles-grid {
@@ -559,8 +559,8 @@ body {
 }
 
 .article-item {
-    background: #111;
-    border: 1px solid #333;
+    background: #202020;
+    border: 1px solid #202020;
     border-radius: 12px;
     padding: 25px;
     position: relative;
@@ -569,7 +569,7 @@ body {
 
 .article-item:hover {
     transform: translateY(-5px);
-    border-color: #262FFF;
+    border-color: #84baea;
     box-shadow: 0 10px 30px rgba(38, 47, 255, 0.2);
 }
 
@@ -578,8 +578,8 @@ body {
 }
 
 .article-category {
-    background: #262FFF;
-    color: #fff;
+    background: #84baea;
+    color: #f3f3f3;
     padding: 6px 12px;
     border-radius: 20px;
     font-family: 'Oswald', sans-serif;
@@ -595,7 +595,7 @@ body {
     font-family: 'Oswald', sans-serif;
     font-weight: 600;
     font-size: 1.2rem;
-    color: #fff;
+    color: #f3f3f3;
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -604,8 +604,8 @@ body {
 
 .btn-read {
     background: transparent;
-    border: 1px solid #262FFF;
-    color: #262FFF;
+    border: 1px solid #84baea;
+    color: #84baea;
     padding: 10px 20px;
     border-radius: 6px;
     font-family: 'Oswald', sans-serif;
@@ -619,14 +619,14 @@ body {
 }
 
 .btn-read:hover {
-    background: #262FFF;
-    color: #fff;
+    background: #84baea;
+    color: #f3f3f3;
     transform: translateY(-2px);
 }
 
 /* Books Section */
 .books-section {
-    background: #000;
+    background: #202020;
     padding: 100px 0;
 }
 
@@ -670,7 +670,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(38, 47, 255, 0.9);
+    background:#4381b7;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -679,7 +679,7 @@ body {
 }
 
 .book-overlay span {
-    color: #fff;
+    color: #f3f3f3;
     font-family: 'Oswald', sans-serif;
     font-weight: 600;
     font-size: 18px;
@@ -693,7 +693,7 @@ body {
 
 /* Companies Section */
 .companies-section {
-    background: #000;
+    background: #202020;
     padding: 100px 0;
 }
 
@@ -715,8 +715,8 @@ body {
 
 /* Footer */
 .footer {
-    background: #111;
-    border-top: 1px solid #222;
+    background: #000;
+    border-top: 1px solid #202020;
     padding: 40px 0;
 }
 
@@ -750,19 +750,19 @@ body {
     width: 40px;
     height: 40px;
     background: transparent;
-    border: 1px solid #333;
+    border: 1px solid #f3f3f3;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
+    color: #f3f3f3;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 .social-link:hover {
-    border-color: #262FFF;
-    color: #262FFF;
+    border-color: #84baea;
+    color: #84baea;
     transform: translateY(-2px);
 }
 
@@ -786,7 +786,7 @@ body {
     font-family: 'Oswald', sans-serif;
     font-weight: 500;
     font-size: 14px;
-    color: #fff;
+    color: #f3f3f3;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -818,10 +818,10 @@ body {
     right: 30px;
     width: 50px;
     height: 50px;
-    background: #262FFF;
+    background: #84baea;
     border: none;
     border-radius: 50%;
-    color: #fff;
+    color: #f3f3f3;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -840,7 +840,7 @@ body {
 }
 
 .scroll-top-btn:hover {
-    background: #1a23cc;
+    background: #84baea;
     transform: translateY(-3px);
 }
 
@@ -1206,6 +1206,11 @@ a:focus-visible {
         width: 200px;
         height: 300px;
     }
+    
+    .book-overlay span {
+        font-size: 14px;
+    }
+}
     
     .book-overlay span {
         font-size: 14px;
