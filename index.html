@@ -107,7 +107,9 @@
                         <div class="project-tags">
                             <span class="unified-tag">logo</span>
                         </div>
-                        <a href="https://www.instagram.com/simaoarauj0/" target="_blank" class="card-btn-inter" data-pt="Ver" data-en="View">Ver</a>
+                        <div class="card-actions-wrapper">
+                            <a href="https://www.instagram.com/simaoarauj0/" target="_blank" class="card-btn-inter btn-single" data-pt="Ver" data-en="View">Ver</a>
+                        </div>
                     </div>
 
                     <div class="card-item glass-box entrance-anim">
@@ -118,7 +120,12 @@
                         <div class="project-tags">
                             <span class="unified-tag">app</span>
                         </div>
-                        <a href="https://alzzotypo.vercel.app/" target="_blank" class="card-btn-inter" data-pt="Ver" data-en="View">Ver</a>
+                        <div class="card-actions-wrapper">
+                            <a href="https://alzzotypo.vercel.app/" target="_blank" class="card-btn-inter" data-pt="Ver" data-en="View">Ver</a>
+                            <button class="card-btn-square" id="open-download-modal">
+                                <i class="fa-solid fa-download"></i>
+                            </button>
+                        </div>
                     </div>
 
                 </div>
@@ -139,6 +146,29 @@
             </div>
         </section>
     </main>
+
+    <div id="download-modal" class="modal-overlay">
+        <div class="modal-content glass-box">
+            <button class="modal-close-btn" id="close-download-modal">&times;</button>
+            <div class="modal-header">
+                <i class="fa-solid fa-box-archive modal-icon"></i>
+                <h3>Typo</h3>
+                <p class="version-tag">v2.1</p>
+            </div>
+            <div class="modal-body">
+                <p class="modal-desc" data-pt="Selecione a plataforma pretendida para descarregar a aplicação estável." data-en="Select your preferred platform to download the stable application.">Selecione a plataforma pretendida para descarregar a aplicação estável.</p>
+                <div class="download-options-list">
+                    <a href="docs/Typo 2.1.zip" download class="download-item-btn">
+                        <span class="platform-info">
+                            <i class="fa-brands fa-android"></i>
+                            <span>Android (.apk)</span>
+                        </span>
+                        <i class="fa-solid fa-chevron-right arrow-indicator"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="main-footer">
         <div class="footer-wrap">
