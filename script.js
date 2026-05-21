@@ -5,6 +5,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const langBtn = document.getElementById("lang-switch");
     const mobileLangContainer = document.getElementById("mobile-lang-container");
 
+    const openModalBtn = document.getElementById("open-download-modal");
+    const closeModalBtn = document.getElementById("close-download-modal");
+    const downloadModal = document.getElementById("download-modal");
+
     function handleLangButtonPosition() {
         if (window.innerWidth <= 950) {
             if (!mobileLangContainer.contains(langBtn)) {
@@ -22,17 +26,39 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener('resize', handleLangButtonPosition);
     handleLangButtonPosition();
 
+    // CURSOR PERSONALIZADO (Apenas Desktop)
     if (window.innerWidth > 950) {
         document.addEventListener("mousemove", (e) => {
             cursor.style.left = e.clientX + "px";
             cursor.style.top = e.clientY + "px";
         });
-        document.querySelectorAll('a, button, .s-link, .photo-item, .glass-box, .btn-cv').forEach(el => {
+        document.querySelectorAll('a, button, .s-link, .photo-item, .glass-box, .btn-cv, .card-btn-square').forEach(el => {
             el.addEventListener("mouseenter", () => cursor.classList.add("pointer-mode"));
             el.addEventListener("mouseleave", () => cursor.classList.remove("pointer-mode"));
         });
     }
 
+    // INTERAÇÕES DA MODAL DE DOWNLOAD
+    if(openModalBtn && downloadModal && closeModalBtn) {
+        openModalBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            downloadModal.classList.add("active");
+            document.body.style.overflow = "hidden";
+        });
+
+        const closeModalFunc = () => {
+            downloadModal.classList.remove("active");
+            document.body.style.overflow = "auto";
+        };
+
+        closeModalBtn.addEventListener("click", closeModalFunc);
+        
+        downloadModal.addEventListener("click", (e) => {
+            if(e.target === downloadModal) closeModalFunc();
+        });
+    }
+
+    // MENU MOBILE
     mobileBtn.addEventListener("click", () => {
         mobileMenu.classList.toggle("active");
         document.body.style.overflow = mobileMenu.classList.contains("active") ? "hidden" : "auto";
@@ -61,6 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // SISTEMA DE TRADUÇÃO MULTILINGUE
     let currentLang = "PT";
     langBtn.addEventListener("click", () => {
         currentLang = (currentLang === "PT") ? "EN" : "PT";
@@ -72,6 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // SCROLL REVEAL ANIMAÇÕES
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) entry.target.classList.add("active");
@@ -79,6 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, { threshold: 0.1 });
     document.querySelectorAll(".entrance-anim").forEach(el => observer.observe(el));
 
+    // BOTÃO SCROLL TOP
     const btt = document.getElementById("scroll-top-btn");
     window.addEventListener("scroll", () => {
         if (window.pageYOffset > 400) {
