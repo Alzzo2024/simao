@@ -215,7 +215,7 @@ h3, h4, .btn-cv, .unified-tag, .btn-lang, .btn-donativo, .copy-txt, .f-email, .f
 /* --- BLOCO QUADRADO NOVO: TYPO (GRID 3 COLUNAS) --- */
 .project-block-square {
     width: 100%;
-    max-width: 310px; /* Alinhamento quadrado para formato do grid inferior */
+    max-width: 310px;
     aspect-ratio: 1 / 1;
     display: flex;
     flex-direction: column;
@@ -232,7 +232,7 @@ h3, h4, .btn-cv, .unified-tag, .btn-lang, .btn-donativo, .copy-txt, .f-email, .f
     height: 45%;
     position: relative;
     background: #000;
-    overflow: visible; /* Permite o ícone flutuar para fora */
+    overflow: visible;
 }
 .block-banner-img {
     width: 100%;
@@ -254,7 +254,7 @@ h3, h4, .btn-cv, .unified-tag, .btn-lang, .btn-donativo, .copy-txt, .f-email, .f
     width: 50px;
     height: 50px;
     background: #1a1a1a;
-    border-radius: 12px; /* Ondulado/Suave */
+    border-radius: 12px;
     border: 2px solid rgba(132, 186, 234, 0.5);
     overflow: hidden;
     z-index: 10;
@@ -403,7 +403,7 @@ h3, h4, .btn-cv, .unified-tag, .btn-lang, .btn-donativo, .copy-txt, .f-email, .f
 /* Layout Fixo Retangular das Imagens Intermédias */
 .modal-image-view {
     width: 100%;
-    height: 380px; /* Layout Retangular Fixo */
+    height: 380px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -416,7 +416,7 @@ h3, h4, .btn-cv, .unified-tag, .btn-lang, .btn-donativo, .copy-txt, .f-email, .f
 .modal-fixed-rect-img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Não distorce, mantém a proporção dentro do espaço fixo */
+    object-fit: contain;
 }
 
 @keyframes fadeInView {
@@ -440,13 +440,37 @@ h3, h4, .btn-cv, .unified-tag, .btn-lang, .btn-donativo, .copy-txt, .f-email, .f
 .s-link:hover { color: #84BAEA; border-color: #84BAEA; background: rgba(132,186,234,0.05); }
 .svg-link-fix { padding: 12px; }
 
+/* AJUSTE MESH: RESOLVIDO INSTANTÂNEO */
+.mesh-icon-img {
+    width: 28px;                  
+    height: 28px;
+    object-fit: contain;
+    display: block;
+}
+.s-link:hover .mesh-icon-img {
+    filter: brightness(0) invert(1) sepia(1) saturate(10000%) hue-rotate(175deg) brightness(95%) contrast(100%);
+}
+
 .f-email { font-size: 1.3rem; letter-spacing: 0.5px; }
 .f-email:hover { color: #84BAEA; }
 .copy-txt { color: #555; font-size: 0.85rem; letter-spacing: 0.5px; }
 
+/* BOTÃO DE VOLTAR AO TOPO (ISOLADO E CORRIGIDO) */
 #scroll-top-btn {
-    position: fixed; bottom: 30px; right: 30px; width: 45px; height: 45px; background: #84BAEA;
-    color: #101010; border: none; border-radius: 4px; cursor: pointer; display: none; z-index: 9999; font-size: 1.1rem; transition: 0.3s;
+    position: fixed; 
+    bottom: 30px; 
+    right: 30px; 
+    width: 45px; 
+    height: 45px; 
+    background: #84BAEA;
+    color: #101010; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    display: none; /* Controlado via JS para aparecer ao rolar */
+    z-index: 9999; 
+    font-size: 1.1rem; 
+    transition: 0.3s;
 }
 #scroll-top-btn:hover { background: #FFF; }
 
