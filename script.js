@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // MAPA AVANÇADO DE PROJETOS (Introdução, Imagens Fixas e Links Finais)
+    // MAPA DE PROJETOS DE DESIGN (Apenas os que precisam de galeria/modal)
     const projectDatabase = {
         vimperio: {
             title: "Loja V Império",
@@ -64,12 +64,18 @@ document.addEventListener("DOMContentLoaded", function () {
             title: "Super Campainhas",
             description: "O Super Campainhas é um supermercado de proximidade e comércio a retalho, amplamente conhecido na região pelo seu atendimento personalizado e familiar. Focado em servir a comunidade, o estabelecimento destaca-se pela frescura diária dos seus produtos, com especial foco nas frutas e hortícolas, além de uma seleção completa de mercearia e bens de consumo diário. Tudo isto, sempre combinando a máxima dedicação e amor ao consumidor.",
             images: ["portefolio/supercampainhas/SPlogo1.png", "portefolio/supercampainhas/SPlogo2.png","portefolio/supercampainhas/SPpaleta.png","portefolio/supercampainhas/SPclube.png","portefolio/supercampainhas/SPmockups.png"],
-            links: [] // Sem links por ser apenas portefólio fictício/arte
+            links: []
+        },
+        pingodoce: {
+            title: "Pingo Doce",
+            description: "O Pingo Doce é uma marca líder no retalho alimentar e na restauração, amplamente reconhecida pelo seu compromisso histórico de proximidade e serviço à comunidade. Focada em estar sempre perto das famílias portuguesas, a insígnia destaca-se pela excelência e frescura diária dos seus produtos, com especial rigor na charcutaria, peixaria, padaria, frutas e hortícolas, aliada a uma oferta completa de marca própria e de consumo diário. Tudo isto, unindo a conveniência de um atendimento próximo à máxima garantia de qualidade ao melhor preço.",
+            images: ["portefolio/pingodoce/pingodoce.png", "portefolio/pingodoce/pingodocelogo.png","portefolio/pingodoce/pingodocecolours.png","portefolio/pingodoce/pingodocelogocolours.png","portefolio/pingodoce/pingodocealllogos.png","portefolio/pingodoce/pingodocemockups.png"],
+            links: []
         }
     };
 
     let currentProject = "";
-    let currentStepIndex = 0; // Passo 0 = Intro, Passos do Meio = Imagens, Passo Último = Ecrã de Links
+    let currentStepIndex = 0; 
 
     const projectModal = document.getElementById("project-modal");
     const modalSlot = document.getElementById("modal-dynamic-slot");
@@ -80,9 +86,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const data = projectDatabase[currentProject];
         if (!data) return;
 
-        const totalSteps = 1 + data.images.length + 1; // 1(Intro) + Total Imagens + 1(Final)
+        const imgCount = data.images ? data.images.length : 0;
+        const totalSteps = 1 + imgCount + 1; 
 
-        // Controlos de visibilidade dos botões laterais
         if (currentStepIndex === 0) {
             galleryPrevBtn.classList.add("hidden-btn");
         } else {
@@ -95,10 +101,8 @@ document.addEventListener("DOMContentLoaded", function () {
             galleryNextBtn.classList.remove("hidden-btn");
         }
 
-        // LIMPAR SLOT ANTERIOR
         modalSlot.innerHTML = "";
 
-        // CASO 1: Passo de Introdução
         if (currentStepIndex === 0) {
             const introDiv = document.createElement("div");
             introDiv.className = "modal-intro-view";
@@ -108,7 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
             `;
             modalSlot.appendChild(introDiv);
         }
-        // CASO 2: Ecrã Final de Links
         else if (currentStepIndex === totalSteps - 1) {
             const finalDiv = document.createElement("div");
             finalDiv.className = "modal-final-view";
@@ -133,7 +136,6 @@ document.addEventListener("DOMContentLoaded", function () {
             `;
             modalSlot.appendChild(finalDiv);
         }
-        // CASO 3: Imagens Intermédias (Layout Retangular Fixo)
         else {
             const imgIndex = currentStepIndex - 1;
             const imgPath = data.images[imgIndex];
@@ -145,14 +147,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Abertura da Modal Customizada
     document.querySelectorAll(".portfolio-item-trigger").forEach(trigger => {
         trigger.addEventListener("click", (e) => {
             e.preventDefault();
             const proj = trigger.getAttribute("data-project");
             if (proj && projectDatabase[proj]) {
                 currentProject = proj;
-                currentStepIndex = 0; // Começa sempre na Introdução
+                currentStepIndex = 0; 
                 renderModalStep();
                 projectModal.classList.add("active");
                 document.body.style.overflow = "hidden";
@@ -160,7 +161,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Controlos de Navegação da Modal
     galleryPrevBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         if (currentStepIndex > 0) {
@@ -173,7 +173,8 @@ document.addEventListener("DOMContentLoaded", function () {
         e.stopPropagation();
         const data = projectDatabase[currentProject];
         if (data) {
-            const totalSteps = 1 + data.images.length + 1;
+            const imgCount = data.images ? data.images.length : 0;
+            const totalSteps = 1 + imgCount + 1;
             if (currentStepIndex < totalSteps - 1) {
                 currentStepIndex++;
                 renderModalStep();
@@ -181,7 +182,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Fecho da Modal
     if(projectModal) {
         projectModal.addEventListener("click", () => {
             projectModal.classList.remove("active");
