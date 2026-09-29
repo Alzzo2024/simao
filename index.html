@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Simão Araújo</title>
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://simaoaraujo.pt/">
+    <meta property="og:title" content="Simão Araújo | Designer & Organizador de Eventos">
+    <meta property="og:description" content="Portefólio profissional de Simão Araújo. Explora projetos inovadores e outros tipos de conteúdo gráfico.">
+    <meta property="og:image" content="https://simaoaraujo.pt/img/simaoaraujowebsite.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://simaoaraujo.pt/">
+    <meta name="twitter:title" content="Simão Araújo | Designer & Organizador de Eventos">
+    <meta name="twitter:description" content="Portefólio profissional de Simão Araújo. Explora projetos inovadores e outros tipos de conteúdo gráfico.">
+    <meta name="twitter:image" content="https://simaoaraujo.pt/img/simaoaraujowebsite.png">
+
+    <link rel="icon" type="image/png" href="img/simaoaraujologo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <noscript><style>#intro{display:none !important;} .hero-signature{clip-path:none !important;} .sig-text{stroke-dashoffset:0 !important;fill-opacity:1 !important;}</style></noscript>
+</head>
+<body>
+
+    <!-- Abertura: amálgama de quadrados (preenchida pelo script.js) -->
+    <div id="intro" aria-hidden="true"></div>
+
+    <!-- Fundo com ondinhas irregulares -->
+    <canvas id="bg-waves" aria-hidden="true"></canvas>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo-area">
+                <img src="img/simaoaraujologoofficial.png" alt="Logo" class="logo-img">
+            </div>
+
+            <div class="header-right-group">
+                <nav class="nav-desktop">
+                    <a href="#inicio" data-pt="Início" data-en="Home">Início</a>
+                    <a href="#sobre" data-pt="Sobre" data-en="About">Sobre</a>
+                    
+                    <div class="nav-dropdown-wrapper">
+                        <a href="#portfolio" class="dropdown-trigger" data-pt="Portefólio ▾" data-en="Portfolio ▾">Portefólio ▾</a>
+                        <div class="dropdown-content-fixed">
+                            <a href="#" class="portfolio-item-trigger" data-project="vimperio">Loja V Império</a>
+                            <a href="#" class="portfolio-item-trigger" data-project="supercampainhas">Super Campainhas</a>
+                        </div>
+                    </div>
+                    
+                    <a href="https://revolut.me/simaoa_cz_ytr4" target="_blank" data-pt="Donativo" data-en="Donate" class="btn-donativo shimmer">Donativo</a>
+                </nav>
+
+                <div class="header-actions">
+                    <button id="lang-switch" class="btn-lang">PT</button>
+                    <button id="hamburger-menu" class="hamburger-btn" aria-label="Menu">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <nav class="mobile-menu-overlay" id="mobile-menu">
+            <a href="#inicio" data-pt="Início" data-en="Home">Início</a>
+            <a href="#sobre" data-pt="Sobre" data-en="About">Sobre</a>
+            <a href="#portfolio" data-pt="Portefólio" data-en="Portfolio">Portefólio</a>
+            <a href="https://revolut.me/simaoa_cz_ytr4" target="_blank" data-pt="Donativo" data-en="Donate">Donativo</a>
+            <div id="mobile-lang-container"></div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero-section">
+            <h1 class="sr-only">Simão Araújo - Designer &amp; Organizador de Eventos</h1>
+
+            <!-- Fotografia completa (fundo do hero, com o recorte picotado em baixo) -->
+            <img src="img/simaofoto.png" alt="Simão Araújo" class="hero-bg">
+            <div class="hero-shade"></div>
+
+            <!-- Título: aparece sozinho depois da abertura; começa branco e vai ficando azul -->
+            <svg class="hero-signature" viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Criador Digital">
+                <text class="sig-text" x="350" y="108" text-anchor="middle" data-pt="Criador Digital" data-en="Digital Creator">Criador Digital</text>
+            </svg>
+        </section>
+
+        <section id="sobre" class="dark-section">
+            <div class="inner-container">
+                <h2 class="cursive-title-light" data-pt="Sobre" data-en="About">Sobre</h2>
+
+                <div class="about-text-block entrance-anim">
+                    <p class="about-paragraph" 
+                       data-pt="Com 19 anos e baseado em Lisboa, foco o meu trabalho num design gráfico minimalista, mas com uma identidade vincada. Acredito que a simplicidade só funciona quando carrega um propósito real. O meu objetivo é equilibrar o lado técnico da organização de eventos com a sensibilidade visual, criando projetos modernos que comunicam histórias autênticas e deixam uma marca clara." 
+                       data-en="At 19 years old and based in Lisbon, my work focuses on a minimalist graphic design approach that retains a strong, distinct identity. I believe simplicity only works when it carries a real purpose. My goal is to balance the technical side of event planning with visual sensitivity, creating modern projects that communicate authentic stories and leave a clear mark.">
+                        Com 19 anos e baseado em Lisboa, foco o meu trabalho num design gráfico minimalista, mas com uma identidade vincada. Acredito que a simplicidade só funciona quando carrega um propósito real. O meu objetivo é equilibrar o lado técnico da organização de eventos com a sensibilidade visual, criando projetos modernos que comunicam histórias autênticas e deixam uma marca clara.
+                    </p>
+
+                    <div class="cv-wrapper">
+                        <a href="docs/CV - Simão Araújo_2026.pdf" target="_blank" class="btn-cv">
+                            <i class="fa-solid fa-file-lines"></i> CV
+                        </a>
+                    </div>
+                </div>
+
+                <hr class="glass-divider about-divider">
+
+                <div class="favorites-wrapper">
+
+                    <!-- MÚSICAS: 5 visíveis -->
+                    <div class="fav-row entrance-anim">
+                        <div class="fav-row-head">
+                            <h4 class="fav-row-title" data-pt="Músicas favoritas" data-en="Favorite music">Músicas favoritas</h4>
+                            <div class="volume-control">
+                                <button id="volume-btn" class="volume-btn" aria-label="Volume" title="Silenciar / ativar som">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                </button>
+                                <input type="range" id="volume-slider" class="volume-slider" min="0" max="100" value="50" aria-label="Volume">
+                            </div>
+                        </div>
+                        <div class="fav-carousel" style="--visible: 5;">
+                            <button class="fav-arrow fav-prev" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+                            <div class="fav-track" id="track-music"></div>
+                            <button class="fav-arrow fav-next" aria-label="Seguinte"><i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- SÉRIES E FILMES: 3 visíveis (caixas esticadas) -->
+                    <div class="fav-row entrance-anim">
+                        <div class="fav-row-head">
+                            <h4 class="fav-row-title" data-pt="Séries e filmes favoritos" data-en="Favorite series & movies">Séries e filmes favoritos</h4>
+                        </div>
+                        <div class="fav-carousel wide" style="--visible: 3;">
+                            <button class="fav-arrow fav-prev" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+                            <div class="fav-track" id="track-media"></div>
+                            <button class="fav-arrow fav-next" aria-label="Seguinte"><i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- JOGOS: 5 visíveis -->
+                    <div class="fav-row entrance-anim">
+                        <div class="fav-row-head">
+                            <h4 class="fav-row-title" data-pt="Jogos favoritos" data-en="Favorite games">Jogos favoritos</h4>
+                        </div>
+                        <div class="fav-carousel" style="--visible: 5;">
+                            <button class="fav-arrow fav-prev" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+                            <div class="fav-track" id="track-games"></div>
+                            <button class="fav-arrow fav-next" aria-label="Seguinte"><i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="dark-section" style="padding-top: 40px;">
+            <div class="inner-container">
+                <h2 class="cursive-title-light" data-pt="Portefólio" data-en="Portfolio">Portefólio</h2>
+                
+                <div class="portfolio-grid-top">
+                    <div class="card-item glass-box entrance-anim portfolio-item-trigger" data-project="vimperio">
+                        <div class="card-img-holder full-cover">
+                            <img src="portefolio/lojavimperio/lojavimperioimg.png" alt="Projeto Loja V Império" class="portfolio-img-render">
+                            <div class="card-hover-overlay">
+                                <h3 class="card-name-inter">Loja V Império</h3>
+                                <div class="card-tags-row">
+                                    <span class="unified-tag" data-pt="Gráfico" data-en="Graphic">Gráfico</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-item glass-box entrance-anim portfolio-item-trigger" data-project="supercampainhas">
+                        <div class="card-img-holder full-cover">
+                            <img src="portefolio/supercampainhas/supercampainhaslogo.png" alt="Projeto Super Campainhas" class="portfolio-img-render">
+                            <div class="card-hover-overlay">
+                                <h3 class="card-name-inter">Super Campainhas</h3>
+                                <div class="card-tags-row">
+                                    <span class="unified-tag" data-pt="Experiência" data-en="Experience">Experiência</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="glass-divider portfolio-divider">
+
+                <div class="portfolio-grid-bottom">
+                    
+                    <!-- MESH -->
+                    <div class="project-block-wide glass-box entrance-anim">
+                        <div class="block-top-half">
+                            <img src="portefolio/mesh/meshbanner.png" alt="Mesh Visual" class="block-banner-img">
+                            <div class="block-gradient-overlay"></div>
+                            <div class="floating-app-icon">
+                                <img src="portefolio/mesh/meshapp.png" alt="Mesh App Icon">
+                            </div>
+                        </div>
+                        
+                        <div class="block-bottom-half">
+                            <div class="block-header-info">
+                                <h3 class="block-title">Mesh</h3>
+                                <span class="block-version">v2.2.1</span>
+                            </div>
+                            
+                            <div class="block-actions-row">
+                                <a href="https://drive.google.com/file/d/1BqagKOlnTXzDC2R4HB6wZB_Q4pbINpB5/view?usp=sharing" download class="block-btn-action android-btn">
+                                    <i class="fa-brands fa-android"></i> <span>Download</span>
+                                </a>
+                                <a href="https://meshsocial.vercel.app/" target="_blank" class="block-btn-action web-btn">
+                                    <i class="fa-solid fa-globe"></i> <span>Web</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TINT -->
+                    <div class="project-block-wide glass-box entrance-anim">
+                        <div class="block-top-half">
+                            <img src="portefolio/tint/tintbanner.png" alt="Tint Visual" class="block-banner-img">
+                            <div class="block-gradient-overlay"></div>
+                            <div class="floating-app-icon">
+                                <img src="portefolio/tint/tintapp.png" alt="Tint App Icon">
+                            </div>
+                        </div>
+                        
+                        <div class="block-bottom-half">
+                            <div class="block-header-info">
+                                <h3 class="block-title">Tint</h3>
+                                <span class="block-version">v1.0.0</span>
+                            </div>
+                            
+                            <div class="block-actions-row">
+                                <a href="https://drive.google.com/file/d/1nrSWujQ4YPLyBxKVfh8B8lFud_ISpEIv/view?usp=drivesdk" download class="block-btn-action android-btn">
+                                    <i class="fa-brands fa-android"></i> <span>Download</span>
+                                </a>
+                                <a href="https://tintapp.vercel.app/" target="_blank" class="block-btn-action web-btn">
+                                    <i class="fa-solid fa-globe"></i> <span>Web</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="project-modal" class="modal-overlay">
+        <div class="gallery-slider-container">
+            <button class="gallery-nav-btn prev-btn" id="gallery-prev" aria-label="Anterior">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            
+            <div class="gallery-content-card glass-box-container">
+                <div id="modal-dynamic-slot" class="modal-slot-wrapper"></div>
+            </div>
+            
+            <button class="gallery-nav-btn next-btn" id="gallery-next" aria-label="Seguinte">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-wrap">
+            <div class="footer-socials">
+                <a href="#inicio" target="_blank" class="s-link" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://pt-pt.facebook.com/people/Sim%C3%A3o-Ara%C3%BAjo/pfbid0FSDvSfpqNHw5Qk9BBuvSDXaFMjtaL7f6ARkxqpFT5tw98xVcmmbCjzT8DLhWkjtLl/" target="_blank" class="s-link" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                
+                <a href="https://meshsocial.vercel.app/u/M4EJPM" target="_blank" class="s-link mesh-link-fix" title="Mesh">
+                    <span class="mesh-icon-mask" role="img" aria-label="Mesh"></span>
+                </a>
+                
+                <a href="https://www.instagram.com/simaoarauj0/" target="_blank" class="s-link" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            
+            <div class="footer-email-box">
+                <a href="mailto:simaoaraujo888@gmail.com" class="f-email">simaoaraujo888@gmail.com</a>
+            </div>
+
+            <div class="footer-copyright">
+                <p class="copy-txt">© 2026 Simão Araújo - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="scroll-top-btn" aria-label="Voltar ao topo"><i class="fa-solid fa-chevron-up"></i></button>
+
+    <script src="script.js"></script>
+</body>
+</html>
