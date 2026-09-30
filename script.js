@@ -248,7 +248,7 @@ document.addEventListener("DOMContentLoaded", function () {
             { title: "Celeste", img: "games/celeste.png" },
             { title: "Cult of the Lamb", img: "games/cultofthelamb.png" },
             { title: "Hollow Knight", img: "games/hollowknight.png" },
-            { title: "Silksong", img: "games/silksong.png" },
+            { title: "Hollow Knight Silksong", img: "games/Silksong.png" },
             { title: "Minecraft", img: "games/Minecraft.png" },
             { title: "Teardown", img: "games/Teardown.png" },
             { title: "Coffee Talk", img: "games/CoffeeTalk.png" },
