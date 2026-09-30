@@ -6,8 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     // =====================================================
-    // ABERTURA: amálgama de quadrados que revela o site
-    // Depois de acabar, aparece o título "Criador Digital".
+    // ABERTURA: "pele" preta de quadrados (estilo Venom)
+    // O ecrã começa todo preto. A massa de quadrados vai
+    // recuando de um canto ao canto oposto, com a frente
+    // irregular, até revelar o site. A foto fica parada.
     // =====================================================
     function runIntro() {
         const intro = document.getElementById("intro");
@@ -23,79 +25,93 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const W = window.innerWidth;
         const H = window.innerHeight;
-        const cell = Math.max(64, Math.round(W / 11));       // tamanho médio dos quadrados (mais pequeno = mais quadrados)
-        const cols = Math.ceil(W / cell) + 1;
-        const rows = Math.ceil(H / cell) + 1;
-        const palette = ["#0b0b0b", "#101010", "#161616", "#1b1b1b", "#202020", "#16222f", "#101a24"];
+        const base = Math.max(64, Math.round(W / 12));   // tamanho dos quadrados grandes
+        const layers = [
+            { cell: base,        min: 1.5, max: 2.3 },   // camada grande (tapa tudo)
+            { cell: base * 0.5,  min: 1.3, max: 2.4 }    // camada pequena (dá o aspeto de pele/amálgama)
+        ];
+        const palette = ["#000000", "#000000", "#030303", "#060606", "#0a0a0a", "#0b1017"];
 
-        const squares = [];
-        for (let r = 0; r < rows; r++) {
-            for (let c = 0; c < cols; c++) {
-                const s = cell * (1.5 + Math.random() * 0.6);          // 1.5x a 2.1x a célula: sobrepõem-se e cobrem tudo
-                const jx = (Math.random() - 0.5) * 0.4 * cell;
-                const jy = (Math.random() - 0.5) * 0.4 * cell;
-                const x = (c + 0.5) * cell + jx - s / 2;
-                const y = (r + 0.5) * cell + jy - s / 2;
+        const HOLD = 600;     // ms de breu total antes de começar
+        const SPREAD = 1700;  // ms que a massa demora a recuar de um canto ao outro
+        const DUR = 520;      // ms que cada quadrado demora a desaparecer
 
-                const sq = document.createElement("div");
-                sq.className = "intro-sq";
-                sq.style.cssText = `left:${x}px;top:${y}px;width:${s}px;height:${s}px;background:${palette[Math.floor(Math.random() * palette.length)]};z-index:${Math.floor(Math.random() * 50)};`;
-                intro.appendChild(sq);
-                squares.push(sq);
+        layers.forEach(L => {
+            const cols = Math.ceil(W / L.cell) + 1;
+            const rows = Math.ceil(H / L.cell) + 1;
+
+            for (let r = 0; r < rows; r++) {
+                for (let c = 0; c < cols; c++) {
+                    const s = L.cell * (L.min + Math.random() * (L.max - L.min));
+                    const cx = (c + 0.5) * L.cell + (Math.random() - 0.5) * 0.6 * L.cell;
+                    const cy = (r + 0.5) * L.cell + (Math.random() - 0.5) * 0.6 * L.cell;
+
+                    // progresso na diagonal (canto superior esquerdo -> inferior direito) + ruído
+                    // para a frente da massa ser irregular, com "tentáculos"
+                    let t = (cx / W) * 0.55 + (cy / H) * 0.45;
+                    t += 0.10 * Math.sin(cx * 0.006 + cy * 0.004)
+                       + 0.08 * Math.sin(cy * 0.012 - cx * 0.005 + 1.7)
+                       + (Math.random() - 0.5) * 0.10;
+                    t = Math.min(1, Math.max(0, t));
+
+                    const sq = document.createElement("div");
+                    sq.className = "intro-sq";
+                    sq.style.cssText =
+                        `left:${cx - s / 2}px;top:${cy - s / 2}px;width:${s}px;height:${s}px;` +
+                        `background:${palette[Math.floor(Math.random() * palette.length)]};` +
+                        `z-index:${Math.floor(Math.random() * 60)};` +
+                        `--r:${(Math.random() * 90 - 45).toFixed(0)}deg;` +
+                        `transition-delay:${(t * SPREAD).toFixed(0)}ms;transition-duration:${DUR}ms;`;
+                    intro.appendChild(sq);
+                }
             }
-        }
-        intro.style.background = "transparent"; // agora só os quadrados tapam o site
-
-        const HOLD = 450;    // ms com o ecrã todo preto antes de começar
-        const SPREAD = 1100; // ms durante os quais os quadrados vão desaparecendo
-        const DUR = 550;     // ms que cada quadrado demora a desaparecer
-
-        squares.forEach(sq => {
-            sq.style.transitionDelay = (Math.random() * SPREAD).toFixed(0) + "ms";
-            sq.style.transitionDuration = DUR + "ms";
         });
 
+        intro.style.background = "transparent"; // agora só os quadrados tapam o site
+
         setTimeout(() => intro.classList.add("go"), HOLD);
-        setTimeout(finish, HOLD + SPREAD + DUR + 100);
+        // o título começa a escrever-se quando a massa já recuou quase toda
+        setTimeout(() => document.body.classList.add("site-ready"), HOLD + SPREAD * 0.75);
+        setTimeout(finish, HOLD + SPREAD + DUR + 120);
     }
     runIntro();
 
     // =====================================================
-    // FUNDO: ondinhas irregulares e discretas
+    // FUNDO: ondas grandes, espalhadas e irregulares
+    // Linhas que seguem um campo de fluxo suave: curvas largas
+    // que se cruzam, sem serem lineares nem paralelas.
     // =====================================================
     (function initWaves() {
         const cv = document.getElementById("bg-waves");
         if (!cv) return;
         const ctx = cv.getContext("2d");
-        let W = 0, H = 0;
+        let W = 0, H = 0, K = 1;
 
-        const LINES = 18;
+        const N = 26;        // número de linhas
+        const HALF = 55;     // passos para cada lado do ponto inicial
+        const STEP = 14;     // comprimento de cada passo (px)
         const lines = [];
-        for (let i = 0; i < LINES; i++) {
-            const comps = [];
-            for (let k = 0; k < 3; k++) {
-                comps.push({
-                    amp: 0.012 + Math.random() * 0.05,                       // fração da altura
-                    freq: (0.5 + Math.random() * 2.2) * (Math.PI * 2) / 1400, // ondas largas e diferentes entre si
-                    phase: Math.random() * Math.PI * 2,
-                    speed: (Math.random() * 0.00025 + 0.00008) * (Math.random() < 0.5 ? -1 : 1)
-                });
-            }
+        for (let i = 0; i < N; i++) {
             lines.push({
-                base: (i + 0.5) / LINES + (Math.random() - 0.5) * 0.04,
-                comps,
-                envFreq: (0.4 + Math.random() * 1.2) * (Math.PI * 2) / 2200, // zonas mais calmas e zonas mais agitadas
-                envPhase: Math.random() * Math.PI * 2,
+                x: Math.random(),
+                y: Math.random(),
                 color: Math.random() < 0.8 ? "132,186,234" : "243,243,243",
-                alpha: 0.05 + Math.random() * 0.07,
-                width: Math.random() < 0.25 ? 1.6 : 1
+                alpha: 0.05 + Math.random() * 0.08,
+                width: Math.random() < 0.2 ? 1.8 : 1
             });
+        }
+
+        function angle(x, y, t) {
+            return 0.35
+                + 2.1 * Math.sin(x * 0.0016 * K + y * 0.0009 * K + t * 0.00007)
+                + 1.7 * Math.cos(y * 0.0018 * K - x * 0.0008 * K - t * 0.00005);
         }
 
         function resize() {
             const dpr = Math.min(window.devicePixelRatio || 1, 2);
             W = window.innerWidth;
             H = window.innerHeight;
+            K = Math.min(2, Math.max(1, 1000 / W));   // em ecrãs pequenos as curvas ficam um pouco mais apertadas
             cv.width = W * dpr;
             cv.height = H * dpr;
             cv.style.width = W + "px";
@@ -105,16 +121,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
         function draw(t) {
             ctx.clearRect(0, 0, W, H);
+            ctx.lineJoin = "round";
+            ctx.lineCap = "round";
+
             for (const ln of lines) {
-                ctx.beginPath();
-                for (let x = -20; x <= W + 20; x += 14) {
-                    const env = 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(x * ln.envFreq + ln.envPhase));
-                    let y = ln.base * H;
-                    for (const c of ln.comps) {
-                        y += Math.sin(x * c.freq + c.phase + t * c.speed) * c.amp * H * env;
-                    }
-                    if (x === -20) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                const px = ln.x * W, py = ln.y * H;
+
+                // para trás
+                const back = [];
+                let x = px, y = py;
+                for (let i = 0; i < HALF; i++) {
+                    const a = angle(x, y, t);
+                    x -= Math.cos(a) * STEP;
+                    y -= Math.sin(a) * STEP;
+                    back.push(x, y);
                 }
+
+                ctx.beginPath();
+                ctx.moveTo(back[back.length - 2], back[back.length - 1]);
+                for (let i = back.length - 4; i >= 0; i -= 2) ctx.lineTo(back[i], back[i + 1]);
+                ctx.lineTo(px, py);
+
+                // para a frente
+                x = px; y = py;
+                for (let i = 0; i < HALF; i++) {
+                    const a = angle(x, y, t);
+                    x += Math.cos(a) * STEP;
+                    y += Math.sin(a) * STEP;
+                    ctx.lineTo(x, y);
+                }
+
                 ctx.strokeStyle = `rgba(${ln.color},${ln.alpha})`;
                 ctx.lineWidth = ln.width;
                 ctx.stroke();
