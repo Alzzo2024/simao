@@ -27,10 +27,10 @@
 </head>
 <body>
 
-    <!-- Abertura: amálgama de quadrados (preenchida pelo script.js) -->
+    <!-- Abertura: pele de quadrados pretos (preenchida pelo script.js) -->
     <div id="intro" aria-hidden="true"></div>
 
-    <!-- Fundo com ondinhas irregulares -->
+    <!-- Fundo com ondas grandes e irregulares -->
     <canvas id="bg-waves" aria-hidden="true"></canvas>
 
     <header class="site-header">
@@ -74,28 +74,37 @@
     </header>
 
     <main>
-        <section id="inicio" class="hero-section">
-            <h1 class="sr-only">Simão Araújo - Designer &amp; Organizador de Eventos</h1>
+        <!-- O wrapper dá a leve borda azul ao recorte picotado -->
+        <div class="hero-edge">
+            <section id="inicio" class="hero-section">
+                <h1 class="sr-only">Simão Araújo - Designer &amp; Organizador de Eventos</h1>
 
-            <!-- Fotografia completa (fundo do hero, com o recorte picotado em baixo) -->
-            <img src="img/simaofoto.png" alt="Simão Araújo" class="hero-bg">
-            <div class="hero-shade"></div>
+                <!-- Fotografia estática (fundo do hero) -->
+                <img src="img/simaofoto.png" alt="Simão Araújo" class="hero-bg">
+                <div class="hero-shade"></div>
 
-            <!-- Título: aparece sozinho depois da abertura; começa branco e vai ficando azul -->
-            <svg class="hero-signature" viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Criador Digital">
-                <text class="sig-text" x="350" y="108" text-anchor="middle" data-pt="Criador Digital" data-en="Digital Creator">Criador Digital</text>
-            </svg>
-        </section>
+                <!-- Título: aparece depois da abertura; começa branco e vai ficando azul -->
+                <svg class="hero-signature" viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Criador Digital">
+                    <text class="sig-text" x="350" y="108" text-anchor="middle" data-pt="Criador Digital" data-en="Digital Creator">Criador Digital</text>
+                </svg>
+            </section>
+        </div>
 
         <section id="sobre" class="dark-section">
             <div class="inner-container">
                 <h2 class="cursive-title-light" data-pt="Sobre" data-en="About">Sobre</h2>
 
                 <div class="about-text-block entrance-anim">
-                    <p class="about-paragraph" 
-                       data-pt="Com 19 anos e baseado em Lisboa, foco o meu trabalho num design gráfico minimalista, mas com uma identidade vincada. Acredito que a simplicidade só funciona quando carrega um propósito real. O meu objetivo é equilibrar o lado técnico da organização de eventos com a sensibilidade visual, criando projetos modernos que comunicam histórias autênticas e deixam uma marca clara." 
-                       data-en="At 19 years old and based in Lisbon, my work focuses on a minimalist graphic design approach that retains a strong, distinct identity. I believe simplicity only works when it carries a real purpose. My goal is to balance the technical side of event planning with visual sensitivity, creating modern projects that communicate authentic stories and leave a clear mark.">
-                        Com 19 anos e baseado em Lisboa, foco o meu trabalho num design gráfico minimalista, mas com uma identidade vincada. Acredito que a simplicidade só funciona quando carrega um propósito real. O meu objetivo é equilibrar o lado técnico da organização de eventos com a sensibilidade visual, criando projetos modernos que comunicam histórias autênticas e deixam uma marca clara.
+                    <p class="about-paragraph"
+                       data-pt="Tenho 19 anos, vivo em Lisboa e trabalho no ponto onde o design encontra a organização de eventos. Acredito que o minimalismo só vale a pena quando tem um propósito: cada linha, cada cor e cada espaço em branco estão ali por uma razão."
+                       data-en="I'm 19, based in Lisbon, and I work where design meets event planning. I believe minimalism is only worth it when it has a purpose: every line, every colour and every blank space is there for a reason.">
+                        Tenho 19 anos, vivo em Lisboa e trabalho no ponto onde o design encontra a organização de eventos. Acredito que o minimalismo só vale a pena quando tem um propósito: cada linha, cada cor e cada espaço em branco estão ali por uma razão.
+                    </p>
+
+                    <p class="about-paragraph"
+                       data-pt="Gosto de pegar numa ideia ainda crua e transformá-la em algo que se vê, se sente e se recorda, seja uma identidade visual, uma aplicação ou um evento inteiro. Do lado técnico, planeio, coordeno e resolvo problemas; do lado criativo, cuido dos pormenores que fazem as pessoas parar e olhar duas vezes."
+                       data-en="I like taking a raw idea and turning it into something people can see, feel and remember, whether it's a brand identity, an app or an entire event. On the technical side I plan, coordinate and solve problems; on the creative side I look after the details that make people stop and look twice.">
+                        Gosto de pegar numa ideia ainda crua e transformá-la em algo que se vê, se sente e se recorda, seja uma identidade visual, uma aplicação ou um evento inteiro. Do lado técnico, planeio, coordeno e resolvo problemas; do lado criativo, cuido dos pormenores que fazem as pessoas parar e olhar duas vezes.
                     </p>
 
                     <div class="cv-wrapper">
@@ -158,8 +167,13 @@
         <section id="portfolio" class="dark-section" style="padding-top: 40px;">
             <div class="inner-container">
                 <h2 class="cursive-title-light" data-pt="Portefólio" data-en="Portfolio">Portefólio</h2>
-                
-                <div class="portfolio-grid-top">
+
+                <!-- DESIGN -->
+                <div class="fav-row-head portfolio-head">
+                    <h4 class="fav-row-title" data-pt="Design" data-en="Design">Design</h4>
+                </div>
+
+                <div class="portfolio-grid">
                     <div class="card-item glass-box entrance-anim portfolio-item-trigger" data-project="vimperio">
                         <div class="card-img-holder full-cover">
                             <img src="portefolio/lojavimperio/lojavimperioimg.png" alt="Projeto Loja V Império" class="portfolio-img-render">
@@ -187,8 +201,13 @@
 
                 <hr class="glass-divider portfolio-divider">
 
-                <div class="portfolio-grid-bottom">
-                    
+                <!-- APLICAÇÕES -->
+                <div class="fav-row-head portfolio-head">
+                    <h4 class="fav-row-title" data-pt="Aplicações" data-en="Applications">Aplicações</h4>
+                </div>
+
+                <div class="portfolio-grid">
+
                     <!-- MESH -->
                     <div class="project-block-wide glass-box entrance-anim">
                         <div class="block-top-half">
