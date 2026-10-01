@@ -273,6 +273,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 tagEn: "Horror"
             },
             {
+                title: "Os Mauzões",
+                sub: "Pierre Perifel",
+                img: "filmes/badguys.png",
+                tagPt: "Comédia",
+                tagEn: "Comedy"
+            },
+            {
+                title: "Os Mauzões 2",
+                sub: "Pierre Perifel & JP Sans",
+                img: "filmes/badguys2.png",
+                tagPt: "Comédia",
+                tagEn: "Comedy"
+            },
+            {
                 title: "Nimona",
                 sub: "Nick Bruno & Troy Quane",
                 img: "filmes/nimona.png",
