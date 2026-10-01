@@ -194,6 +194,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const favoritesData = {
         music: [
             {
+                title: "Amanhã Tou Melhor",
+                sub: "Capitão Fausto",
+                img: "music/amanhãtoumelhor.png",
+                mp3: "audio/amanhãtoumelhor.mp3",
+                spotify: "https://open.spotify.com/intl-pt/album/6XsQLJOB2sts5JX29PbVjK",
+                apple: "https://music.apple.com/us/album/amanh%C3%A3-tou-melhor-single/1092665749"
+            },
+            {
                 title: "Você gosta dela",
                 sub: "DAPARTE",
                 img: "music/vocegostadela.png",
