@@ -273,14 +273,28 @@ document.addEventListener("DOMContentLoaded", function () {
                 tagEn: "Horror"
             },
             {
-                title: "Os Mauzões",
+                title: "IT: Chapter One",
+                sub: "Andy Muschietti",
+                img: "filmes/it1.png",
+                tagPt: "Terror",
+                tagEn: "Horror"
+            },
+            {
+                title: "IT: Chapter Two",
+                sub: "Andy Muschietti",
+                img: "filmes/it2.png",
+                tagPt: "Terror",
+                tagEn: "Horror"
+            },
+            {
+                title: "The Bad Guys",
                 sub: "Pierre Perifel",
                 img: "filmes/badguys.png",
                 tagPt: "Comédia",
                 tagEn: "Comedy"
             },
             {
-                title: "Os Mauzões 2",
+                title: "The Bad Guys 2",
                 sub: "Pierre Perifel & JP Sans",
                 img: "filmes/badguys2.png",
                 tagPt: "Comédia",
