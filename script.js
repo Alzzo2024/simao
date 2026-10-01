@@ -313,6 +313,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 tagEn: "Horror"
             },
             {
+                title: "The Platform",
+                sub: "Galder Gaztelu-Urrutia",
+                img: "filmes/theplatform.png",
+                tagPt: "Terror psicológico",
+                tagEn: "Psychological horror"
+            },
+            {
                 title: "House M.D.",
                 sub: "David Shore",
                 img: "filmes/House.png",
