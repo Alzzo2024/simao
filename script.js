@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
             {
                 title: "House M.D.",
                 sub: "David Shore",
-                img: "filmes/house.png",
+                img: "filmes/House.png",
                 tagPt: "Comédia",
                 tagEn: "Comedy"
             },
