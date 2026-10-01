@@ -273,6 +273,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 tagEn: "Horror"
             },
             {
+                title: "House M.D.",
+                sub: "David Shore",
+                img: "filmes/house.png",
+                tagPt: "Comédia",
+                tagEn: "Comedy"
+            },
+            {
                 title: "IT: Chapter One",
                 sub: "Andy Muschietti",
                 img: "filmes/it1.png",
