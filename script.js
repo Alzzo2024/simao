@@ -202,6 +202,30 @@ document.addEventListener("DOMContentLoaded", function () {
                 apple: "https://music.apple.com/us/album/amanh%C3%A3-tou-melhor-single/1092665749"
             },
             {
+                title: "Supernova",
+                sub: "Capitão Fausto",
+                img: "music/supernova.png",
+                mp3: "audio/Supernova.mp3",
+                spotify: "https://open.spotify.com/intl-pt/track/49yTZz0EysKG1CwYhdH6Mv",
+                apple: "https://music.apple.com/pt/song/supernova/880159983"
+            },
+            {
+                title: "Toma o comprimido",
+                sub: "António Variações",
+                img: "music/tomaocomprimido.png",
+                mp3: "audio/tomaocomprimido.mp3",
+                spotify: "https://open.spotify.com/intl-pt/track/61jvrLg2aii3M7zzcqWrWV",
+                apple: "https://music.apple.com/br/song/toma-o-comprimido/1475230990"
+            },
+            {
+                title: "Canção do Engate",
+                sub: "António Variações",
+                img: "music/engate.png",
+                mp3: "audio/cançãodoengate.mp3",
+                spotify: "https://open.spotify.com/intl-pt/track/5v5Kra9bZOVKBXpfLVK2fP",
+                apple: "https://music.apple.com/gb/song/can%C3%A7%C3%A3o-de-engate/806751936"
+            },
+            {
                 title: "Você gosta dela",
                 sub: "DAPARTE",
                 img: "music/vocegostadela.png",
@@ -256,6 +280,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 mp3: "audio/A Idade Do Lobo.mp3",
                 spotify: "https://open.spotify.com/intl-pt/track/1uYcDo2WRUfTifA1QSwFt6",
                 apple: "https://music.apple.com/za/song/a-idade-do-lobo/1442688979"
+            },
+            {
+                title: "Eu fui à Europa",
+                sub: "Linda Batista",
+                img: "music/eufuiàeuropa.png",
+                mp3: "audio/eufuiàeuropa.mp3",
+                spotify: "https://open.spotify.com/intl-pt/track/2Iyu84vScylpOiETyJ9QJk",
+                apple: "https://music.apple.com/br/song/eu-fui-%C3%A0-europa/401731722"
             }
         ],
         media: [
