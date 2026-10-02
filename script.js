@@ -194,6 +194,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const favoritesData = {
         music: [
             {
+                title: "Serenate Existencialista",
+                sub: "O Grilo",
+                img: "music/serenataexistencialista.png",
+                mp3: "audio/serenataexistencialista.mp3",
+                spotify: "https://open.spotify.com/intl-pt/track/1tIJba7S9uHsNml4BqZrah",
+                apple: "https://music.apple.com/pt/song/serenata-existencialista/1321381128"
+            },
+            {
                 title: "Guitarrada",
                 sub: "O Grilo",
                 img: "music/guitarrada.png",
