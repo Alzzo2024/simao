@@ -226,6 +226,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 apple: "https://music.apple.com/gb/song/can%C3%A7%C3%A3o-de-engate/806751936"
             },
             {
+                title: "O corpo é que paga",
+                sub: "António Variações",
+                img: "music/ocorpoéquepaga.png",
+                mp3: "audio/O corpo é que paga.mp3",
+                spotify: "https://open.spotify.com/intl-pt/track/2aiX2gvkHZkVSdEPbNmEqX",
+            },
+            {
                 title: "Você gosta dela",
                 sub: "DAPARTE",
                 img: "music/vocegostadela.png",
