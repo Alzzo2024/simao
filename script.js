@@ -422,6 +422,7 @@ document.addEventListener("DOMContentLoaded", function () {
             { title: "FarCry 5", img: "games/farcry5.png" },
             { title: "FarCry 6", img: "games/farcry6.png" },
             { title: "Super Chicken Jumper", img: "games/superchickenjumper.png" },
+            { title: "Exit 8", img: "games/exit8.png", platinum: true },
             { title: "Iron Lung", img: "games/ironlung.png" },
             { title: "Ghostrunner", img: "games/ghostrunner.png" },
             { title: "Ghostrunner 2", img: "games/ghostrunner2.png" },
