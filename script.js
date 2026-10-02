@@ -210,6 +210,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 apple: "https://music.apple.com/pt/song/guitarrada/1798963360"
             },
             {
+                title: "Deletérios",
+                sub: "Deco",
+                img: "music/deletérios.png",
+                mp3: "audio/deletérios.mp3",
+                spotify: "https://open.spotify.com/intl-pt/track/64h99EDQhmXvR9Wgdj9De2",
+                apple: "https://music.apple.com/us/album/delet%C3%A9rios-single/1640901808?l=pt-BR"
+            },
+            {
                 title: "Amanhã Tou Melhor",
                 sub: "Capitão Fausto",
                 img: "music/amanhãtoumelhor.png",
