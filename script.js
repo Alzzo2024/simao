@@ -230,7 +230,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 sub: "António Variações",
                 img: "music/ocorpoéquepaga.png",
                 mp3: "audio/O corpo é que paga.mp3",
-                spotify: "https://open.spotify.com/intl-pt/track/2aiX2gvkHZkVSdEPbNmEqX",
+                spotify: "https://open.spotify.com/intl-pt/track/3XGa0xYj3bmqRf183emc6q",
+                apple: "https://music.apple.com/pt/song/o-corpo-%C3%A9-que-paga/1394682094",
             },
             {
                 title: "Você gosta dela",
