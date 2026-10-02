@@ -234,6 +234,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 apple: "https://music.apple.com/pt/song/o-corpo-%C3%A9-que-paga/1394682094",
             },
             {
+                title: "Anjo da guarda",
+                sub: "António Variações",
+                img: "music/anjodaguarda.png",
+                mp3: "audio/Anjinho da guarda.mp3",
+                spotify: "https://open.spotify.com/intl-pt/album/3Vj6HqLnv4aoqUE5B0bdCX",
+                apple: "https://music.apple.com/pt/album/anjo-da-guarda/1394681516",
+            },
+            {
                 title: "Você gosta dela",
                 sub: "DAPARTE",
                 img: "music/vocegostadela.png",
