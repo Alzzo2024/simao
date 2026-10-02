@@ -424,10 +424,12 @@ document.addEventListener("DOMContentLoaded", function () {
             { title: "Super Chicken Jumper", img: "games/superchickenjumper.png" },
             { title: "Exit 8", img: "games/exit8.png", platinum: true },
             { title: "Iron Lung", img: "games/ironlung.png" },
+            { title: "Resident Evil 7", img: "games/residentevil7.png" },
             { title: "Ghostrunner", img: "games/ghostrunner.png" },
             { title: "Ghostrunner 2", img: "games/ghostrunner2.png" },
             { title: "Coffee Talk", img: "games/CoffeeTalk.png" },
             { title: "Bendy and the Dark Revival", img: "games/batdr.png" },
+            { title: "Subnautica", img: "games/subnautica.png" },
         ]
     };
 
