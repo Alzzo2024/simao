@@ -194,6 +194,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const favoritesData = {
         music: [
             {
+                title: "Guitarrada",
+                sub: "O Grilo",
+                img: "music/guitarrada.png",
+                mp3: "audio/Guitarrada.mp3",
+                spotify: "https://open.spotify.com/intl-pt/track/7fT4wCxnKI1FFb0QnQ4nX3",
+                apple: "https://music.apple.com/pt/song/guitarrada/1798963360"
+            },
+            {
                 title: "Amanhã Tou Melhor",
                 sub: "Capitão Fausto",
                 img: "music/amanhãtoumelhor.png",
