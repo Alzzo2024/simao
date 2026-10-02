@@ -7,9 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // =====================================================
     // ABERTURA: "pele" preta de quadrados (estilo Venom)
-    // O ecrã começa todo preto. A massa de quadrados vai
-    // recuando de um canto ao canto oposto, com a frente
-    // irregular, até revelar o site. A foto fica parada.
+    // Todos os quadrados são quadrados perfeitos e 100% pretos.
+    // O ecrã começa em breu total e a massa recua de um canto
+    // ao canto oposto até revelar o site. A foto fica parada.
     // =====================================================
     function runIntro() {
         const intro = document.getElementById("intro");
@@ -27,10 +27,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const H = window.innerHeight;
         const base = Math.max(64, Math.round(W / 12));   // tamanho dos quadrados grandes
         const layers = [
-            { cell: base,        min: 1.5, max: 2.3 },   // camada grande (tapa tudo)
-            { cell: base * 0.5,  min: 1.3, max: 2.4 }    // camada pequena (dá o aspeto de pele/amálgama)
+            { cell: base,       min: 1.5, max: 2.3 },    // camada grande (tapa tudo)
+            { cell: base * 0.5, min: 1.5, max: 2.4 }     // camada pequena (dá o aspeto de amálgama)
         ];
-        const palette = ["#000000", "#000000", "#030303", "#060606", "#0a0a0a", "#0b1017"];
 
         const HOLD = 600;     // ms de breu total antes de começar
         const SPREAD = 1700;  // ms que a massa demora a recuar de um canto ao outro
@@ -43,11 +42,10 @@ document.addEventListener("DOMContentLoaded", function () {
             for (let r = 0; r < rows; r++) {
                 for (let c = 0; c < cols; c++) {
                     const s = L.cell * (L.min + Math.random() * (L.max - L.min));
-                    const cx = (c + 0.5) * L.cell + (Math.random() - 0.5) * 0.6 * L.cell;
-                    const cy = (r + 0.5) * L.cell + (Math.random() - 0.5) * 0.6 * L.cell;
+                    const cx = (c + 0.5) * L.cell + (Math.random() - 0.5) * 0.4 * L.cell;
+                    const cy = (r + 0.5) * L.cell + (Math.random() - 0.5) * 0.4 * L.cell;
 
                     // progresso na diagonal (canto superior esquerdo -> inferior direito) + ruído
-                    // para a frente da massa ser irregular, com "tentáculos"
                     let t = (cx / W) * 0.55 + (cy / H) * 0.45;
                     t += 0.10 * Math.sin(cx * 0.006 + cy * 0.004)
                        + 0.08 * Math.sin(cy * 0.012 - cx * 0.005 + 1.7)
@@ -58,16 +56,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     sq.className = "intro-sq";
                     sq.style.cssText =
                         `left:${cx - s / 2}px;top:${cy - s / 2}px;width:${s}px;height:${s}px;` +
-                        `background:${palette[Math.floor(Math.random() * palette.length)]};` +
                         `z-index:${Math.floor(Math.random() * 60)};` +
-                        `--r:${(Math.random() * 90 - 45).toFixed(0)}deg;` +
                         `transition-delay:${(t * SPREAD).toFixed(0)}ms;transition-duration:${DUR}ms;`;
                     intro.appendChild(sq);
                 }
             }
         });
-
-        intro.style.background = "transparent"; // agora só os quadrados tapam o site
 
         setTimeout(() => intro.classList.add("go"), HOLD);
         // o título começa a escrever-se quando a massa já recuou quase toda
@@ -78,8 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // =====================================================
     // FUNDO: ondas grandes, espalhadas e irregulares
-    // Linhas que seguem um campo de fluxo suave: curvas largas
-    // que se cruzam, sem serem lineares nem paralelas.
     // =====================================================
     (function initWaves() {
         const cv = document.getElementById("bg-waves");
@@ -111,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const dpr = Math.min(window.devicePixelRatio || 1, 2);
             W = window.innerWidth;
             H = window.innerHeight;
-            K = Math.min(2, Math.max(1, 1000 / W));   // em ecrãs pequenos as curvas ficam um pouco mais apertadas
+            K = Math.min(2, Math.max(1, 1000 / W));
             cv.width = W * dpr;
             cv.height = H * dpr;
             cv.style.width = W + "px";
@@ -127,7 +119,6 @@ document.addEventListener("DOMContentLoaded", function () {
             for (const ln of lines) {
                 const px = ln.x * W, py = ln.y * H;
 
-                // para trás
                 const back = [];
                 let x = px, y = py;
                 for (let i = 0; i < HALF; i++) {
@@ -142,7 +133,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 for (let i = back.length - 4; i >= 0; i -= 2) ctx.lineTo(back[i], back[i + 1]);
                 ctx.lineTo(px, py);
 
-                // para a frente
                 x = px; y = py;
                 for (let i = 0; i < HALF; i++) {
                     const a = angle(x, y, t);
@@ -186,10 +176,28 @@ document.addEventListener("DOMContentLoaded", function () {
     handleLangButtonPosition();
 
     // =====================================================
+    // CAPPUCCINO (ao lado do "Sobre")
+    // =====================================================
+    const capBtn = document.getElementById("cap-btn");
+    const capBubble = document.getElementById("cap-bubble");
+    let capTimer;
+    if (capBtn && capBubble) {
+        capBtn.addEventListener("click", () => {
+            capBubble.classList.toggle("show");
+            clearTimeout(capTimer);
+            if (capBubble.classList.contains("show")) {
+                capTimer = setTimeout(() => capBubble.classList.remove("show"), 3000);
+            }
+        });
+    }
+
+    // =====================================================
     // GOSTOS PESSOAIS (MÚSICAS, SÉRIES/FILMES, JOGOS)
     // Para adicionar algo novo, basta acrescentar um objeto à lista.
+    // Nos jogos, põe  platinum: true  para mostrar o troféu de platina.
     // =====================================================
     const SHOW_PLACEHOLDERS = true; // true = mostra caixas vazias até completar 5/3/5. Põe false para esconder.
+    const PLATINUM_ICON = "img/platina.png"; // imagem do troféu de platina
 
     const favoritesData = {
         music: [
@@ -273,7 +281,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 spotify: "https://open.spotify.com/intl-pt/track/3ekb16CKWJXiIS7Tt0dhav?si=d8d87985c0124a50",
                 apple: "https://music.apple.com/us/song/voc%C3%AA-gosta-dela/1592586865"
             },
-            
             {
                 title: "Nope your too late i already died",
                 sub: "WIFISKELETON",
@@ -403,11 +410,11 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         ],
         games: [
-            { title: "Celeste", img: "games/celeste.png" },
+            { title: "Celeste", img: "games/celeste.png", platinum: true },
             { title: "Cult of the Lamb", img: "games/cultofthelamb.png" },
             { title: "Hollow Knight", img: "games/hollowknight.png" },
             { title: "Hollow Knight Silksong", img: "games/Silksong.png" },
-            { title: "Minecraft", img: "games/Minecraft.png" },
+            { title: "Minecraft", img: "games/Minecraft.png", platinum: true },
             { title: "Teardown", img: "games/Teardown.png" },
             { title: "Rocket League", img: "games/rocketleague.png" },
             { title: "Detroit Become Human", img: "games/detroit.png" },
@@ -538,6 +545,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function buildCard(item, type) {
         const card = document.createElement("div");
         card.className = "fav-card glass-box";
+        if (item.platinum) card.classList.add("platinum");
 
         const hasAudio = (type === "music" && item.mp3);
 
@@ -549,6 +557,10 @@ document.addEventListener("DOMContentLoaded", function () {
             ? `<div class="fav-error" data-pt="MP3 não encontrado" data-en="MP3 not found">MP3 não encontrado</div>`
             : "";
 
+        const platHTML = item.platinum
+            ? `<img src="${PLATINUM_ICON}" alt="Platina" title="Platina" class="plat-trophy" onerror="this.style.display='none'">`
+            : "";
+
         const subHTML = item.sub ? `<p class="fav-card-sub">${item.sub}</p>` : "";
 
         const tagHTML = item.tagPt
@@ -556,15 +568,18 @@ document.addEventListener("DOMContentLoaded", function () {
             : "";
 
         let linksHTML = "";
-        if (type === "music" && (item.spotify || item.apple)) {
+        if (type === "music" && (item.spotify || item.apple || item.mp3)) {
+            const fname = (item.title + (item.sub ? " - " + item.sub : "")).replace(/[\\/:*?"<>|]/g, "") + ".mp3";
             linksHTML = `<div class="fav-card-links">
                 ${item.spotify ? `<a href="${item.spotify}" target="_blank" title="Spotify"><i class="fa-brands fa-spotify"></i></a>` : ""}
                 ${item.apple ? `<a href="${item.apple}" target="_blank" title="Apple Music"><i class="fa-brands fa-apple"></i></a>` : ""}
+                ${item.mp3 ? `<a href="${encodeURI(item.mp3)}" download="${fname}" title="Download"><i class="fa-solid fa-download"></i></a>` : ""}
             </div>`;
         }
 
         card.innerHTML = `
-            <img src="${item.img}" alt="${item.title}" class="fav-card-img">
+            <img src="${item.img}" alt="${item.title}" class="fav-card-img" draggable="false">
+            ${platHTML}
             ${errorHTML}
             <div class="fav-card-overlay">
                 ${playHTML}
@@ -613,7 +628,7 @@ document.addEventListener("DOMContentLoaded", function () {
     renderFavRow("track-media", favoritesData.media, "media", 3);
     renderFavRow("track-games", favoritesData.games, "games", 5);
 
-    // Setinhas dos carrosséis
+    // Setinhas dos carrosséis + arrastar com o rato
     document.querySelectorAll(".fav-carousel").forEach(car => {
         const track = car.querySelector(".fav-track");
         const prev = car.querySelector(".fav-prev");
@@ -632,7 +647,48 @@ document.addEventListener("DOMContentLoaded", function () {
         track.addEventListener("scroll", updateArrows);
         window.addEventListener("resize", updateArrows);
         updateArrows();
+
+        // Arrastar com o rato (no telemóvel já se desliza com o dedo)
+        let down = false, moved = false, startX = 0, startLeft = 0;
+        track.addEventListener("pointerdown", (e) => {
+            if (e.pointerType !== "mouse" || e.button !== 0) return;
+            if (e.target.closest("button, a, input")) return;
+            down = true; moved = false;
+            startX = e.clientX; startLeft = track.scrollLeft;
+        });
+        window.addEventListener("pointermove", (e) => {
+            if (!down) return;
+            const dx = e.clientX - startX;
+            if (Math.abs(dx) > 4) {
+                if (!moved) { moved = true; track.classList.add("dragging"); }
+                track.scrollLeft = startLeft - dx;
+            }
+        });
+        window.addEventListener("pointerup", () => {
+            if (!down) return;
+            down = false;
+            track.classList.remove("dragging");
+        });
+        track.addEventListener("click", (e) => {
+            if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
+        }, true);
+
+        car._updateArrows = updateArrows;
     });
+
+    // ---------- LAYOUT DAS MÚSICAS (1 fila / 2 filas) ----------
+    const layoutBtn = document.getElementById("layout-btn");
+    const musicTrack = document.getElementById("track-music");
+    if (layoutBtn && musicTrack) {
+        const musicCarousel = musicTrack.closest(".fav-carousel");
+        layoutBtn.addEventListener("click", () => {
+            const expanded = musicCarousel.classList.toggle("expanded");
+            layoutBtn.classList.toggle("on", expanded);
+            layoutBtn.querySelector("i").className = expanded ? "fa-solid fa-grip-lines" : "fa-solid fa-table-cells-large";
+            musicTrack.scrollLeft = 0;
+            if (musicCarousel._updateArrows) musicCarousel._updateArrows();
+        });
+    }
 
     // MAPA DE PROJETOS DE DESIGN (Apenas os que precisam de galeria/modal)
     const projectDatabase = {
