@@ -52,7 +52,9 @@
                         </div>
                     </div>
                     
-                    <a href="https://revolut.me/simaoa_cz_ytr4" target="_blank" data-pt="Donativo" data-en="Donate" class="btn-donativo shimmer">Donativo</a>
+                    <a href="https://revolut.me/simaoa_cz_ytr4" target="_blank" class="btn-donativo shimmer">
+                        <i class="fa-solid fa-heart"></i> <span data-pt="Apoiar" data-en="Support">Apoiar</span>
+                    </a>
                 </nav>
 
                 <div class="header-actions">
@@ -68,7 +70,9 @@
             <a href="#inicio" data-pt="Início" data-en="Home">Início</a>
             <a href="#sobre" data-pt="Sobre" data-en="About">Sobre</a>
             <a href="#portfolio" data-pt="Portefólio" data-en="Portfolio">Portefólio</a>
-            <a href="https://revolut.me/simaoa_cz_ytr4" target="_blank" data-pt="Donativo" data-en="Donate">Donativo</a>
+            <a href="https://revolut.me/simaoa_cz_ytr4" target="_blank" class="btn-donativo shimmer">
+                <i class="fa-solid fa-heart"></i> <span data-pt="Apoiar" data-en="Support">Apoiar</span>
+            </a>
             <div id="mobile-lang-container"></div>
         </nav>
     </header>
@@ -92,7 +96,15 @@
 
         <section id="sobre" class="dark-section">
             <div class="inner-container">
-                <h2 class="cursive-title-light" data-pt="Sobre" data-en="About">Sobre</h2>
+
+                <!-- Título "Sobre" com o cappuccino (coloca a imagem em img/cappuccino.png) -->
+                <div class="about-title-wrap">
+                    <h2 class="cursive-title-light" data-pt="Sobre" data-en="About">Sobre</h2>
+                    <button id="cap-btn" class="cap-btn" aria-label="Cappuccino">
+                        <img src="img/cappuccino.png" alt="Cappuccino" onerror="this.parentElement.style.display='none'">
+                    </button>
+                    <span id="cap-bubble" class="cap-bubble">cappuccino ☕🤎</span>
+                </div>
 
                 <div class="about-text-block entrance-anim">
                     <p class="about-paragraph"
@@ -122,11 +134,16 @@
                     <div class="fav-row entrance-anim">
                         <div class="fav-row-head">
                             <h4 class="fav-row-title" data-pt="Músicas favoritas" data-en="Favorite music">Músicas favoritas</h4>
-                            <div class="volume-control">
-                                <button id="volume-btn" class="volume-btn" aria-label="Volume" title="Silenciar / ativar som">
-                                    <i class="fa-solid fa-volume-high"></i>
+                            <div class="music-tools">
+                                <div class="volume-control">
+                                    <button id="volume-btn" class="volume-btn" aria-label="Volume" title="Silenciar / ativar som">
+                                        <i class="fa-solid fa-volume-high"></i>
+                                    </button>
+                                    <input type="range" id="volume-slider" class="volume-slider" min="0" max="100" value="50" aria-label="Volume">
+                                </div>
+                                <button id="layout-btn" class="layout-btn" aria-label="Mudar layout" title="Mudar layout (1 fila / 2 filas)">
+                                    <i class="fa-solid fa-table-cells-large"></i>
                                 </button>
-                                <input type="range" id="volume-slider" class="volume-slider" min="0" max="100" value="50" aria-label="Volume">
                             </div>
                         </div>
                         <div class="fav-carousel" style="--visible: 5;">
