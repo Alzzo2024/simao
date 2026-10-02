@@ -18,15 +18,23 @@
     --card-w-wide: calc((5 * var(--card-w) + 2 * var(--card-gap)) / 3);
 
     /* Portefólio: todos os cartões (design e apps) com o mesmo tamanho */
-    --pcard-w: 460px;
     --pcard-h: 340px;
     --pcard-bottom: 140px;   /* altura da parte de baixo dos cartões das apps */
+
+    /* Cursor azul com borda preta (seta e mão) */
+    --cur-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M5 3v21l5.2-4.8 3.6 8.3 3.8-1.7-3.6-8.2H22z' fill='%2384BAEA' stroke='%23000' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 5 3, auto;
+    --cur-hand: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg fill='%23000' stroke='%23000' stroke-width='3.2' stroke-linejoin='round'%3E%3Crect x='11' y='2' width='4.4' height='16' rx='2.2'/%3E%3Crect x='15.4' y='9' width='4' height='12' rx='2'/%3E%3Crect x='19.4' y='10.5' width='4' height='11' rx='2'/%3E%3Crect x='23.4' y='12.5' width='3.8' height='9.5' rx='1.9'/%3E%3Crect x='8.5' y='16' width='18.7' height='12' rx='5'/%3E%3C/g%3E%3Cg fill='%2384BAEA'%3E%3Crect x='11' y='2' width='4.4' height='16' rx='2.2'/%3E%3Crect x='15.4' y='9' width='4' height='12' rx='2'/%3E%3Crect x='19.4' y='10.5' width='4' height='11' rx='2'/%3E%3Crect x='23.4' y='12.5' width='3.8' height='9.5' rx='1.9'/%3E%3Crect x='8.5' y='16' width='18.7' height='12' rx='5'/%3E%3C/g%3E%3C/svg%3E") 13 3, pointer;
 }
 html {
     scroll-behavior: smooth; overflow-x: hidden; width: 100%;
     background-color: var(--bg);
     background-image: radial-gradient(ellipse at 50% 0%, rgba(22, 34, 47, 0.55) 0%, transparent 60%);
     background-attachment: fixed;
+}
+html, body { cursor: var(--cur-arrow); }
+a, button, [role="button"], input[type="range"], label,
+.portfolio-item-trigger, .card-item, .fav-arrow, .gallery-nav-btn {
+    cursor: var(--cur-hand) !important;
 }
 html.intro-lock, html.intro-lock body { overflow: hidden !important; }
 body { 
@@ -38,6 +46,10 @@ body {
 }
 img { max-width: 100%; }
 a { color: inherit; text-decoration: none; transition: 0.3s; }
+
+/* Cor de seleção de texto */
+::selection { background: var(--blue); color: var(--black); }
+::-moz-selection { background: var(--blue); color: var(--black); }
 
 .sr-only {
     position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -65,15 +77,17 @@ h3, h4, .btn-cv, .unified-tag, .btn-lang, .btn-donativo, .copy-txt, .f-email, .f
     z-index: -1; pointer-events: none;
 }
 
-/* --- ABERTURA: PELE DE QUADRADOS PRETOS --- */
+/* --- ABERTURA: PELE DE QUADRADOS 100% PRETOS --- */
 #intro { position: fixed; inset: 0; z-index: 30000; background: #000; overflow: hidden; pointer-events: all; }
 .intro-sq {
     position: absolute;
-    transform: scale(1) rotate(0deg); opacity: 1;
-    transition-property: transform, opacity;
+    background: #000;            /* todos pretos, sem tons diferentes */
+    transform: scale(1);
+    transition-property: transform;
     transition-timing-function: cubic-bezier(0.55, 0, 0.35, 1);
 }
-#intro.go .intro-sq { transform: scale(0) rotate(var(--r, 20deg)); opacity: 0; }
+#intro.go { background: transparent; }
+#intro.go .intro-sq { transform: scale(0); }
 
 /* --- GLASS LABELS --- */
 .glass-box, .glass-box-container {
@@ -112,12 +126,17 @@ h3, h4, .btn-cv, .unified-tag, .btn-lang, .btn-donativo, .copy-txt, .f-email, .f
 .nav-desktop a:hover:not(.btn-donativo), 
 .mobile-menu-overlay a:hover:not(.btn-donativo) { color: var(--blue); }
 
+/* Botão "Apoiar" (igual no PC e no telemóvel) */
 .btn-donativo { 
-    border: 1px solid var(--white); padding: 0 20px; height: 38px;
+    border: 1px solid var(--white); padding: 0 20px; height: 38px; gap: 8px;
     display: inline-flex; align-items: center; justify-content: center; 
     border-radius: 4px; line-height: 38px; vertical-align: middle; box-sizing: border-box;
+    font-size: 1rem; white-space: nowrap;
 }
+.mobile-menu-overlay a.btn-donativo { font-size: 1rem; }
 .btn-donativo:hover { background: var(--blue); color: var(--black); border-color: var(--blue); }
+.btn-donativo .fa-heart { animation: heartBeat 1.8s ease-in-out infinite; }
+@keyframes heartBeat { 0%, 60%, 100% { transform: scale(1); } 20% { transform: scale(1.22); } 40% { transform: scale(1.05); } }
 
 .btn-lang { 
     background: transparent; border: 1px solid var(--white); 
@@ -148,7 +167,6 @@ h3, h4, .btn-cv, .unified-tag, .btn-lang, .btn-donativo, .copy-txt, .f-email, .f
 @keyframes shimmerEffect { 0% { left: -100%; } 30% { left: 100%; } 100% { left: 100%; } }
 
 /* --- HERO: FOTO ESTÁTICA COM RECORTE PICOTADO E BORDA AZUL --- */
-/* O wrapper aplica a borda azul (drop-shadow sem blur) ao recorte picotado do hero */
 .hero-edge {
     margin-top: 90px;
     filter: drop-shadow(0 3px 0 rgba(132, 186, 234, 0.9));
@@ -159,19 +177,17 @@ h3, h4, .btn-cv, .unified-tag, .btn-lang, .btn-donativo, .copy-txt, .f-email, .f
     background: var(--blue-deep);
     clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 98% 100%, 96% 95%, 94% 100%, 92% 95%, 90% 100%, 88% 95%, 86% 100%, 84% 95%, 82% 100%, 80% 95%, 78% 100%, 76% 95%, 74% 100%, 72% 95%, 70% 100%, 68% 95%, 66% 100%, 64% 95%, 62% 100%, 60% 95%, 58% 100%, 56% 95%, 54% 100%, 52% 95%, 50% 100%, 48% 95%, 46% 100%, 44% 95%, 42% 100%, 40% 95%, 38% 100%, 36% 95%, 34% 100%, 32% 95%, 30% 100%, 28% 95%, 26% 100%, 24% 95%, 22% 100%, 20% 95%, 18% 100%, 16% 95%, 14% 100%, 12% 95%, 10% 100%, 8% 95%, 6% 100%, 4% 95%, 2% 100%, 0% 95%);
 }
-/* A foto é maior do que o hero e está puxada para cima.
-   Para subir/descer mais, muda o "top" (mais negativo = foto mais para cima). */
+/* Para subir/descer a foto, muda o "top" (mais negativo = foto mais para cima). */
 .hero-bg {
     position: absolute; left: 0; top: -12%; width: 100%; height: 115%; max-width: none;
     object-fit: cover; object-position: center 40%;
-    /* sem animação: a foto fica parada */
 }
 .hero-shade {
     position: absolute; inset: 0; pointer-events: none;
     background: linear-gradient(to bottom, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0.05) 40%, rgba(13,13,13,0.25) 100%);
 }
 
-/* Título "Criador Digital": mais acima do centro, aparece sozinho e passa de branco a azul */
+/* Título "Criador Digital" */
 .hero-signature {
     position: absolute; left: 50%; top: 20%;
     width: min(92vw, 760px); height: auto; overflow: visible;
@@ -203,6 +219,26 @@ body.site-ready .sig-text {
 .inner-container { max-width: 1200px; margin: 0 auto; }
 .cursive-title-light { font-family: 'Yellowtail', cursive; font-size: 4rem; color: var(--white); margin-bottom: 30px; }
 
+/* --- "SOBRE" + CAPPUCCINO --- */
+.about-title-wrap { position: relative; display: table; margin: 0 auto 30px; }
+.about-title-wrap .cursive-title-light { margin-bottom: 0; }
+.cap-btn {
+    position: absolute; right: -8px; top: -36px; width: 60px; height: 60px;
+    background: none; border: none; padding: 0;
+    transform: rotate(14deg); transition: transform 0.3s ease;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+.cap-btn:hover { transform: rotate(6deg) scale(1.1); }
+.cap-btn img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.cap-bubble {
+    position: absolute; right: -60px; top: -78px; z-index: 5; white-space: nowrap;
+    background: var(--black); color: #FFF; border: 1px solid rgba(132, 186, 234, 0.5); border-radius: 8px;
+    padding: 6px 12px; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.8rem;
+    opacity: 0; transform: translateY(6px) scale(0.95); pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.cap-bubble.show { opacity: 1; transform: translateY(0) scale(1); }
+
 /* --- SOBRE (SEM CAIXA, TEXTO JUSTIFICADO) --- */
 .about-text-block { max-width: 780px; margin: 0 auto; }
 .about-paragraph {
@@ -226,7 +262,7 @@ body.site-ready .sig-text {
 }
 .btn-cv {
     font-size: 1.05rem; border: 1px solid var(--white); color: var(--white); padding: 8px 25px; 
-    display: inline-flex; align-items: center; gap: 8px; border-radius: 4px; transition: 0.3s; cursor: pointer; background: transparent;
+    display: inline-flex; align-items: center; gap: 8px; border-radius: 4px; transition: 0.3s; background: transparent;
 }
 .btn-cv:hover { background: var(--blue); border-color: var(--blue); color: var(--black); }
 
@@ -240,15 +276,16 @@ body.site-ready .sig-text {
     font-size: 1rem; color: var(--blue); letter-spacing: 2px; text-transform: uppercase; margin: 0;
 }
 
-/* Volume */
+/* Volume + layout */
+.music-tools { display: flex; align-items: center; gap: 16px; }
 .volume-control { display: flex; align-items: center; gap: 8px; }
 .volume-btn {
-    background: none; border: none; color: var(--white); font-size: 0.95rem; cursor: pointer;
+    background: none; border: none; color: var(--white); font-size: 0.95rem;
     width: 24px; display: flex; align-items: center; justify-content: center; transition: color 0.3s ease;
 }
 .volume-btn:hover { color: var(--blue); }
 .volume-slider {
-    -webkit-appearance: none; appearance: none; width: 100px; height: 4px; border-radius: 4px; outline: none; cursor: pointer;
+    -webkit-appearance: none; appearance: none; width: 100px; height: 4px; border-radius: 4px; outline: none;
     --val: 50%;
     background: linear-gradient(to right, var(--blue) var(--val), rgba(255, 255, 255, 0.15) var(--val));
 }
@@ -260,6 +297,12 @@ body.site-ready .sig-text {
 .volume-slider::-moz-range-thumb {
     width: 12px; height: 12px; border-radius: 50%; background: var(--blue); border: none;
 }
+.layout-btn {
+    width: 30px; height: 30px; border-radius: 6px; font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.15); color: var(--white);
+    display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;
+}
+.layout-btn:hover, .layout-btn.on { background: var(--blue-soft); border-color: var(--blue); color: var(--blue); }
 
 .fav-carousel {
     --item-w: var(--card-w);
@@ -272,22 +315,33 @@ body.site-ready .sig-text {
     padding: 6px 0; min-width: 0; flex: 0 1 auto;
     max-width: calc(var(--visible) * var(--item-w) + (var(--visible) - 1) * var(--card-gap));
     scrollbar-width: none; -ms-overflow-style: none;
+    user-select: none; -webkit-user-select: none;
 }
 .fav-track::-webkit-scrollbar { display: none; }
+.fav-track.dragging { scroll-snap-type: none; scroll-behavior: auto; }
+
+/* Músicas expandidas: 2 filas, ainda dá para arrastar/deslizar */
+.fav-carousel.expanded .fav-track {
+    display: grid;
+    grid-template-rows: repeat(2, var(--card-w));
+    grid-auto-flow: column;
+    grid-auto-columns: var(--item-w);
+}
+.fav-carousel.expanded .fav-card-empty { display: none; }
 
 .fav-arrow {
     background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1);
     color: #FFF; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-size: 1rem; cursor: pointer; transition: all 0.3s ease; flex-shrink: 0;
+    font-size: 1rem; transition: all 0.3s ease; flex-shrink: 0;
 }
 .fav-arrow:hover { background: var(--blue); border-color: var(--blue); color: var(--black); }
 .fav-arrow:disabled { opacity: 0.25; pointer-events: none; }
 
 .fav-card {
     flex: 0 0 var(--item-w); width: var(--item-w); height: var(--card-w);
-    position: relative; overflow: hidden; border-radius: 12px; scroll-snap-align: start; cursor: default;
+    position: relative; overflow: hidden; border-radius: 12px; scroll-snap-align: start;
 }
-.fav-card-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.fav-card-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; -webkit-user-drag: none; }
 .fav-card:hover .fav-card-img { transform: scale(1.05); }
 
 .fav-card-empty {
@@ -315,7 +369,7 @@ body.site-ready .sig-text {
 .fav-card-sub { font-size: 0.68rem; color: #FFF; opacity: 0.55; letter-spacing: 0.5px; font-family: 'JetBrains Mono', monospace; }
 .tag-genre { font-size: 0.7rem; padding: 2px 9px; margin-top: 2px; }
 
-/* Ícones Spotify / Apple */
+/* Ícones Spotify / Apple / Download */
 .fav-card-links { display: flex; gap: 12px; font-size: 0.9rem; margin-top: 2px; }
 .fav-card-links a { opacity: 0.7; transition: color 0.3s ease, opacity 0.3s ease; }
 .fav-card-links a:hover { opacity: 1; color: var(--blue); }
@@ -323,7 +377,7 @@ body.site-ready .sig-text {
 /* Botão play/pausa */
 .fav-play-btn {
     position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%);
-    width: 36px; height: 36px; border-radius: 50%; border: none; cursor: pointer;
+    width: 36px; height: 36px; border-radius: 50%; border: none;
     background: var(--blue); color: var(--black); font-size: 0.8rem;
     display: flex; align-items: center; justify-content: center;
     transition: transform 0.25s ease, background 0.25s ease;
@@ -340,13 +394,37 @@ body.site-ready .sig-text {
 }
 .fav-error.show { opacity: 1; }
 
+/* Jogos platinados: troféu + borda prateada reluzente */
+.plat-trophy {
+    position: absolute; top: 7px; right: 7px; width: 32px; height: 32px; z-index: 8;
+    object-fit: contain; pointer-events: none;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+}
+.fav-card.platinum {
+    border: 1.5px solid #d5dbe3;
+    animation: platGlow 2.8s ease-in-out infinite;
+}
+.fav-card.platinum:hover { border-color: #f4f7fb; }
+.fav-card.platinum::after {
+    content: ''; position: absolute; top: 0; left: -100%; width: 45%; height: 100%; z-index: 7; pointer-events: none;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    animation: platShine 3s infinite;
+}
+@keyframes platShine { 0% { left: -100%; } 35% { left: 150%; } 100% { left: 150%; } }
+@keyframes platGlow {
+    0%, 100% { box-shadow: 0 0 8px rgba(213, 219, 227, 0.3), inset 0 0 8px rgba(213, 219, 227, 0.12); }
+    50%      { box-shadow: 0 0 18px rgba(235, 240, 246, 0.6), inset 0 0 12px rgba(235, 240, 246, 0.25); }
+}
+
 /* --- PORTEFÓLIO: DESIGN + APLICAÇÕES (cartões todos do mesmo tamanho) --- */
 .portfolio-head { margin-bottom: 26px; }
 
+/* Mesma largura total que as caixas das músicas, filmes e jogos (5 caixas) */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, var(--pcard-w)));
-    justify-content: center;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: calc(5 * var(--card-w) + 4 * var(--card-gap));
+    margin: 0 auto;
     gap: 30px;
 }
 
@@ -358,7 +436,6 @@ body.site-ready .sig-text {
     overflow: hidden;
     position: relative;
 }
-.card-item { cursor: pointer; }
 .card-img-holder.full-cover { width: 100%; height: 100%; position: relative; overflow: hidden; background: var(--black); }
 .portfolio-img-render { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
 
@@ -537,7 +614,7 @@ body.site-ready .sig-text {
 .gallery-nav-btn {
     background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1);
     color: #FFF; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-size: 1.2rem; cursor: pointer; transition: all 0.3s ease; z-index: 20500; flex-shrink: 0;
+    font-size: 1.2rem; transition: all 0.3s ease; z-index: 20500; flex-shrink: 0;
 }
 .gallery-nav-btn:hover { background: var(--blue); border-color: var(--blue); color: var(--black); transform: scale(1.05); }
 .gallery-nav-btn.hidden-btn { opacity: 0; pointer-events: none; visibility: hidden; }
@@ -575,7 +652,6 @@ body.site-ready .sig-text {
     color: var(--black); 
     border: none; 
     border-radius: 4px; 
-    cursor: pointer; 
     display: none;
     z-index: 9999; 
     font-size: 1.1rem; 
@@ -588,7 +664,7 @@ body.site-ready .sig-text {
 .entrance-anim.active { opacity: 1; filter: blur(0); transform: translateY(0); }
 
 /* --- MENU MOBILE --- */
-.hamburger-btn { display: none; background: none; border: none; flex-direction: column; gap: 6px; cursor: pointer; }
+.hamburger-btn { display: none; background: none; border: none; flex-direction: column; gap: 6px; }
 .hamburger-btn span { width: 28px; height: 2px; background: var(--white); transition: 0.3s; }
 
 .mobile-menu-overlay { 
@@ -614,6 +690,7 @@ body.site-ready .sig-text {
 @media (prefers-reduced-motion: reduce) {
     .hero-signature { clip-path: none; }
     .sig-text { stroke-dashoffset: 0; fill-opacity: 1; fill: var(--blue); stroke: var(--blue); stroke-width: 0.4; }
+    .fav-card.platinum, .fav-card.platinum::after, .btn-donativo .fa-heart { animation: none; }
 }
 
 /* =====================================================
@@ -636,7 +713,7 @@ body.site-ready .sig-text {
     .fav-card-empty { display: none; }
 
     /* Portefólio: uma coluna */
-    .portfolio-grid { grid-template-columns: minmax(0, var(--pcard-w)); }
+    .portfolio-grid { grid-template-columns: minmax(0, 1fr); max-width: 560px; }
 }
 
 @media (max-width: 600px) {
@@ -645,9 +722,14 @@ body.site-ready .sig-text {
     .dark-section { padding: 60px 16px; }
     #portfolio.dark-section { padding-top: 30px !important; }
     .cursive-title-light { font-size: 3rem; margin-bottom: 22px; }
+    .about-title-wrap { margin-bottom: 22px; }
     .glass-divider { margin: 20px 0; }
     .portfolio-divider { margin: 40px 0 35px; }
     .about-divider { margin: 45px auto; }
+
+    /* Cappuccino */
+    .cap-btn { width: 48px; height: 48px; top: -28px; right: -6px; }
+    .cap-bubble { top: -62px; right: -50px; font-size: 0.72rem; }
 
     /* Hero */
     .hero-signature { top: 16%; width: 96vw; }
@@ -667,6 +749,8 @@ body.site-ready .sig-text {
     .fav-card-links { font-size: 0.8rem; gap: 10px; }
     .tag-genre { font-size: 0.62rem; padding: 2px 7px; }
     .volume-slider { width: 80px; }
+    .music-tools { gap: 12px; }
+    .plat-trophy { width: 26px; height: 26px; top: 5px; right: 5px; }
 
     /* Portefólio */
     .portfolio-grid { gap: 18px; }
