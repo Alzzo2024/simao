@@ -176,19 +176,55 @@ document.addEventListener("DOMContentLoaded", function () {
     handleLangButtonPosition();
 
     // =====================================================
-    // CAPPUCCINO (ao lado do "Sobre")
+    // AUTOCOLANTES DO "SOBRE" (clique = balão de texto traduzível)
     // =====================================================
-    const capBtn = document.getElementById("cap-btn");
-    const capBubble = document.getElementById("cap-bubble");
-    let capTimer;
-    if (capBtn && capBubble) {
-        capBtn.addEventListener("click", () => {
-            capBubble.classList.toggle("show");
-            clearTimeout(capTimer);
-            if (capBubble.classList.contains("show")) {
-                capTimer = setTimeout(() => capBubble.classList.remove("show"), 3000);
+    const stickers = Array.from(document.querySelectorAll(".sticker"));
+    const bubble = document.getElementById("sticker-bubble");
+    let bubbleTimer, activeSticker = null;
+
+    function currentLangKey() {
+        return document.documentElement.lang === "en" ? "ben" : "bpt";
+    }
+
+    stickers.forEach(st => {
+        st.addEventListener("click", () => {
+            clearTimeout(bubbleTimer);
+            if (activeSticker === st && bubble.classList.contains("show")) {
+                bubble.classList.remove("show");
+                activeSticker = null;
+                return;
             }
+            activeSticker = st;
+            bubble.textContent = st.dataset[currentLangKey()];
+            bubble.classList.add("show");
+            bubbleTimer = setTimeout(() => {
+                bubble.classList.remove("show");
+                activeSticker = null;
+            }, 3500);
         });
+        st.addEventListener("animationend", () => st.classList.remove("wiggle"));
+    });
+
+    // De vez em quando, um autocolante abana ao de leve para chamar a atenção
+    if (!reduceMotion && stickers.length) {
+        const visibleStickers = () => stickers.filter(s => s.style.display !== "none");
+        const scheduleWiggle = () => {
+            const wait = 9000 + Math.random() * 7000;    // entre 9 e 16 segundos
+            setTimeout(() => {
+                const list = visibleStickers();
+                if (list.length && !document.hidden) {
+                    const pick = list[Math.floor(Math.random() * list.length)];
+                    pick.classList.add("wiggle");
+                    // às vezes um segundo autocolante abana logo a seguir
+                    if (list.length > 1 && Math.random() < 0.35) {
+                        const other = list.filter(s => s !== pick)[Math.floor(Math.random() * (list.length - 1))];
+                        setTimeout(() => other.classList.add("wiggle"), 350);
+                    }
+                }
+                scheduleWiggle();
+            }, wait);
+        };
+        setTimeout(scheduleWiggle, 4000);
     }
 
     // =====================================================
@@ -863,7 +899,7 @@ document.addEventListener("DOMContentLoaded", function () {
     langBtn.addEventListener("click", () => {
         currentLang = (currentLang === "PT") ? "EN" : "PT";
         langBtn.textContent = currentLang;
-        document.documentElement.lang = currentLang.toLowerCase(); // ajuda a hifenização do texto justificado
+        document.documentElement.lang = currentLang.toLowerCase(); // ajuda a hifenização do texto justificado e os balões dos autocolantes
         
         document.querySelectorAll("[data-pt]").forEach(el => {
             const text = el.getAttribute(`data-${currentLang.toLowerCase()}`);
