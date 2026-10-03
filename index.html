@@ -97,13 +97,33 @@
         <section id="sobre" class="dark-section">
             <div class="inner-container">
 
-                <!-- Título "Sobre" com o cappuccino (coloca a imagem em img/cappuccino.png) -->
+                <!-- Título "Sobre" com os autocolantes clicáveis -->
                 <div class="about-title-wrap">
                     <h2 class="cursive-title-light" data-pt="Sobre" data-en="About">Sobre</h2>
-                    <button id="cap-btn" class="cap-btn" aria-label="Cappuccino">
+
+                    <button class="sticker st-android" aria-label="Android"
+                        data-bpt="Uso Android 💚" data-ben="I use Android 💚">
+                        <img src="img/android.png" alt="Android" onerror="this.parentElement.style.display='none'">
+                    </button>
+                    <button class="sticker st-brave" aria-label="Brave"
+                        data-bpt="Uso Brave 🧡" data-ben="I use Brave 🧡">
+                        <img src="img/brave.png" alt="Brave" onerror="this.parentElement.style.display='none'">
+                    </button>
+                    <button class="sticker st-crazy" aria-label="Crazy Chase"
+                        data-bpt="O meu jogo favorito de infância no Gameboy Advance: Crazy Chase 🎮"
+                        data-ben="My favorite childhood Gameboy Advance game: Crazy Chase 🎮">
+                        <img src="img/crazychase.png" alt="Crazy Chase" onerror="this.parentElement.style.display='none'">
+                    </button>
+                    <button class="sticker st-cap" aria-label="Cappuccino"
+                        data-bpt="O meu café favorito: Cappuccino ☕🤎" data-ben="My favorite coffee: Cappuccino ☕🤎">
                         <img src="img/cappuccino.png" alt="Cappuccino" onerror="this.parentElement.style.display='none'">
                     </button>
-                    <span id="cap-bubble" class="cap-bubble">cappuccino ☕🤎</span>
+                    <button class="sticker st-sagres" aria-label="Sagres"
+                        data-bpt="Eu gosto de Sagres 🍺❤️" data-ben="I like Sagres 🍺❤️">
+                        <img src="img/sagres.png" alt="Sagres" onerror="this.parentElement.style.display='none'">
+                    </button>
+
+                    <span id="sticker-bubble" class="sticker-bubble"></span>
                 </div>
 
                 <div class="about-text-block entrance-anim">
