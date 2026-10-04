@@ -342,6 +342,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 apple: "https://music.apple.com/us/song/lover-is-a-day/1405076653"
             },
             {
+                title: "Constelação do amor",
+                sub: "Kantirez",
+                img: "music/constelaçãodoamor.png",
+                mp3: "audio/constelaçãodoamor.mp3",
+                spotify: "https://open.spotify.com/intl-pt/album/36lpj8Tl9DDN8k9S7Tetly",
+            },
+            {
                 title: "Ressurection",
                 sub: "Peter Johnston Rva",
                 img: "music/Resurrection.png",
