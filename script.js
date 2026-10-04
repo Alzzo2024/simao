@@ -342,6 +342,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 apple: "https://music.apple.com/pt/song/freaking-out-the-neighborhood/6789812648"
             },
             {
+                title: "No Other Heart",
+                sub: "Mac DeMarco",
+                img: "music/nootherheart.png",
+                mp3: "audio/nootherheart.mp3",
+                spotify: "https://open.spotify.com/intl-pt/track/3J31Ng3dKKJ6sEHDtV9hSp",
+                apple: "https://music.apple.com/us/album/no-other-heart-single/6789828863"
+            },
+            {
                 title: "Lover Is a Day",
                 sub: "CUCO",
                 img: "music/cuco.png",
