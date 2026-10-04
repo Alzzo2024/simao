@@ -238,6 +238,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const favoritesData = {
         music: [
             {
+                title: "Loverboy",
+                sub: "A-Wall",
+                img: "music/loverboy.png",
+                mp3: "audio/loverboy.mp3",
+                spotify: "https://open.spotify.com/intl-pt/album/3eRtkeVpH7EGKvzMdkYL3l",
+                apple: "https://music.apple.com/pt/song/loverboy/1773107733"
+            },
+            {
                 title: "Serenate Existencialista",
                 sub: "O Grilo",
                 img: "music/serenataexistencialista.png",
