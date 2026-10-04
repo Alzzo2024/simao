@@ -379,6 +379,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 mp3: "audio/lálongesenhora.mp3",
                 spotify: "https://open.spotify.com/intl-pt/track/6jU1kesgl8KLoL0hjk2E6R",
                 apple: "https://music.apple.com/pt/song/l%C3%A1-longe-senhora/693243790"
+            },
+            {
+                title: "Morena",
+                sub: "Vítor Kley & Mariana Nolasco",
+                img: "music/morena.png",
+                mp3: "audio/morena.mp3",
+                spotify: "https://open.spotify.com/intl-pt/track/5UOBna7TimaJuyxB8Dg2jI",
+                apple: "https://music.apple.com/gb/song/morena/1590383089"
             }
         ],
         media: [
