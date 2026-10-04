@@ -371,6 +371,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 mp3: "audio/eufuiàeuropa.mp3",
                 spotify: "https://open.spotify.com/intl-pt/track/2Iyu84vScylpOiETyJ9QJk",
                 apple: "https://music.apple.com/br/song/eu-fui-%C3%A0-europa/401731722"
+            },
+            {
+                title: "Lá longe senhora",
+                sub: "Carlos Paião",
+                img: "music/lálongesenhora.png",
+                mp3: "audio/lálongesenhora.mp3",
+                spotify: "https://open.spotify.com/intl-pt/track/6jU1kesgl8KLoL0hjk2E6R",
+                apple: "https://music.apple.com/pt/song/l%C3%A1-longe-senhora/693243790"
             }
         ],
         media: [
