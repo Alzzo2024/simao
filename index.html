@@ -97,7 +97,7 @@
         <section id="sobre" class="dark-section">
             <div class="inner-container">
 
-                <!-- Título "Sobre" com os autocolantes clicáveis -->
+                <!-- Título "Sobre" com os autocolantes clicáveis (a flutuar) -->
                 <div class="about-title-wrap">
                     <h2 class="cursive-title-light" data-pt="Sobre" data-en="About">Sobre</h2>
 
@@ -150,33 +150,40 @@
 
                 <div class="favorites-wrapper">
 
-                    <!-- MÚSICAS: 5 visíveis -->
+                    <!-- MÚSICAS: 5 visíveis (ou 2 filas) -->
                     <div class="fav-row entrance-anim">
                         <div class="fav-row-head">
                             <h4 class="fav-row-title" data-pt="Músicas favoritas" data-en="Favorite music">Músicas favoritas</h4>
-                            <div class="music-tools">
+                            <div class="row-tools">
                                 <div class="volume-control">
                                     <button id="volume-btn" class="volume-btn" aria-label="Volume" title="Silenciar / ativar som">
                                         <i class="fa-solid fa-volume-high"></i>
                                     </button>
                                     <input type="range" id="volume-slider" class="volume-slider" min="0" max="100" value="50" aria-label="Volume">
                                 </div>
-                                <button id="layout-btn" class="layout-btn" aria-label="Mudar layout" title="Mudar layout (1 fila / 2 filas)">
+                                <button class="layout-btn" data-target="track-music" aria-label="Mudar layout" title="Mudar layout (1 fila / 2 filas)">
                                     <i class="fa-solid fa-table-cells-large"></i>
                                 </button>
                             </div>
                         </div>
-                        <div class="fav-carousel" style="--visible: 5;">
+                        <div class="fav-carousel" style="--visible: 5; --rows: 2;">
                             <button class="fav-arrow fav-prev" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
                             <div class="fav-track" id="track-music"></div>
                             <button class="fav-arrow fav-next" aria-label="Seguinte"><i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                     </div>
 
-                    <!-- SÉRIES E FILMES: 3 visíveis (caixas esticadas) -->
+                    <!-- SÉRIES E FILMES: 3 visíveis (caixas esticadas) + filtro -->
                     <div class="fav-row entrance-anim">
                         <div class="fav-row-head">
                             <h4 class="fav-row-title" data-pt="Séries e filmes favoritos" data-en="Favorite series & movies">Séries e filmes favoritos</h4>
+                            <div class="row-tools">
+                                <div class="seg" id="media-filter" role="group" aria-label="Filtrar">
+                                    <button class="seg-btn on" data-kind="all"><span data-pt="Tudo" data-en="All">Tudo</span></button>
+                                    <button class="seg-btn" data-kind="serie"><i class="fa-solid fa-tv"></i><span data-pt="Séries" data-en="Series">Séries</span></button>
+                                    <button class="seg-btn" data-kind="filme"><i class="fa-solid fa-film"></i><span data-pt="Filmes" data-en="Movies">Filmes</span></button>
+                                </div>
+                            </div>
                         </div>
                         <div class="fav-carousel wide" style="--visible: 3;">
                             <button class="fav-arrow fav-prev" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
@@ -185,12 +192,20 @@
                         </div>
                     </div>
 
-                    <!-- JOGOS: 5 visíveis -->
+                    <!-- JOGOS: 5 visíveis (ou 3 filas) + filtro de platinas -->
                     <div class="fav-row entrance-anim">
                         <div class="fav-row-head">
                             <h4 class="fav-row-title" data-pt="Jogos favoritos" data-en="Favorite games">Jogos favoritos</h4>
+                            <div class="row-tools">
+                                <button class="layout-btn" data-target="track-games" aria-label="Mudar layout" title="Mudar layout (1 fila / 3 filas)">
+                                    <i class="fa-solid fa-table-cells-large"></i>
+                                </button>
+                                <button id="plat-btn" class="layout-btn plat-btn" aria-label="Só platinados" title="Mostrar só os jogos platinados">
+                                    <i class="fa-solid fa-trophy"></i>
+                                </button>
+                            </div>
                         </div>
-                        <div class="fav-carousel" style="--visible: 5;">
+                        <div class="fav-carousel" style="--visible: 5; --rows: 3;">
                             <button class="fav-arrow fav-prev" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
                             <div class="fav-track" id="track-games"></div>
                             <button class="fav-arrow fav-next" aria-label="Seguinte"><i class="fa-solid fa-chevron-right"></i></button>
