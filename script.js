@@ -494,6 +494,30 @@ document.addEventListener("DOMContentLoaded", function () {
                 kind: "filme",
                 tagPt: "Aventura",
                 tagEn: "Adventure"
+            },
+            {
+                title: "The Gaslight District",
+                sub: "Glitch & Nick Szopko",
+                img: "filmes/thegaslightdistrict.png",
+                kind: "serie",
+                tagPt: "Comédia",
+                tagEn: "Comedy"
+            },
+            {
+                title: "Helluva Boss",
+                sub: "Vivienne Medrano",
+                img: "filmes/helluvaboss.png",
+                kind: "serie",
+                tagPt: "Comédia",
+                tagEn: "Comedy"
+            },
+            {
+                title: "Hazbin Hotel",
+                sub: "Vivienne Medrano",
+                img: "filmes/hazbinhotel.png",
+                kind: "serie",
+                tagPt: "Musical",
+                tagEn: "Musical"
             }
         ],
         games: [
