@@ -8,8 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // =====================================================
     // ABERTURA: "pele" preta de quadrados (estilo Venom)
     // Todos os quadrados são quadrados perfeitos e 100% pretos.
-    // O ecrã começa em breu total e a massa recua de um canto
-    // ao canto oposto até revelar o site. A foto fica parada.
     // =====================================================
     function runIntro() {
         const intro = document.getElementById("intro");
@@ -45,7 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     const cx = (c + 0.5) * L.cell + (Math.random() - 0.5) * 0.4 * L.cell;
                     const cy = (r + 0.5) * L.cell + (Math.random() - 0.5) * 0.4 * L.cell;
 
-                    // progresso na diagonal (canto superior esquerdo -> inferior direito) + ruído
                     let t = (cx / W) * 0.55 + (cy / H) * 0.45;
                     t += 0.10 * Math.sin(cx * 0.006 + cy * 0.004)
                        + 0.08 * Math.sin(cy * 0.012 - cx * 0.005 + 1.7)
@@ -64,7 +61,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         setTimeout(() => intro.classList.add("go"), HOLD);
-        // o título começa a escrever-se quando a massa já recuou quase toda
         setTimeout(() => document.body.classList.add("site-ready"), HOLD + SPREAD * 0.75);
         setTimeout(finish, HOLD + SPREAD + DUR + 120);
     }
@@ -79,9 +75,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const ctx = cv.getContext("2d");
         let W = 0, H = 0, K = 1;
 
-        const N = 26;        // número de linhas
-        const HALF = 55;     // passos para cada lado do ponto inicial
-        const STEP = 14;     // comprimento de cada passo (px)
+        const N = window.innerWidth < 700 ? 16 : 26;   // menos linhas no telemóvel (mais leve)
+        const HALF = 55;
+        const STEP = 14;
         const lines = [];
         for (let i = 0; i < N; i++) {
             lines.push({
@@ -177,6 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // =====================================================
     // AUTOCOLANTES DO "SOBRE" (clique = balão de texto traduzível)
+    // Estão sempre a flutuar (CSS). De vez em quando abanam.
     // =====================================================
     const stickers = Array.from(document.querySelectorAll(".sticker"));
     const bubble = document.getElementById("sticker-bubble");
@@ -186,26 +183,31 @@ document.addEventListener("DOMContentLoaded", function () {
         return document.documentElement.lang === "en" ? "ben" : "bpt";
     }
 
+    function hideBubble() {
+        bubble.classList.remove("show");
+        stickers.forEach(s => s.classList.remove("on"));
+        activeSticker = null;
+    }
+
     stickers.forEach(st => {
         st.addEventListener("click", () => {
             clearTimeout(bubbleTimer);
             if (activeSticker === st && bubble.classList.contains("show")) {
-                bubble.classList.remove("show");
-                activeSticker = null;
+                hideBubble();
                 return;
             }
+            stickers.forEach(s => s.classList.remove("on"));
             activeSticker = st;
+            st.classList.add("on");
             bubble.textContent = st.dataset[currentLangKey()];
             bubble.classList.add("show");
-            bubbleTimer = setTimeout(() => {
-                bubble.classList.remove("show");
-                activeSticker = null;
-            }, 3500);
+            bubbleTimer = setTimeout(hideBubble, 3500);
         });
-        st.addEventListener("animationend", () => st.classList.remove("wiggle"));
+        st.addEventListener("animationend", (e) => {
+            if (e.target === st) st.classList.remove("wiggle");
+        });
     });
 
-    // De vez em quando, um autocolante abana ao de leve para chamar a atenção
     if (!reduceMotion && stickers.length) {
         const visibleStickers = () => stickers.filter(s => s.style.display !== "none");
         const scheduleWiggle = () => {
@@ -215,7 +217,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (list.length && !document.hidden) {
                     const pick = list[Math.floor(Math.random() * list.length)];
                     pick.classList.add("wiggle");
-                    // às vezes um segundo autocolante abana logo a seguir
                     if (list.length > 1 && Math.random() < 0.35) {
                         const other = list.filter(s => s !== pick)[Math.floor(Math.random() * (list.length - 1))];
                         setTimeout(() => other.classList.add("wiggle"), 350);
@@ -230,7 +231,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // =====================================================
     // GOSTOS PESSOAIS (MÚSICAS, SÉRIES/FILMES, JOGOS)
     // Para adicionar algo novo, basta acrescentar um objeto à lista.
-    // Nos jogos, põe  platinum: true  para mostrar o troféu de platina.
+    // Séries/filmes: kind: "serie" ou "filme".
+    // Jogos: platinum: true mostra o troféu e a borda prateada.
     // =====================================================
     const SHOW_PLACEHOLDERS = true; // true = mostra caixas vazias até completar 5/3/5. Põe false para esconder.
     const PLATINUM_ICON = "img/platina.png"; // imagem do troféu de platina
@@ -417,6 +419,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 title: "Iron Lung",
                 sub: "Markiplier",
                 img: "filmes/ironlung.png",
+                kind: "filme",
                 tagPt: "Terror",
                 tagEn: "Horror"
             },
@@ -424,6 +427,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 title: "Breaking Bad",
                 sub: "Vince Gilligan",
                 img: "filmes/breakingbad.png",
+                kind: "serie",
                 tagPt: "Crime",
                 tagEn: "Crime"
             },
@@ -431,6 +435,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 title: "Obsession",
                 sub: "Curry Barker",
                 img: "filmes/obsession.png",
+                kind: "filme",
                 tagPt: "Terror",
                 tagEn: "Horror"
             },
@@ -438,6 +443,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 title: "The Platform",
                 sub: "Galder Gaztelu-Urrutia",
                 img: "filmes/theplatform.png",
+                kind: "filme",
                 tagPt: "Terror psicológico",
                 tagEn: "Psychological horror"
             },
@@ -445,6 +451,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 title: "House M.D.",
                 sub: "David Shore",
                 img: "filmes/House.png",
+                kind: "serie",
                 tagPt: "Comédia",
                 tagEn: "Comedy"
             },
@@ -452,6 +459,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 title: "IT: Chapter One",
                 sub: "Andy Muschietti",
                 img: "filmes/it1.png",
+                kind: "filme",
                 tagPt: "Terror",
                 tagEn: "Horror"
             },
@@ -459,6 +467,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 title: "IT: Chapter Two",
                 sub: "Andy Muschietti",
                 img: "filmes/it2.png",
+                kind: "filme",
                 tagPt: "Terror",
                 tagEn: "Horror"
             },
@@ -466,6 +475,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 title: "The Bad Guys",
                 sub: "Pierre Perifel",
                 img: "filmes/badguys.png",
+                kind: "filme",
                 tagPt: "Comédia",
                 tagEn: "Comedy"
             },
@@ -473,6 +483,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 title: "The Bad Guys 2",
                 sub: "Pierre Perifel & JP Sans",
                 img: "filmes/badguys2.png",
+                kind: "filme",
                 tagPt: "Comédia",
                 tagEn: "Comedy"
             },
@@ -480,6 +491,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 title: "Nimona",
                 sub: "Nick Bruno & Troy Quane",
                 img: "filmes/nimona.png",
+                kind: "filme",
                 tagPt: "Aventura",
                 tagEn: "Adventure"
             }
@@ -641,6 +653,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function buildCard(item, type) {
         const card = document.createElement("div");
         card.className = "fav-card glass-box";
+        card._item = item;
         if (item.platinum) card.classList.add("platinum");
 
         const hasAudio = (type === "music" && item.mp3);
@@ -772,17 +785,122 @@ document.addEventListener("DOMContentLoaded", function () {
         car._updateArrows = updateArrows;
     });
 
-    // ---------- LAYOUT DAS MÚSICAS (1 fila / 2 filas) ----------
-    const layoutBtn = document.getElementById("layout-btn");
-    const musicTrack = document.getElementById("track-music");
-    if (layoutBtn && musicTrack) {
-        const musicCarousel = musicTrack.closest(".fav-carousel");
-        layoutBtn.addEventListener("click", () => {
-            const expanded = musicCarousel.classList.toggle("expanded");
-            layoutBtn.classList.toggle("on", expanded);
-            layoutBtn.querySelector("i").className = expanded ? "fa-solid fa-grip-lines" : "fa-solid fa-table-cells-large";
-            musicTrack.scrollLeft = 0;
-            if (musicCarousel._updateArrows) musicCarousel._updateArrows();
+    // =====================================================
+    // ANIMAÇÃO DE TROCA (layout / filtros)
+    // As caixas encolhem e desaparecem, a altura ajusta-se
+    // suavemente e as novas caixas entram em cascata.
+    // =====================================================
+    function runSwap(track, change) {
+        const car = track.closest(".fav-carousel");
+        const refresh = () => { if (car && car._updateArrows) car._updateArrows(); };
+
+        if (reduceMotion || !track.animate) {
+            change();
+            track.scrollLeft = 0;
+            refresh();
+            return Promise.resolve();
+        }
+
+        const visible = () => Array.from(track.querySelectorAll(".fav-card:not(.is-hidden)"));
+        const h0 = track.offsetHeight;
+
+        const outs = visible().map(c => c.animate(
+            [{ opacity: 1, transform: "scale(1)" }, { opacity: 0, transform: "scale(0.86)" }],
+            { duration: 220, easing: "ease-in", fill: "forwards" }
+        ));
+
+        return Promise.all(outs.map(a => a.finished)).catch(() => {}).then(() => {
+            change();
+            track.scrollLeft = 0;
+            outs.forEach(a => a.cancel());
+
+            const h1 = track.offsetHeight;
+            refresh();
+
+            if (h0 !== h1) {
+                track.style.overflow = "hidden";
+                track.style.height = h0 + "px";
+                void track.offsetHeight;
+                track.style.transition = "height 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)";
+                track.style.height = h1 + "px";
+                setTimeout(() => {
+                    track.style.height = "";
+                    track.style.transition = "";
+                    track.style.overflow = "";
+                    refresh();
+                }, 540);
+            }
+
+            visible().forEach((c, i) => {
+                c.animate(
+                    [
+                        { opacity: 0, transform: "translateY(22px) scale(0.9)" },
+                        { opacity: 1, transform: "translateY(0) scale(1)" }
+                    ],
+                    { duration: 520, delay: Math.min(i, 18) * 35, easing: "cubic-bezier(0.2, 0.8, 0.2, 1)", fill: "backwards" }
+                );
+            });
+
+            return new Promise(r => setTimeout(r, 380));
+        });
+    }
+
+    // Fila de trocas por carrossel (cliques rápidos não se atropelam)
+    function swap(track, change) {
+        track._chain = (track._chain || Promise.resolve()).then(() => runSwap(track, change));
+    }
+
+    // Mostra só as caixas que cumprem o filtro (pred = null mostra tudo)
+    function applyFilter(track, pred) {
+        const filtering = typeof pred === "function";
+        track.querySelectorAll(".fav-card").forEach(c => {
+            if (c.classList.contains("fav-card-empty")) {
+                c.classList.toggle("is-hidden", filtering);
+                return;
+            }
+            c.classList.toggle("is-hidden", filtering && !pred(c._item));
+        });
+    }
+
+    // ---------- BOTÕES DE LAYOUT (músicas: 2 filas; jogos: 3 filas) ----------
+    document.querySelectorAll(".layout-btn[data-target]").forEach(btn => {
+        const track = document.getElementById(btn.dataset.target);
+        if (!track) return;
+        const car = track.closest(".fav-carousel");
+
+        btn.addEventListener("click", () => {
+            swap(track, () => {
+                const expanded = car.classList.toggle("expanded");
+                btn.classList.toggle("on", expanded);
+                btn.querySelector("i").className = expanded ? "fa-solid fa-grip-lines" : "fa-solid fa-table-cells-large";
+            });
+        });
+    });
+
+    // ---------- FILTRO SÉRIES / FILMES ----------
+    const mediaTrack = document.getElementById("track-media");
+    const mediaFilter = document.getElementById("media-filter");
+    if (mediaTrack && mediaFilter) {
+        const segBtns = mediaFilter.querySelectorAll(".seg-btn");
+        segBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                if (btn.classList.contains("on")) return;
+                segBtns.forEach(b => b.classList.toggle("on", b === btn));
+                const kind = btn.dataset.kind;
+                swap(mediaTrack, () => applyFilter(mediaTrack, kind === "all" ? null : (it => it.kind === kind)));
+            });
+        });
+    }
+
+    // ---------- FILTRO JOGOS PLATINADOS ----------
+    const gamesTrack = document.getElementById("track-games");
+    const platBtn = document.getElementById("plat-btn");
+    if (gamesTrack && platBtn) {
+        platBtn.addEventListener("click", () => {
+            swap(gamesTrack, () => {
+                const on = platBtn.classList.toggle("on");
+                applyFilter(gamesTrack, on ? (it => it.platinum) : null);
+            });
         });
     }
 
@@ -961,6 +1079,11 @@ document.addEventListener("DOMContentLoaded", function () {
             const text = el.getAttribute(`data-${currentLang.toLowerCase()}`);
             if (text) el.textContent = text;
         });
+
+        // se um balão estiver aberto, atualiza o texto para a nova língua
+        if (activeSticker && bubble.classList.contains("show")) {
+            bubble.textContent = activeSticker.dataset[currentLangKey()];
+        }
     });
 
     // ENTRANCE OBSERVING
