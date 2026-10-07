@@ -546,6 +546,7 @@ document.addEventListener("DOMContentLoaded", function () {
             { title: "Bendy and the Dark Revival", img: "games/batdr.png" },
             { title: "Subnautica", img: "games/subnautica.png" },
             { title: "Subnautica Below Zero", img: "games/subnauticabelowzero.png" },
+            { title: "Schizophrenia", img: "games/schizophrenia.png", platinum: true },
             { title: "Five Night's at Freddy's", img: "games/fnaf1.png" },
             { title: "Five Night's at Freddy's 3", img: "games/fnaf3.png" },
             { title: "Five Night's at Freddy's 4", img: "games/fnaf4.png" },
