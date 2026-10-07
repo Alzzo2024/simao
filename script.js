@@ -240,6 +240,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const favoritesData = {
         music: [
             {
+                title: "Stargazing",
+                sub: "Travis Scott",
+                img: "music/stargazing.png",
+                mp3: "audio/stargazing.mp3",
+                spotify: "https://open.spotify.com/intl-pt/track/7wBJfHzpfI3032CSD7CE2m",
+                apple: "https://music.apple.com/us/song/stargazing/1421658117"
+            },
+            {
                 title: "Loverboy",
                 sub: "A-Wall",
                 img: "music/loverboy.png",
