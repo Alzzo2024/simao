@@ -368,6 +368,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 apple: "https://music.apple.com/us/song/lover-is-a-day/1405076653"
             },
             {
+                title: "L.A.X.",
+                sub: "Das Kope",
+                img: "music/L.A.X..png",
+                mp3: "audio/L.A.X..mp3",
+                spotify: "https://open.spotify.com/intl-pt/track/3cKbIicif5YVFF4VqI47sA",
+                apple: "https://music.apple.com/us/album/l-a-x-single/1408788152"
+            },
+            {
                 title: "Constelação do amor",
                 sub: "Kantirez",
                 img: "music/constelaçãodoamor.png",
