@@ -561,6 +561,7 @@ document.addEventListener("DOMContentLoaded", function () {
             { title: "Coffee Talk: Episode 2", img: "games/coffeetalkepisode2.png", platinum: true },
             { title: "Bendy and the Ink Machine", img: "games/batim.png" },
             { title: "Bendy and the Dark Revival", img: "games/batdr.png" },
+            { title: "Superliminal", img: "games/superliminal.png", platinum: true },
             { title: "Subnautica", img: "games/subnautica.png" },
             { title: "Subnautica Below Zero", img: "games/subnauticabelowzero.png" },
             { title: "Schizophrenia", img: "games/schizophrenia.png", platinum: true },
