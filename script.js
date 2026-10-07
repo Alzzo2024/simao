@@ -532,6 +532,7 @@ document.addEventListener("DOMContentLoaded", function () {
             { title: "Rocket League", img: "games/rocketleague.png" },
             { title: "Detroit Become Human", img: "games/detroit.png" },
             { title: "Hello Neighbor", img: "games/helloneighbor.png", platinum: true },
+            { title: "Hello Neighbor 2", img: "games/helloneighbor2.png" },
             { title: "FarCry 5", img: "games/farcry5.png" },
             { title: "FarCry 6", img: "games/farcry6.png" },
             { title: "Super Chicken Jumper", img: "games/superchickenjumper.png" },
