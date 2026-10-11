@@ -216,9 +216,86 @@
             </div>
         </section>
 
+        <!-- ÚLTIMOS VÍDEOS (preenchido automaticamente pelo script.js a partir do canal do YouTube) -->
+        <section id="videos" class="dark-section videos-section">
+            <div class="inner-container">
+                <hr class="glass-divider about-divider">
+
+                <div class="entrance-anim">
+                    <div class="fav-row-head vid-head">
+                        <h4 class="fav-row-title" data-pt="Últimos vídeos" data-en="Latest videos">Últimos vídeos</h4>
+                        <!-- Imagem a flutuar (não clicável): coloca a tua em img/youtube.png -->
+                        <img src="img/youtube.png" alt="" aria-hidden="true" class="vid-float" draggable="false" onerror="this.style.display='none'">
+                    </div>
+
+                    <div class="vid-grid" id="vid-grid"></div>
+
+                    <a href="https://www.youtube.com/@Alzzopt" target="_blank" rel="noopener" class="vid-channel-btn">
+                        <i class="fa-brands fa-youtube"></i> <span data-pt="Ver canal" data-en="Visit channel">Ver canal</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <section id="portfolio" class="dark-section" style="padding-top: 40px;">
             <div class="inner-container">
                 <h2 class="cursive-title-light" data-pt="Portefólio" data-en="Portfolio">Portefólio</h2>
+
+                <!-- JOGOS -->
+                <div class="fav-row-head portfolio-head">
+                    <h4 class="fav-row-title" data-pt="Jogos" data-en="Games">Jogos</h4>
+                </div>
+
+                <div class="game-feature glass-box entrance-anim">
+                    <!-- Imagem do jogo (formato thumbnail do YouTube, 16:9): portefolio/salvagecrew/salvagecrew.png -->
+                    <div class="game-media">
+                        <img src="portefolio/salvagecrew/salvagecrew.png" alt="Salvage Crew" onerror="this.style.display='none'">
+                    </div>
+
+                    <div class="game-info">
+                        <h3 class="game-title">Salvage Crew</h3>
+
+                        <p class="game-synopsis"
+                           data-pt="Gonçalo Mello trabalha no Sodalício da Orfandade Anómala (S.O.A.), uma organização que salva e ajuda crianças com necessidades e que estuda anomalias em Portugal. Viaja até Moura, no Alentejo, para investigar o caso de uma criança supostamente sequestrada por uma senhora idosa. Acaba por ser capturado e, ao descobrir que a criança já estava morta, tem de encontrar a forma de sair daquela casa."
+                           data-en="Gonçalo Mello works for the Sodalício da Orfandade Anómala (S.O.A.), an organization that rescues and helps children in need and studies anomalies in Portugal. He travels to Moura, in Alentejo, to investigate the case of a child allegedly kidnapped by an elderly woman. He ends up captured and, after discovering the child was already dead, must find a way out of that house.">
+                            Gonçalo Mello trabalha no Sodalício da Orfandade Anómala (S.O.A.), uma organização que salva e ajuda crianças com necessidades e que estuda anomalias em Portugal. Viaja até Moura, no Alentejo, para investigar o caso de uma criança supostamente sequestrada por uma senhora idosa. Acaba por ser capturado e, ao descobrir que a criança já estava morta, tem de encontrar a forma de sair daquela casa.
+                        </p>
+
+                        <div class="game-facts">
+                            <div class="fact">
+                                <span class="fact-label" data-pt="Género" data-en="Genre">Género</span>
+                                <div class="fact-tags">
+                                    <span class="unified-tag tag-genre" data-pt="Terror" data-en="Horror">Terror</span>
+                                    <span class="unified-tag tag-genre" data-pt="Quebra-cabeças" data-en="Puzzle">Quebra-cabeças</span>
+                                    <span class="unified-tag tag-genre" data-pt="Exploração" data-en="Exploration">Exploração</span>
+                                </div>
+                            </div>
+
+                            <div class="fact">
+                                <span class="fact-label" data-pt="Classificação" data-en="Rating">Classificação</span>
+                                <!-- Imagem do PEGI 18: coloca em img/pegi18.png -->
+                                <div class="pegi-box">
+                                    <img src="img/pegi18.png" alt="PEGI 18" class="pegi-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                                    <span class="pegi-fallback">18+</span>
+                                    <span class="pegi-note" data-pt="Só para maiores de 18" data-en="Adults only (18+)">Só para maiores de 18</span>
+                                </div>
+                            </div>
+
+                            <div class="fact">
+                                <span class="fact-label" data-pt="Ambiente" data-en="Setting">Ambiente</span>
+                                <span class="fact-value"><i class="fa-solid fa-location-dot"></i> Moura, Alentejo</span>
+                            </div>
+                        </div>
+
+                        <!-- Se quiseres, podes juntar aqui um botão (ex.: download ou página do jogo):
+                        <div class="game-actions">
+                            <a href="LINK" target="_blank" class="block-btn-action android-btn"><i class="fa-solid fa-download"></i> <span>Download</span></a>
+                        </div>
+                        -->
+                    </div>
+                </div>
+
+                <hr class="glass-divider portfolio-divider">
 
                 <!-- DESIGN -->
                 <div class="fav-row-head portfolio-head">
