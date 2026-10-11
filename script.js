@@ -947,6 +947,169 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // =====================================================
+    // ÚLTIMOS VÍDEOS (automático, a partir do canal do YouTube)
+    // O YouTube publica um feed RSS com os vídeos mais recentes.
+    // O site lê esse feed de cada vez que é aberto e mostra os 3
+    // mais recentes (o mais novo à esquerda). Basta publicares um
+    // vídeo novo e ele aparece aqui sozinho.
+    // =====================================================
+    (function initVideos() {
+        const grid = document.getElementById("vid-grid");
+        if (!grid) return;
+
+        const YT_CHANNEL_ID  = "UCw3ADQcBczU85AXczQKvHMQ";   // ID do canal (o do link do teu rodapé)
+        const YT_CHANNEL_URL = "https://www.youtube.com/@Alzzopt";
+        const YT_FEED = "https://www.youtube.com/feeds/videos.xml?channel_id=" + YT_CHANNEL_ID;
+        const VIDEO_COUNT = 3;
+        const CACHE_KEY = "yt_latest_v1";
+
+        // Se o feed falhar e não houver nada guardado, podes pôr aqui os IDs de 3 vídeos à mão:
+        // ex.: ["dQw4w9WgXcQ", "abcdEFGhijk", "XXXXXXXXXXX"]
+        const MANUAL_IDS = [];
+
+        const tr = (pt, en) => (document.documentElement.lang === "en" ? en : pt);
+
+        function thumbFor(id) { return "https://i.ytimg.com/vi/" + id + "/maxresdefault.jpg"; }
+        function thumbFallback(id) { return "https://i.ytimg.com/vi/" + id + "/mqdefault.jpg"; }
+
+        function idFromLink(link) {
+            const m = String(link || "").match(/[?&]v=([\w-]{6,})|\/shorts\/([\w-]{6,})|youtu\.be\/([\w-]{6,})/);
+            return m ? (m[1] || m[2] || m[3]) : null;
+        }
+
+        function buildVideoCard(v) {
+            const a = document.createElement("a");
+            a.className = "vid-card glass-box";
+            a.href = "https://www.youtube.com/watch?v=" + v.id;
+            a.target = "_blank";
+            a.rel = "noopener";
+            a.setAttribute("aria-label", v.title || "YouTube");
+
+            const img = document.createElement("img");
+            img.className = "vid-thumb";
+            img.alt = "";
+            img.loading = "lazy";
+            img.draggable = false;
+            img.src = thumbFor(v.id);
+            img.onerror = () => { img.onerror = null; img.src = thumbFallback(v.id); };
+            // o maxres, quando não existe, devolve uma imagem minúscula em vez de erro
+            img.onload = () => { if (img.naturalWidth && img.naturalWidth < 200 && img.src.indexOf("maxresdefault") > -1) img.src = thumbFallback(v.id); };
+
+            const play = document.createElement("span");
+            play.className = "vid-play";
+            play.innerHTML = '<i class="fa-solid fa-play"></i>';
+
+            const cap = document.createElement("div");
+            cap.className = "vid-cap";
+            const t = document.createElement("span");
+            t.className = "vid-title";
+            t.textContent = v.title || "";
+            cap.appendChild(t);
+
+            a.append(img, play, cap);
+            return a;
+        }
+
+        function buildPlaceholder() {
+            const a = document.createElement("a");
+            a.className = "vid-card vid-card-empty glass-box";
+            a.href = YT_CHANNEL_URL;
+            a.target = "_blank";
+            a.rel = "noopener";
+
+            const ico = document.createElement("i");
+            ico.className = "fa-brands fa-youtube";
+            const t = document.createElement("span");
+            t.setAttribute("data-pt", "Ver no YouTube");
+            t.setAttribute("data-en", "Watch on YouTube");
+            t.textContent = tr("Ver no YouTube", "Watch on YouTube");
+
+            a.append(ico, t);
+            return a;
+        }
+
+        function renderSkeleton() {
+            grid.innerHTML = "";
+            for (let i = 0; i < VIDEO_COUNT; i++) {
+                const s = document.createElement("div");
+                s.className = "vid-card vid-skeleton glass-box";
+                grid.appendChild(s);
+            }
+        }
+
+        let lastKey = "";
+        function render(list) {
+            const key = list.map(v => v.id).join(",");
+            if (key && key === lastKey) return;
+            lastKey = key;
+            grid.innerHTML = "";
+            for (let i = 0; i < VIDEO_COUNT; i++) {
+                grid.appendChild(list[i] ? buildVideoCard(list[i]) : buildPlaceholder());
+            }
+        }
+
+        function withTimeout(url, ms) {
+            const ctl = new AbortController();
+            const timer = setTimeout(() => ctl.abort(), ms);
+            return fetch(url, { signal: ctl.signal }).finally(() => clearTimeout(timer));
+        }
+
+        // 1.ª tentativa: rss2json (devolve JSON)
+        async function viaRss2Json() {
+            const r = await withTimeout("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(YT_FEED), 9000);
+            if (!r.ok) throw new Error("rss2json " + r.status);
+            const j = await r.json();
+            if (!j || !Array.isArray(j.items) || !j.items.length) throw new Error("rss2json vazio");
+            return j.items.map(it => ({ id: idFromLink(it.link) || idFromLink(it.guid), title: it.title })).filter(v => v.id);
+        }
+
+        // 2.ª tentativa: proxy que devolve o XML do feed
+        async function viaProxy() {
+            const r = await withTimeout("https://api.allorigins.win/raw?url=" + encodeURIComponent(YT_FEED), 9000);
+            if (!r.ok) throw new Error("proxy " + r.status);
+            const xml = new DOMParser().parseFromString(await r.text(), "text/xml");
+            const entries = Array.from(xml.getElementsByTagName("entry"));
+            if (!entries.length) throw new Error("proxy vazio");
+            return entries.map(e => {
+                const idEl = e.getElementsByTagName("yt:videoId")[0];
+                const titleEl = e.getElementsByTagName("title")[0];
+                return { id: idEl ? idEl.textContent : null, title: titleEl ? titleEl.textContent : "" };
+            }).filter(v => v.id);
+        }
+
+        function readCache() {
+            try { const c = JSON.parse(localStorage.getItem(CACHE_KEY) || "null"); return Array.isArray(c) ? c : null; }
+            catch (e) { return null; }
+        }
+        function writeCache(list) {
+            try { localStorage.setItem(CACHE_KEY, JSON.stringify(list)); } catch (e) {}
+        }
+
+        async function load() {
+            const cached = readCache();
+            if (cached && cached.length) render(cached.slice(0, VIDEO_COUNT));
+            else renderSkeleton();
+
+            let list = null;
+            try { list = await viaRss2Json(); }
+            catch (e1) {
+                try { list = await viaProxy(); }
+                catch (e2) { console.warn("Não foi possível obter os vídeos do YouTube:", e2); }
+            }
+
+            if (list && list.length) {
+                const top = list.slice(0, VIDEO_COUNT);
+                writeCache(top);
+                render(top);
+            } else if (!cached || !cached.length) {
+                render(MANUAL_IDS.map(id => ({ id, title: "" })));
+            }
+        }
+
+        load();
+    })();
+
     // MAPA DE PROJETOS DE DESIGN (Apenas os que precisam de galeria/modal)
     const projectDatabase = {
         vimperio: {
