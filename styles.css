@@ -486,21 +486,9 @@ body.site-ready .sig-text {
 .videos-section { padding-top: 40px; padding-bottom: 20px; }
 .videos-section .about-divider { margin-top: 0; }
 
-.vid-head { gap: 6px 14px; margin-bottom: 24px; }
+.vid-head { margin-bottom: 26px; }
 
-/* Imagem a flutuar de um lado para o outro, devagar, sem abanar nem clicar */
-.vid-float {
-    width: 46px; height: 46px; object-fit: contain; display: block;
-    pointer-events: none; user-select: none; -webkit-user-drag: none;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
-    animation: vidSway 7s ease-in-out infinite;
-}
-@keyframes vidSway {
-    0%, 100% { transform: translateX(-22px); }
-    50%      { transform: translateX(22px); }
-}
-
-/* Mesma largura total das caixas de músicas/filmes/jogos; 3 caixas quadradas */
+/* Mesma largura total das caixas de músicas/filmes/jogos; 3 caixas em formato de thumbnail do YouTube (16:9) */
 .vid-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -510,11 +498,11 @@ body.site-ready .sig-text {
 }
 
 .vid-card {
-    position: relative; display: block; aspect-ratio: 1 / 1;
+    position: relative; display: block; aspect-ratio: 16 / 9;
     overflow: hidden; border-radius: 12px; background: var(--black);
 }
 .vid-thumb {
-    position: absolute; inset: 0; width: 100%; height: 50%; object-fit: cover; display: block;
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;
     filter: brightness(0.82);
     transition: transform 0.5s ease, filter 0.4s ease; -webkit-user-drag: none;
 }
@@ -522,8 +510,8 @@ body.site-ready .sig-text {
 
 .vid-play {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.92);
-    width: 58px; height: 58px; border-radius: 50%;
-    background: var(--blue); color: var(--black); font-size: 1.05rem;
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--blue); color: var(--black); font-size: 1rem;
     display: flex; align-items: center; justify-content: center; padding-left: 3px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55);
     transition: transform 0.3s ease, background 0.3s ease;
@@ -531,22 +519,22 @@ body.site-ready .sig-text {
 .vid-card:hover .vid-play { transform: translate(-50%, -50%) scale(1.1); background: #FFF; }
 
 .vid-cap {
-    position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 14px 14px;
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 36px 14px 12px;
     background: linear-gradient(to top, rgba(10, 10, 10, 0.92) 0%, transparent 100%);
     text-align: left; pointer-events: none;
 }
 .vid-title {
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-    font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; line-height: 1.35; color: #FFF;
+    font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.85rem; line-height: 1.35; color: #FFF;
 }
 
 /* Caixa vazia (sem vídeo disponível) */
 .vid-card-empty {
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
     border: 1px dashed rgba(255, 255, 255, 0.12); color: var(--white);
     font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.8rem;
 }
-.vid-card-empty i { font-size: 2rem; color: var(--blue); }
+.vid-card-empty i { font-size: 1.8rem; color: var(--blue); }
 .vid-card-empty:hover { color: var(--blue); }
 
 /* A carregar */
@@ -557,21 +545,15 @@ body.site-ready .sig-text {
     animation: shimmerEffect 1.8s infinite;
 }
 
-.vid-channel-btn {
-    display: inline-flex; align-items: center; gap: 8px; margin-top: 26px;
-    font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.8rem;
-    border: 1px solid rgba(255, 255, 255, 0.4); color: var(--white); padding: 8px 18px; border-radius: 6px;
-    transition: 0.3s;
-}
-.vid-channel-btn:hover { background: var(--blue); border-color: var(--blue); color: var(--black); }
-
 /* --- PORTEFÓLIO: JOGOS + DESIGN + APLICAÇÕES --- */
 .portfolio-head { margin-bottom: 26px; }
 
-/* Jogo em destaque: imagem (16:9) à esquerda ligada ao bloco de informação à direita */
+/* Jogo em destaque: imagem (16:9) à esquerda ligada ao bloco de informação à direita.
+   A coluna da imagem é a mais larga: define a altura e o bloco de informação preenche-a sem sobras. */
 .game-feature {
     display: grid;
-    grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    align-items: stretch;
     max-width: calc(5 * var(--card-w) + 4 * var(--card-gap));
     margin: 0 auto;
     overflow: hidden; border-radius: 12px; text-align: left;
@@ -590,42 +572,36 @@ body.site-ready .sig-text {
     background: linear-gradient(to right, transparent, rgba(20, 20, 20, 0.55));
 }
 
+/* Conteúdo distribuído por toda a altura: título e sinopse em cima, informações coladas ao fundo */
 .game-info {
-    padding: 28px 30px; display: flex; flex-direction: column; gap: 16px;
+    padding: 26px 28px; display: flex; flex-direction: column; justify-content: space-between; gap: 18px;
     background: rgba(32, 32, 32, 0.4); border-left: 1px solid var(--blue-line);
 }
-.game-title { font-size: 1.7rem; color: var(--blue); line-height: 1.2; }
+.game-title { font-size: 1.7rem; color: var(--blue); line-height: 1.2; margin-bottom: 12px; }
 .game-synopsis {
     font-family: 'Inter', sans-serif; font-weight: 300; font-size: 0.95rem; line-height: 1.7; color: #d6d6d6;
 }
 
-.game-facts { display: flex; flex-direction: column; gap: 14px; margin-top: 4px; }
-.fact {
-    display: flex; flex-direction: column; gap: 8px;
-    padding-top: 12px; border-top: 1px solid rgba(255, 255, 255, 0.08);
+.game-facts {
+    display: flex; flex-wrap: wrap; align-items: flex-end; gap: 14px 26px;
+    padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
+.fact { display: flex; flex-direction: column; gap: 8px; }
+.fact-genre { flex: 1 1 auto; }
 .fact-label {
     font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.66rem;
     letter-spacing: 1.5px; text-transform: uppercase; color: rgba(243, 243, 243, 0.5);
 }
 .fact-tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .fact-tags .tag-genre { margin-top: 0; font-size: 0.72rem; padding: 3px 10px; }
-.fact-value {
-    font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.85rem; color: var(--white);
-    display: inline-flex; align-items: center; gap: 8px;
-}
-.fact-value i { color: var(--blue); }
 
 /* PEGI 18 */
-.pegi-box { display: flex; align-items: center; gap: 12px; }
+.pegi-box { display: flex; align-items: center; }
 .pegi-img { height: 52px; width: auto; display: block; border-radius: 4px; }
 .pegi-fallback {
     display: none; width: 52px; height: 52px; border-radius: 6px; align-items: center; justify-content: center;
     background: #c8102e; color: #FFF; font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 1.1rem;
 }
-.pegi-note { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.85rem; color: var(--white); }
-
-.game-actions { display: flex; gap: 10px; margin-top: 4px; }
 
 /* Cartões do portefólio (design e apps) com o mesmo tamanho */
 .portfolio-grid {
@@ -900,7 +876,7 @@ body.site-ready .sig-text {
     .sig-text { stroke-dashoffset: 0; fill-opacity: 1; fill: var(--blue); stroke: var(--blue); stroke-width: 0.4; }
     .fav-card.platinum, .fav-card.platinum::after, .btn-donativo .fa-heart { animation: none; }
     .sticker.wiggle, .sticker img { animation: none; }
-    .vid-float, .vid-skeleton::after { animation: none; }
+    .vid-skeleton::after { animation: none; }
 }
 
 /* =====================================================
@@ -949,9 +925,9 @@ body.site-ready .sig-text {
 }
 
 @media (max-width: 700px) {
-    /* Vídeos: uma coluna, caixas quadradas empilhadas */
-    .vid-grid { grid-template-columns: minmax(0, 1fr); max-width: 380px; gap: 16px; }
-    .vid-play { width: 54px; height: 54px; }
+    /* Vídeos: uma coluna, caixas 16:9 empilhadas */
+    .vid-grid { grid-template-columns: minmax(0, 1fr); max-width: 420px; gap: 16px; }
+    .vid-play { width: 50px; height: 50px; }
     /* sem hover no telemóvel: o play e o título ficam sempre visíveis */
     .vid-thumb { filter: brightness(0.7); }
 }
@@ -1003,12 +979,10 @@ body.site-ready .sig-text {
     .plat-trophy { width: 26px; height: 26px; top: 5px; right: 5px; }
 
     /* Vídeos */
-    .vid-float { width: 38px; height: 38px; animation-name: vidSwaySm; }
-    @keyframes vidSwaySm { 0%, 100% { transform: translateX(-12px); } 50% { transform: translateX(12px); } }
-    .vid-title { font-size: 0.82rem; }
+    .vid-title { font-size: 0.8rem; }
 
     /* Jogo em destaque */
-    .game-info { padding: 20px 18px; gap: 14px; }
+    .game-info { padding: 20px 18px; gap: 16px; }
     .game-title { font-size: 1.4rem; }
     .game-synopsis { font-size: 0.9rem; }
     .fact-tags .tag-genre { font-size: 0.66rem; }
