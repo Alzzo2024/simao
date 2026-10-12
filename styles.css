@@ -486,7 +486,7 @@ body.site-ready .sig-text {
 .videos-section { padding-top: 40px; padding-bottom: 20px; }
 .videos-section .about-divider { margin-top: 0; }
 
-.vid-head { gap: 6px 14px; margin-bottom: 26px; }
+.vid-head { gap: 6px 14px; margin-bottom: 5px; }
 
 /* Imagem a flutuar de um lado para o outro, devagar, sem abanar nem clicar */
 .vid-float {
