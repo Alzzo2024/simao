@@ -44,11 +44,20 @@
                     <a href="#inicio" data-pt="Início" data-en="Home">Início</a>
                     <a href="#sobre" data-pt="Sobre" data-en="About">Sobre</a>
                     
-                    <div class="nav-dropdown-wrapper">
-                        <a href="#portfolio" class="dropdown-trigger" data-pt="Portefólio ▾" data-en="Portfolio ▾">Portefólio ▾</a>
+                    <!-- Portefólio: abre ao clicar, com mini-títulos -->
+                    <div class="nav-dropdown-wrapper" id="port-dd">
+                        <a href="#portfolio" class="dropdown-trigger" id="port-trigger" data-pt="Portefólio ▾" data-en="Portfolio ▾">Portefólio ▾</a>
                         <div class="dropdown-content-fixed">
+                            <span class="dd-title" data-pt="Jogos" data-en="Games">Jogos</span>
+                            <a href="#game-salvage" class="dd-link">Salvage Crew</a>
+
+                            <span class="dd-title" data-pt="Design" data-en="Design">Design</span>
                             <a href="#" class="portfolio-item-trigger" data-project="vimperio">Loja V Império</a>
                             <a href="#" class="portfolio-item-trigger" data-project="supercampainhas">Super Campainhas</a>
+
+                            <span class="dd-title" data-pt="Aplicações" data-en="Applications">Aplicações</span>
+                            <a href="#app-mesh" class="dd-link">Mesh</a>
+                            <a href="#app-tint" class="dd-link">Tint</a>
                         </div>
                     </div>
                     
@@ -69,7 +78,21 @@
         <nav class="mobile-menu-overlay" id="mobile-menu">
             <a href="#inicio" data-pt="Início" data-en="Home">Início</a>
             <a href="#sobre" data-pt="Sobre" data-en="About">Sobre</a>
-            <a href="#portfolio" data-pt="Portefólio" data-en="Portfolio">Portefólio</a>
+
+            <button type="button" class="m-port-toggle" id="m-port-toggle">
+                <span data-pt="Portefólio" data-en="Portfolio">Portefólio</span> <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="m-sub" id="m-sub">
+                <span class="dd-title" data-pt="Jogos" data-en="Games">Jogos</span>
+                <a href="#game-salvage">Salvage Crew</a>
+                <span class="dd-title" data-pt="Design" data-en="Design">Design</span>
+                <a href="#" class="portfolio-item-trigger" data-project="vimperio">Loja V Império</a>
+                <a href="#" class="portfolio-item-trigger" data-project="supercampainhas">Super Campainhas</a>
+                <span class="dd-title" data-pt="Aplicações" data-en="Applications">Aplicações</span>
+                <a href="#app-mesh">Mesh</a>
+                <a href="#app-tint">Tint</a>
+            </div>
+
             <a href="https://revolut.me/simaoa_cz_ytr4" target="_blank" class="btn-donativo shimmer">
                 <i class="fa-solid fa-heart"></i> <span data-pt="Apoiar" data-en="Support">Apoiar</span>
             </a>
@@ -240,20 +263,22 @@
                     <h4 class="fav-row-title" data-pt="Jogos" data-en="Games">Jogos</h4>
                 </div>
 
-                <div class="game-feature glass-box entrance-anim">
+                <div id="game-salvage" class="game-feature glass-box entrance-anim">
                     <!-- Imagem do jogo (formato thumbnail do YouTube, 16:9): portefolio/salvagecrew/salvagecrew.png -->
                     <div class="game-media">
-                        <img src="portefolio/salvagecrew.png" alt="Salvage Crew" onerror="this.style.display='none'">
+                        <img src="portefolio/salvagecrew/salvagecrew.png" alt="Salvage Crew" onerror="this.style.display='none'">
                     </div>
 
                     <div class="game-info">
-                        <h3 class="game-title">Salvage Crew</h3>
+                        <div class="game-text">
+                            <h3 class="game-title">Salvage Crew</h3>
 
-                        <p class="game-synopsis"
-                           data-pt="Gonçalo Mello trabalha no Sodalício da Orfandade Anómala (S.O.A.), uma organização que ajuda crianças com necessidades e estuda anomalias em Portugal. Viaja até Moura, no Alentejo, para investigar o caso de uma criança supostamente sequestrada por uma senhora idosa. Mas aquela casa esconde mais do que parece, e sair dela pode ser bem mais difícil do que entrar."
-                           data-en="Gonçalo Mello works for the Sodalício da Orfandade Anómala (S.O.A.), an organization that helps children in need and studies anomalies in Portugal. He travels to Moura, in Alentejo, to investigate the case of a child allegedly kidnapped by an elderly woman. But that house hides more than it seems, and leaving it may be far harder than entering.">
-                            Gonçalo Mello trabalha no Sodalício da Orfandade Anómala (S.O.A.), uma organização que ajuda crianças com necessidades e estuda anomalias em Portugal. Viaja até Moura, no Alentejo, para investigar o caso de uma criança supostamente sequestrada por uma senhora idosa. Mas aquela casa esconde mais do que parece, e sair dela pode ser bem mais difícil do que entrar.
-                        </p>
+                            <p class="game-synopsis"
+                               data-pt="Gonçalo Mello trabalha no Sodalício da Orfandade Anómala (S.O.A.), uma organização que ajuda crianças com necessidades e estuda anomalias em Portugal. Viaja até Moura, no Alentejo, para investigar o caso de uma criança supostamente sequestrada por uma senhora idosa. Mas aquela casa esconde mais do que parece, e sair dela pode ser bem mais difícil do que entrar."
+                               data-en="Gonçalo Mello works for the Sodalício da Orfandade Anómala (S.O.A.), an organization that helps children in need and studies anomalies in Portugal. He travels to Moura, in Alentejo, to investigate the case of a child allegedly kidnapped by an elderly woman. But that house hides more than it seems, and leaving it may be far harder than entering.">
+                                Gonçalo Mello trabalha no Sodalício da Orfandade Anómala (S.O.A.), uma organização que ajuda crianças com necessidades e estuda anomalias em Portugal. Viaja até Moura, no Alentejo, para investigar o caso de uma criança supostamente sequestrada por uma senhora idosa. Mas aquela casa esconde mais do que parece, e sair dela pode ser bem mais difícil do que entrar.
+                            </p>
+                        </div>
 
                         <div class="game-facts">
                             <div class="fact fact-genre">
@@ -320,7 +345,7 @@
                 <div class="portfolio-grid">
 
                     <!-- MESH -->
-                    <div class="project-block-wide glass-box entrance-anim">
+                    <div id="app-mesh" class="project-block-wide glass-box entrance-anim">
                         <div class="block-top-half">
                             <img src="portefolio/mesh/meshbanner.png" alt="Mesh Visual" class="block-banner-img">
                             <div class="block-gradient-overlay"></div>
@@ -347,7 +372,7 @@
                     </div>
 
                     <!-- TINT -->
-                    <div class="project-block-wide glass-box entrance-anim">
+                    <div id="app-tint" class="project-block-wide glass-box entrance-anim">
                         <div class="block-top-half">
                             <img src="portefolio/tint/tintbanner.png" alt="Tint Visual" class="block-banner-img">
                             <div class="block-gradient-overlay"></div>
