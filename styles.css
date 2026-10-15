@@ -156,7 +156,42 @@ h3, h4, .btn-cv, .unified-tag, .btn-lang, .btn-donativo, .copy-txt, .f-email, .f
     color: var(--white) !important; opacity: 1 !important; transition: color 0.2s ease;
 }
 .dropdown-content-fixed a:hover { color: var(--blue) !important; background: transparent !important; }
-.nav-dropdown-wrapper:hover .dropdown-content-fixed { display: block; }
+
+/* Menu Portefólio: abre ao clicar, com mini-títulos */
+.nav-dropdown-wrapper.open .dropdown-content-fixed { display: block; }
+.dropdown-content-fixed { min-width: 220px; text-align: left; }
+.dd-title {
+    display: block; padding: 10px 20px 4px; margin-top: 4px;
+    font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 0.62rem;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--blue); opacity: 0.8;
+}
+.dd-title:first-child { margin-top: 0; }
+.dropdown-trigger { cursor: var(--cur-hand) !important; }
+
+/* Submenu do telemóvel */
+.m-port-toggle {
+    background: none; border: none; color: var(--white); cursor: pointer;
+    font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.6rem;
+    display: inline-flex; align-items: center; gap: 10px;
+}
+.m-port-toggle i { font-size: 0.9rem; transition: transform 0.3s ease; }
+.m-port-toggle.open { color: var(--blue); }
+.m-port-toggle.open i { transform: rotate(180deg); }
+.m-sub {
+    max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.m-sub.open { max-height: 460px; }
+.m-sub a { font-size: 1.15rem !important; }
+.m-sub .dd-title { padding: 8px 0 0; }
+
+/* Destaque ao saltar para um projeto */
+#game-salvage, #app-mesh, #app-tint { scroll-margin-top: 110px; }
+.flash { animation: flashBox 1.6s ease; }
+@keyframes flashBox {
+    0%, 100% { box-shadow: 0 0 0 rgba(132, 186, 234, 0); }
+    30% { box-shadow: 0 0 0 3px var(--blue), 0 0 30px rgba(132, 186, 234, 0.5); }
+}
 
 /* Shimmer */
 .shimmer { position: relative; overflow: hidden; }
@@ -548,22 +583,20 @@ body.site-ready .sig-text {
 /* --- PORTEFÓLIO: JOGOS + DESIGN + APLICAÇÕES --- */
 .portfolio-head { margin-bottom: 26px; }
 
-/* Jogo em destaque: imagem (16:9) à esquerda ligada ao bloco de informação à direita.
-   A coluna da imagem é a mais larga: define a altura e o bloco de informação preenche-a sem sobras. */
+/* Jogo em destaque: imagem (16:9) fixa a 58% à esquerda, informação à direita com camada própria.
+   A imagem define a altura da caixa; o bloco de informação estica-se para a preencher sem sobras. */
 .game-feature {
-    display: grid;
-    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-    align-items: stretch;
+    display: flex; align-items: stretch;
     max-width: calc(5 * var(--card-w) + 4 * var(--card-gap));
-    margin: 0 auto;
-    overflow: hidden; border-radius: 12px; text-align: left;
+    margin: 0 auto; overflow: hidden; border-radius: 12px; text-align: left; position: relative;
 }
 .game-media {
-    position: relative; aspect-ratio: 16 / 9; background: var(--black); overflow: hidden;
+    position: relative; flex: 0 0 58%; max-width: 58%;
+    aspect-ratio: 16 / 9; background: var(--black); overflow: hidden; z-index: 0;
 }
 .game-media img {
-    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;
-    transition: transform 0.6s ease;
+    position: absolute; inset: 0; width: 100%; height: 100%; max-width: none;
+    object-fit: cover; display: block; transition: transform 0.6s ease;
 }
 .game-feature:hover .game-media img { transform: scale(1.03); }
 /* sombra suave na junção para as duas partes parecerem ligadas */
@@ -572,10 +605,11 @@ body.site-ready .sig-text {
     background: linear-gradient(to right, transparent, rgba(20, 20, 20, 0.55));
 }
 
-/* Conteúdo distribuído por toda a altura: título e sinopse em cima, informações coladas ao fundo */
+/* Título e sinopse em cima, informações coladas ao fundo */
 .game-info {
+    position: relative; z-index: 1; flex: 1 1 0; min-width: 0;
     padding: 26px 28px; display: flex; flex-direction: column; justify-content: space-between; gap: 18px;
-    background: rgba(32, 32, 32, 0.4); border-left: 1px solid var(--blue-line);
+    background: rgba(24, 24, 24, 0.92); border-left: 1px solid var(--blue-line);
 }
 .game-title { font-size: 1.7rem; color: var(--blue); line-height: 1.2; margin-bottom: 12px; }
 .game-synopsis {
@@ -876,7 +910,7 @@ body.site-ready .sig-text {
     .sig-text { stroke-dashoffset: 0; fill-opacity: 1; fill: var(--blue); stroke: var(--blue); stroke-width: 0.4; }
     .fav-card.platinum, .fav-card.platinum::after, .btn-donativo .fa-heart { animation: none; }
     .sticker.wiggle, .sticker img { animation: none; }
-    .vid-skeleton::after { animation: none; }
+    .vid-skeleton::after, .flash { animation: none; }
 }
 
 /* =====================================================
@@ -902,9 +936,10 @@ body.site-ready .sig-text {
     .portfolio-grid { grid-template-columns: minmax(0, 1fr); max-width: 560px; }
 
     /* Jogo em destaque: imagem por cima, informação por baixo */
-    .game-feature { grid-template-columns: minmax(0, 1fr); max-width: 640px; }
+    .game-feature { flex-direction: column; max-width: 640px; }
+    .game-media { flex: none; max-width: 100%; width: 100%; }
     .game-media::after { display: none; }
-    .game-info { border-left: 0; border-top: 1px solid var(--blue-line); }
+    .game-info { flex: none; border-left: 0; border-top: 1px solid var(--blue-line); }
 
     /* Vídeos: continuam 3, mais juntos */
     .vid-grid { gap: 12px; }
