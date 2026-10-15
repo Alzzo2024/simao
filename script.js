@@ -1245,6 +1245,49 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // =====================================================
+    // MENU PORTEFÓLIO (abre ao clicar) + saltos com destaque
+    // =====================================================
+    const portDD = document.getElementById("port-dd");
+    const portTrigger = document.getElementById("port-trigger");
+    const mToggle = document.getElementById("m-port-toggle");
+    const mSub = document.getElementById("m-sub");
+
+    if (portDD && portTrigger) {
+        portTrigger.addEventListener("click", (e) => {
+            e.preventDefault();
+            portDD.classList.toggle("open");
+        });
+        document.addEventListener("click", (e) => {
+            if (!portDD.contains(e.target)) portDD.classList.remove("open");
+        });
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") portDD.classList.remove("open");
+        });
+    }
+
+    if (mToggle && mSub) {
+        mToggle.addEventListener("click", () => {
+            mToggle.classList.toggle("open");
+            mSub.classList.toggle("open");
+        });
+    }
+
+    document.querySelectorAll(".dd-link, .m-sub a[href^='#']:not([href='#'])").forEach(link => {
+        link.addEventListener("click", () => {
+            if (portDD) portDD.classList.remove("open");
+            const target = document.querySelector(link.getAttribute("href"));
+            if (target) {
+                setTimeout(() => {
+                    target.classList.add("flash");
+                    setTimeout(() => target.classList.remove("flash"), 1700);
+                }, 500);
+            }
+        });
+    });
+    document.querySelectorAll("#port-dd .portfolio-item-trigger").forEach(l =>
+        l.addEventListener("click", () => portDD.classList.remove("open")));
+
     // MENU MOBILE
     mobileBtn.addEventListener("click", () => {
         mobileMenu.classList.toggle("active");
