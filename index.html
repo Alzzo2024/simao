@@ -20,7 +20,7 @@
     <link rel="icon" type="image/png" href="img/simaoaraujologo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <noscript><style>#intro{display:none !important;} .hero-signature{clip-path:none !important;} .sig-text{stroke-dashoffset:0 !important;fill-opacity:1 !important;}</style></noscript>
@@ -48,9 +48,6 @@
                     <div class="nav-dropdown-wrapper" id="port-dd">
                         <a href="#portfolio" class="dropdown-trigger" id="port-trigger" data-pt="Portefólio ▾" data-en="Portfolio ▾">Portefólio ▾</a>
                         <div class="dropdown-content-fixed">
-                            <span class="dd-title" data-pt="Jogos" data-en="Games">Jogos</span>
-                            <a href="#game-salvage" class="dd-link">Salvage Crew</a>
-
                             <span class="dd-title" data-pt="Design" data-en="Design">Design</span>
                             <a href="#" class="portfolio-item-trigger" data-project="vimperio">Loja V Império</a>
                             <a href="#" class="portfolio-item-trigger" data-project="supercampainhas">Super Campainhas</a>
@@ -83,8 +80,6 @@
                 <span data-pt="Portefólio" data-en="Portfolio">Portefólio</span> <i class="fa-solid fa-chevron-down"></i>
             </button>
             <div class="m-sub" id="m-sub">
-                <span class="dd-title" data-pt="Jogos" data-en="Games">Jogos</span>
-                <a href="#game-salvage">Salvage Crew</a>
                 <span class="dd-title" data-pt="Design" data-en="Design">Design</span>
                 <a href="#" class="portfolio-item-trigger" data-project="vimperio">Loja V Império</a>
                 <a href="#" class="portfolio-item-trigger" data-project="supercampainhas">Super Campainhas</a>
@@ -120,9 +115,12 @@
         <section id="sobre" class="dark-section">
             <div class="inner-container">
 
-                <!-- Título "Sobre" com os autocolantes clicáveis (a flutuar) -->
+                <!-- Título "Sobre" com os autocolantes clicáveis (a flutuar) e o splash text -->
                 <div class="about-title-wrap">
                     <h2 class="cursive-title-light" data-pt="Sobre" data-en="About">Sobre</h2>
+
+                    <!-- Splash text (o script.js escolhe um ao acaso de cada vez que a página abre) -->
+                    <span id="splash" class="splash" aria-hidden="true"></span>
 
                     <button class="sticker st-android" aria-label="Android"
                         data-bpt="Uso Android 💚" data-ben="I use Android 💚">
@@ -144,6 +142,10 @@
                     <button class="sticker st-sagres" aria-label="Sagres"
                         data-bpt="Eu gosto de Sagres 🍺❤️" data-ben="I like Sagres 🍺❤️">
                         <img src="img/sagres.png" alt="Sagres" onerror="this.parentElement.style.display='none'">
+                    </button>
+                    <button class="sticker st-ps5" aria-label="PS5"
+                        data-bpt="Tenho uma PS5 🎮" data-ben="I have a PS5 🎮">
+                        <img src="img/ps5.png" alt="PS5" onerror="this.parentElement.style.display='none'">
                     </button>
 
                     <span id="sticker-bubble" class="sticker-bubble"></span>
@@ -239,70 +241,9 @@
             </div>
         </section>
 
-        <!-- ÚLTIMOS VÍDEOS (preenchido automaticamente pelo script.js a partir do canal do YouTube) -->
-        <section id="videos" class="dark-section videos-section">
-            <div class="inner-container">
-                <hr class="glass-divider about-divider">
-
-                <div class="entrance-anim">
-                    <div class="fav-row-head vid-head">
-                        <h4 class="fav-row-title" data-pt="Últimos vídeos" data-en="Latest videos">Últimos vídeos</h4>
-                    </div>
-
-                    <div class="vid-grid" id="vid-grid"></div>
-                </div>
-            </div>
-        </section>
-
         <section id="portfolio" class="dark-section" style="padding-top: 40px;">
             <div class="inner-container">
                 <h2 class="cursive-title-light" data-pt="Portefólio" data-en="Portfolio">Portefólio</h2>
-
-                <!-- JOGOS -->
-                <div class="fav-row-head portfolio-head">
-                    <h4 class="fav-row-title" data-pt="Jogos" data-en="Games">Jogos</h4>
-                </div>
-
-                <div id="game-salvage" class="game-feature glass-box entrance-anim">
-                    <!-- Imagem do jogo (formato thumbnail do YouTube, 16:9): portefolio/salvagecrew/salvagecrew.png -->
-                    <div class="game-media">
-                        <img src="portefolio/salvagecrew.png" alt="Salvage Crew" onerror="this.style.display='none'">
-                    </div>
-
-                    <div class="game-info">
-                        <div class="game-text">
-                            <h3 class="game-title">Salvage Crew</h3>
-
-                            <p class="game-synopsis"
-                               data-pt="Gonçalo Mello trabalha no Sodalício da Orfandade Anómala (S.O.A.), uma organização que ajuda crianças com necessidades e estuda anomalias em Portugal. Viaja até Moura, no Alentejo, para investigar o caso de uma criança supostamente sequestrada por uma senhora idosa. Mas aquela casa esconde mais do que parece, e sair dela pode ser bem mais difícil do que entrar."
-                               data-en="Gonçalo Mello works for the Sodalício da Orfandade Anómala (S.O.A.), an organization that helps children in need and studies anomalies in Portugal. He travels to Moura, in Alentejo, to investigate the case of a child allegedly kidnapped by an elderly woman. But that house hides more than it seems, and leaving it may be far harder than entering.">
-                                Gonçalo Mello trabalha no Sodalício da Orfandade Anómala (S.O.A.), uma organização que ajuda crianças com necessidades e estuda anomalias em Portugal. Viaja até Moura, no Alentejo, para investigar o caso de uma criança supostamente sequestrada por uma senhora idosa. Mas aquela casa esconde mais do que parece, e sair dela pode ser bem mais difícil do que entrar.
-                            </p>
-                        </div>
-
-                        <div class="game-facts">
-                            <div class="fact fact-genre">
-                                <span class="fact-label" data-pt="Género" data-en="Genre">Género</span>
-                                <div class="fact-tags">
-                                    <span class="unified-tag tag-genre" data-pt="Terror" data-en="Horror">Terror</span>
-                                    <span class="unified-tag tag-genre" data-pt="Quebra-cabeças" data-en="Puzzle">Quebra-cabeças</span>
-                                    <span class="unified-tag tag-genre" data-pt="Exploração" data-en="Exploration">Exploração</span>
-                                </div>
-                            </div>
-
-                            <div class="fact fact-rating">
-                                <span class="fact-label" data-pt="Classificação" data-en="Rating">Classificação</span>
-                                <!-- Imagem do PEGI 18: coloca em img/pegi18.png -->
-                                <div class="pegi-box">
-                                    <img src="img/pegi18.png" alt="PEGI 18" class="pegi-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                                    <span class="pegi-fallback">18+</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <hr class="glass-divider portfolio-divider">
 
                 <!-- DESIGN -->
                 <div class="fav-row-head portfolio-head">
@@ -361,9 +302,6 @@
                             </div>
                             
                             <div class="block-actions-row">
-                                <a href="https://drive.google.com/file/d/1BqagKOlnTXzDC2R4HB6wZB_Q4pbINpB5/view?usp=sharing" download class="block-btn-action android-btn">
-                                    <i class="fa-brands fa-android"></i> <span>Download</span>
-                                </a>
                                 <a href="https://meshsocial.vercel.app/" target="_blank" class="block-btn-action web-btn">
                                     <i class="fa-solid fa-globe"></i> <span>Web</span>
                                 </a>
@@ -388,9 +326,6 @@
                             </div>
                             
                             <div class="block-actions-row">
-                                <a href="https://drive.google.com/file/d/1nrSWujQ4YPLyBxKVfh8B8lFud_ISpEIv/view?usp=drivesdk" download class="block-btn-action android-btn">
-                                    <i class="fa-brands fa-android"></i> <span>Download</span>
-                                </a>
                                 <a href="https://tintapp.vercel.app/" target="_blank" class="block-btn-action web-btn">
                                     <i class="fa-solid fa-globe"></i> <span>Web</span>
                                 </a>
@@ -429,8 +364,6 @@
                 </a>
                 
                 <a href="https://www.instagram.com/simaoarauj0/" target="_blank" class="s-link" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-
-                <a href="https://www.youtube.com/channel/UCw3ADQcBczU85AXczQKvHMQ" target="_blank" class="s-link" title="Youtube"><i class="fa-brands fa-youtube"></i></a>
             </div>
             
             <div class="footer-email-box">
