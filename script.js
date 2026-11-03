@@ -178,22 +178,23 @@ document.addEventListener("DOMContentLoaded", function () {
     // Dica: frases curtas (até ~22 letras) para caberem bem.
     // =====================================================
     const SPLASHES = [
-        { pt: "Olá, mundo!",            en: "Hello, world!" },
-        { pt: "Feito com café!",        en: "Made with coffee!" },
-        { pt: "Criador digital!",       en: "Digital creator!" },
-        { pt: "Agora com ondas!",       en: "Now with waves!" },
+        { pt: "Olá fofas!",             en: "Hello cuties!" },
+        { pt: "Gosto de café",          en: "I like coffee" },
+        { pt: "Cronicamente online",    en: "Chronically online" },
+        { pt: "Olha a onda!",           en: "Watch out for the wave!" },
         { pt: "Ouve Variações!",        en: "Listen to Variações!" },
-        { pt: "Sagres bem fresca!",     en: "Ice-cold Sagres!" },
-        { pt: "100% pixels!",           en: "100% pixels!" },
-        { pt: "Platina conquistada!",   en: "Platinum earned!" },
-        { pt: "Azul é a cor!",          en: "Blue is the colour!" },
-        { pt: "Clica nos autocolantes!", en: "Click the stickers!" },
-        { pt: "Quase sem bugs!",        en: "Almost bug-free!" },
+        { pt: "Sagres >> Super Bock",   en: "Sagres >> Super Bock" },
+        { pt: "100% eu",                en: "100% me" },
+        { pt: "BOMBOCLAT",              en: "BOMBOCLAT" },
+        { pt: "PLATINA!!!",             en: "PLATINUM!!!" },
+        { pt: "Azul é uma cor...",      en: "Blue is the colour..." },
+        { pt: "Clica clica",            en: "Click click" },
+        { pt: "Eu amo o natal!",        en: "I love christmas!" },
         { pt: "Feito em Lisboa!",       en: "Made in Lisbon!" },
-        { pt: "Agora a pulsar!",        en: "Now pulsing!" },
-        { pt: "Tenho uma PS5!",         en: "I own a PS5!" },
-        { pt: "Mais um jogo?",          en: "One more game?" },
-        { pt: "Design com propósito!",  en: "Design with purpose!" }
+        { pt: "Mambo",                  en: "Mambo" },
+        { pt: "Cuidado com o Pentagóno",en: "Watch out for the Pentagóno" },
+        { pt: "Ogugaga eu sou o Messias!", en: "Ogugaga I am the Messiah!" },
+        { pt: "Pobre :(",  en: "Poor :(" }
     ];
 
     const splashEl = document.getElementById("splash");
